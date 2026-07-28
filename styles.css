@@ -820,3 +820,163 @@ button:hover,
 
 
 }
+
+/* =========================
+   CHÁ DE CASA NOVA PREMIUM
+========================= */
+
+
+.casa-banner{
+
+    text-align:center;
+
+    margin-bottom:40px;
+
+}
+
+
+
+.casa-banner img{
+
+    width:100%;
+
+    max-height:400px;
+
+    object-fit:cover;
+
+    border-radius:25px;
+
+    margin-bottom:25px;
+
+}
+
+
+
+.casa-banner h1{
+
+    font-family:'Great Vibes',cursive;
+
+    font-size:4rem;
+
+    color:#d9bd6b;
+
+}
+
+
+
+.casa-banner h2{
+
+    font-size:2rem;
+
+}
+
+
+
+.qr-code{
+
+    width:180px;
+
+    margin:20px auto;
+
+    display:block;
+
+}
+
+
+
+.titulo-presentes{
+
+    text-align:center;
+
+}
+
+
+
+.categoria{
+
+    text-align:center;
+
+    color:#c6a85a;
+
+    margin:45px 0 20px;
+
+    font-size:2rem;
+
+}
+
+
+
+.gift-grid{
+
+    display:grid;
+
+    grid-template-columns:
+
+    repeat(auto-fit,minmax(260px,1fr));
+
+    gap:20px;
+
+}
+
+
+
+.gift-card{
+
+    transition:.3s;
+
+}
+
+
+
+.gift-card:hover{
+
+    transform:translateY(-5px);
+
+}
+
+
+
+.gift-card span{
+
+    display:block;
+
+    margin-top:15px;
+
+}
+
+
+
+.gift-card p{
+
+    color:#777;
+
+}
+
+
+
+.destaque{
+
+    border:2px solid #d9bd6b;
+
+}
+
+
+
+@media(max-width:768px){
+
+
+.casa-banner h1{
+
+font-size:3rem;
+
+}
+
+
+.gift-grid{
+
+grid-template-columns:1fr;
+
+}
+
+
+}
