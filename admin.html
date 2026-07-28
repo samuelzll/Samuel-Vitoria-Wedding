@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Painel Administrativo</title>
+
+<link rel="stylesheet" href="styles.css">
+
+</head>
+
+
+<body>
+
+
+<div class="presentes-container">
+
+
+<h1 class="presentes-header">
+
+Painel Administrativo
+
+</h1>
+
+
+
+
+<div class="pix-box">
+
+
+<h2>
+Resumo
+</h2>
+
+
+<p>
+Convidados confirmados:
+</p>
+
+
+<strong id="totalConvidados">
+0
+</strong>
+
+
+
+<br><br>
+
+
+
+<p>
+Total arrecadado:
+</p>
+
+
+<strong id="totalValor">
+R$ 0,00
+</strong>
+
+
+
+</div>
+
+
+
+
+
+
+<button onclick="exportarCSV()">
+
+Exportar CSV
+
+</button>
+
+
+
+
+
+
+
+<h2>
+Convidados
+</h2>
+
+
+<div id="listaConvidados">
+
+</div>
+
+
+
+
+
+
+
+
+
+<h2>
+Contribuições
+</h2>
+
+
+<div id="listaContribuicoes">
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+<script>
+
+
+// ==========================
+// CARREGAR DADOS
+// ==========================
+
+
+const convidados =
+JSON.parse(
+localStorage.getItem("convidados")
+) || [];
+
+
+
+const contribuicoes =
+JSON.parse(
+localStorage.getItem("contribuicoes")
+) || [];
+
+
+
+
+
+// ==========================
+// MOSTRAR CONVIDADOS
+// ==========================
+
+
+const listaConvidados =
+document.getElementById(
+"listaConvidados"
+);
+
+
+
+if(convidados.length === 0){
+
+
+listaConvidados.innerHTML =
+"<p>Nenhum convidado confirmado.</p>";
+
+
+}else{
+
+
+listaConvidados.innerHTML =
+
+convidados.map(c=>{
+
+
+return `
+
+<div class="gift-card">
+
+
+<h3>
+${c.nome}
+</h3>
+
+
+<p>
+Telefone:
+${c.telefone}
+</p>
+
+
+<p>
+Data:
+${c.data || "Não informado"}
+</p>
+
+
+</div>
+
+
+`;
+
+
+}).join("");
+
+
+
+}
+
+
+
+
+
+// ==========================
+// MOSTRAR CONTRIBUIÇÕES
+// ==========================
+
+
+const listaContribuicoes =
+document.getElementById(
+"listaContribuicoes"
+);
+
+
+
+if(contribuicoes.length === 0){
+
+
+listaContribuicoes.innerHTML =
+"<p>Nenhuma contribuição registrada.</p>";
+
+
+
+}else{
+
+
+listaContribuicoes.innerHTML =
+
+
+contribuicoes.map(c=>{
+
+
+return `
+
+<div class="gift-card">
+
+
+<h3>
+${c.presente}
+</h3>
+
+
+<p>
+Convidado:
+${c.nome}
+</p>
+
+
+<p>
+Valor:
+R$ ${Number(c.valor).toFixed(2)}
+</p>
+
+
+<p>
+Data:
+${c.data}
+</p>
+
+
+</div>
+
+
+`;
+
+
+}).join("");
+
+
+
+}
+
+
+
+
+
+
+
+// ==========================
+// RESUMOS
+// ==========================
+
+
+
+document.getElementById(
+"totalConvidados"
+).innerHTML =
+convidados.length;
+
+
+
+
+let total =
+
+
+contribuicoes.reduce((soma,item)=>{
+
+
+return soma + Number(item.valor);
+
+
+},0);
+
+
+
+document.getElementById(
+"totalValor"
+).innerHTML =
+
+
+"R$ " + total.toFixed(2);
+
+
+
+
+
+
+
+
+
+// ==========================
+// EXPORTAR CSV
+// ==========================
+
+
+function exportarCSV(){
+
+
+
+let csv =
+
+"Nome,Telefone,Presente,Valor,Data\n";
+
+
+
+
+
+contribuicoes.forEach(c=>{
+
+
+csv +=
+
+`${c.nome},${c.telefone},${c.presente},${c.valor},${c.data}\n`;
+
+
+
+});
+
+
+
+
+
+const blob =
+
+new Blob(
+
+[csv],
+
+{
+type:"text/csv;charset=utf-8;"
+}
+
+);
+
+
+
+
+
+const link =
+
+document.createElement("a");
+
+
+
+link.href =
+
+URL.createObjectURL(blob);
+
+
+
+link.download =
+
+"casamento_contribuicoes.csv";
+
+
+
+link.click();
+
+
+
+}
+
+
+
+
+</script>
+
+
+
+</body>
+
+</html>

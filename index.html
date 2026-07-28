@@ -1,102 +1,502 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css" />
-    <title>Barbearia Estilo MK - Apresentação</title>
-    
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
-        import {
-            getFirestore,
-            collection,
-            addDoc,
-            getDocs,
-            doc,
-            deleteDoc,
-            setDoc
-        } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
-        const firebaseConfig = {
-            apiKey: "AIzaSyDONyV3DlGTSiAVQUxmMQ0ka3dNknY3er0",
-            authDomain: "barbearia-mk.firebaseapp.com",
-            projectId: "barbearia-mk",
-            storageBucket: "barbearia-mk.firebasestorage.app",
-            messagingSenderId: "713393544662",
-            appId: "1:713393544662:web:9881a05a7cf206f15d9877"
-        };
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-        window.db = db;
-        window._firebase = { collection, addDoc, getDocs, doc, deleteDoc, setDoc };
-    </script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Samuel & Anna Vitória</title>
+
+<link rel="stylesheet" href="styles.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
 </head>
 
+
 <body>
-        <canvas id="fundoParticulas"></canvas>
-      <header>
-          <img src="img/logo.jpg" class="img-logo" />
-          </header>
-        <header class="informacoes">
-            <a href="index.html" class="active">Informações</a>
-            <a href="agendar.html">Agendar</a>
-          </header>
-        <div id="informacoes" class="info-box" style="display:block;">
-          📞 Whatsapp: (85) 99788-0816 <br>
-          🕢 Ter - Sáb: 09h às 19h <br>
-          </div>
-     
-        <h1 class="titulo">Barbearia Estilo MK</h1>
-      <section class="cortes-section">
-          <div class="mosaico-cortes">
-              <img src="img/corte1.jpg" class="foto f1" />
-              <img src="img/corte2.jpg" class="foto f2" />
-              <img src="img/corte3.jpg" class="foto f3" />
-              <img src="img/corte4.jpg" class="foto f4" />
-              <img src="img/corte5.jpg" class="foto f5" />
-              <img src="img/corte6.jpeg" class="foto f6" />
-              <img src="img/corte7.jpeg" class="foto f7" />
-              <img src="img/corte8.jpg" class="foto f8" />
-              <img src="img/corte9.jpg" class="foto f9" />
-              </div>
-          </section>
-      <div class="apresentacao1">
-          <div class="video-box">
-              <p class="nossa-barbearia">Nossa Barbearia</p>
-              <video controls width="400">
-                 
-                <source src="img/videosMK.mp4" type="video/mp4" />
-                 
-            </video>
-              </div>
-          <div class="texto-box">
-              <h1 class="texto-barbeiro">Nossos Barbeiros</h1>
-              <img src="img/barbeirosMK.jpeg" class="img-barbeiros" />
-              <p class="texto-pro">Profissionais experientes e dedicados a oferecer o melhor serviço para você.</p>
-              </div>
-          </div>
-      <div class="apresentacao2">
-          <div class="box">
-              <h1>Barba</h1>
-              <p>Desenhada, completa, disfarce de fios brancos, lavagem e hidratação. Tudo para deixar sua preciosa
-                barba sempre perfeita.</p>
-              </div>
-          <div class="box">
-              <h1>Cabelo</h1>
-              <p>Degradê, social, todo na tesoura, raspar na máquina, hidratação e disfarce de brancos. Não vai faltar
-                nada para o visual ficar em dia!</p>
-              </div>
-          </div>
-      <p class="como-chegar">Como Chegar</p>
-      <div class="mapa-container">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d900.690968964857!2d-38.53756773046621!3d-3.7701756615599664!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zM8KwNDYnMTIuNiJTIDM4wrAzMicxMi45Ilc!5e1!3m2!1spt-BR!2sbr!4v1765198256547!5m2!1spt-BR!2sbr"
-              allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </div>
-       
-    <script type="module" src="scripts.js"></script>
+
+
+<div class="book">
+
+
+<!-- PÁGINA 1 -->
+
+<section class="page active">
+
+<div class="page-content capa">
+
+
+<img src="img/foto.jpeg" class="hero-image">
+
+
+<h1 class="nomes">
+
+Samuel
+
+<span>e</span>
+
+Anna Vitória
+
+</h1>
+
+
+<p class="subtitle">
+
+Temos a alegria de convidar você para celebrar nosso casamento
+
+</p>
+
+
+<button class="next-btn">
+
+Abrir Convite
+
+</button>
+
+
+</div>
+
+</section>
+
+
+
+
+
+<!-- PÁGINA 2 -->
+
+<section class="page">
+
+<div class="page-content">
+
+
+<h2>Nossa História</h2>
+
+
+<img src="img/logo.jpg" class="story-photo">
+
+
+<p>
+Cada história de amor é única.
+</p>
+
+
+<p>
+A nossa foi construída com carinho,
+respeito, cumplicidade e muitos sonhos compartilhados.
+</p>
+
+
+<p>
+Agora chegou o momento de celebrar esse amor
+ao lado das pessoas mais importantes das nossas vidas.
+</p>
+
+
+
+<div class="nav-buttons">
+
+<button class="prev-btn">
+Voltar
+</button>
+
+
+<button class="next-btn">
+Próximo
+</button>
+
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+
+
+
+<!-- PÁGINA 3 -->
+
+<section class="page">
+
+<div class="page-content">
+
+
+<img src="fotos/save-date.jpg" class="story-photo">
+
+
+<h2>
+Save The Date
+</h2>
+
+
+<h3>
+24 de Janeiro de 2027
+</h3>
+
+
+<h3>
+15:30
+</h3>
+
+
+<p>
+Reserve esta data especial em sua agenda.
+</p>
+
+
+
+<div class="nav-buttons">
+
+<button class="prev-btn">
+Voltar
+</button>
+
+
+<button class="next-btn">
+Próximo
+</button>
+
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+
+
+
+
+<!-- PÁGINA 4 -->
+
+<section class="page">
+
+<div class="page-content">
+
+
+<img src="fotos/local.jpg" class="story-photo">
+
+
+<h2>
+Local
+</h2>
+
+
+<p>
+Rosas Buffet Maraponga
+</p>
+
+
+<p>
+Rua Bibio Frota, 591
+</p>
+
+
+<p>
+Fortaleza - Ceará
+</p>
+
+
+
+<a class="maps-btn"
+href="https://maps.google.com/?q=Rua+Bibio+Frota+591+Fortaleza"
+target="_blank">
+
+Ver localização
+
+</a>
+
+
+
+<div class="nav-buttons">
+
+<button class="prev-btn">
+Voltar
+</button>
+
+
+<button class="next-btn">
+Próximo
+</button>
+
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+
+
+
+
+<!-- PÁGINA 5 -->
+
+<section class="page">
+
+<div class="page-content">
+
+
+<h2>
+Convite Individual
+</h2>
+
+
+
+<div class="alert-box">
+
+Este convite é pessoal,
+individual e intransferível.
+
+<br><br>
+
+A confirmação de presença é válida
+apenas para o convidado identificado.
+
+</div>
+
+
+
+<div class="nav-buttons">
+
+<button class="prev-btn">
+Voltar
+</button>
+
+
+<button class="next-btn">
+Próximo
+</button>
+
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+
+
+
+
+<!-- PÁGINA 6 -->
+
+<section class="page">
+
+<div class="page-content">
+
+
+<h2>
+Contagem Regressiva
+</h2>
+
+
+<div id="countdown"></div>
+
+
+
+<div class="nav-buttons">
+
+<button class="prev-btn">
+Voltar
+</button>
+
+
+<button class="next-btn">
+Próximo
+</button>
+
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+
+
+
+
+
+<!-- PÁGINA 7 -->
+
+<section class="page">
+
+<div class="page-content">
+
+
+<h2>
+Nossos Momentos
+</h2>
+
+
+
+<div class="galeria">
+
+
+<img src="img/foto1.jpeg">
+
+<img src="img/foto2.jpeg">
+
+<img src="img/foto3.jpeg">
+
+<img src="img/foto4.jpeg">
+
+<img src="img/foto5.jpeg">
+
+<img src="img/foto6.jpeg">
+
+
+</div>
+
+
+
+<div class="nav-buttons">
+
+<button class="prev-btn">
+Voltar
+</button>
+
+
+<button class="next-btn">
+Próximo
+</button>
+
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+
+
+
+
+
+<!-- PÁGINA 8 -->
+
+<section class="page">
+
+<div class="page-content">
+
+
+<h2>
+Confirmação de Presença
+</h2>
+
+
+
+<input 
+type="text"
+id="nome"
+placeholder="Digite seu nome">
+
+
+
+<input 
+type="tel"
+id="telefone"
+placeholder="Telefone">
+
+
+<label class="checkbox">
+
+<input 
+type="checkbox"
+id="confirmacao">
+
+Confirmo minha presença
+
+</label>
+
+
+
+
+<button 
+class="confirm-btn"
+onclick="confirmarPresenca()">
+
+Confirmar Presença
+
+</button>
+
+
+
+
+
+<div id="acessoCasa"
+style="display:none">
+
+
+<p>
+
+Sua presença já foi confirmada ❤️
+
+</p>
+
+
+<button onclick="abrirCasaNova()">
+
+Chá de Casa Nova
+
+</button>
+
+
+</div>
+
+
+
+
+<div class="nav-buttons">
+
+<button class="prev-btn">
+
+Voltar
+
+</button>
+
+</div>
+
+
+
+</div>
+
+</section>
+
+
+
+
+
+
+</div>
+
+
+
+
+<script src="scripts.js"></script>
+
+
 </body>
 
 </html>
