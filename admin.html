@@ -3,404 +3,1702 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<title>Painel Administrativo</title>
+    <title>
+        Painel Administrativo | Samuel & Anna Vitória
+    </title>
 
-<link rel="stylesheet" href="styles.css">
+    <link
+        rel="stylesheet"
+        href="styles.css"
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet"
+    >
 
 </head>
 
 
-<body>
+<body class="pagina-admin">
 
 
-<div class="presentes-container">
+<main class="admin-container">
 
 
-<h1 class="presentes-header">
+<!-- =========================
+     CABEÇALHO
+========================= -->
 
-Painel Administrativo
+<header class="admin-topo">
 
-</h1>
 
+    <div>
 
+        <p class="admin-etiqueta">
 
+            SAMUEL & ANNA VITÓRIA
 
-<div class="pix-box">
+        </p>
 
 
-<h2>
-Resumo
-</h2>
+        <h1>
 
+            Painel Administrativo
 
-<p>
-Convidados confirmados:
-</p>
+        </h1>
 
 
-<strong id="totalConvidados">
-0
-</strong>
+        <p>
 
+            Acompanhe os convidados
+            e as contribuições do
+            Chá de Casa Nova.
 
+        </p>
 
-<br><br>
+    </div>
 
 
+    <button
+        type="button"
+        class="admin-atualizar"
+        onclick="atualizarPainel()"
+    >
 
-<p>
-Total arrecadado:
-</p>
+        ↻ Atualizar
 
+    </button>
 
-<strong id="totalValor">
-R$ 0,00
-</strong>
 
+</header>
 
 
-</div>
 
+<!-- =========================
+     RESUMOS
+========================= -->
 
+<section class="admin-resumos">
 
 
+    <article class="admin-resumo-card">
 
 
-<button onclick="exportarCSV()">
+        <span class="admin-icone">
 
-Exportar CSV
+            👥
 
-</button>
+        </span>
 
 
+        <div>
 
+            <small>
 
+                CONVIDADOS CONFIRMADOS
 
+            </small>
 
 
-<h2>
-Convidados
-</h2>
+            <strong
+                id="totalConvidados"
+            >
 
+                0
 
-<div id="listaConvidados">
+            </strong>
 
-</div>
+        </div>
 
 
+    </article>
 
 
 
+    <article class="admin-resumo-card">
 
 
+        <span class="admin-icone">
 
+            🤍
 
-<h2>
-Contribuições
-</h2>
+        </span>
 
 
-<div id="listaContribuicoes">
+        <div>
 
-</div>
+            <small>
 
+                TOTAL INFORMADO
 
+            </small>
 
 
+            <strong
+                id="totalInformado"
+            >
 
-</div>
+                R$ 0,00
 
+            </strong>
 
+        </div>
+
+
+    </article>
+
+
+
+    <article class="admin-resumo-card pago">
+
+
+        <span class="admin-icone">
+
+            ✓
+
+        </span>
+
+
+        <div>
+
+            <small>
+
+                TOTAL PAGO
+
+            </small>
+
+
+            <strong
+                id="totalPago"
+            >
+
+                R$ 0,00
+
+            </strong>
+
+        </div>
+
+
+    </article>
+
+
+
+    <article class="admin-resumo-card pendente">
+
+
+        <span class="admin-icone">
+
+            ⏳
+
+        </span>
+
+
+        <div>
+
+            <small>
+
+                PENDENTE
+
+            </small>
+
+
+            <strong
+                id="totalPendente"
+            >
+
+                R$ 0,00
+
+            </strong>
+
+        </div>
+
+
+    </article>
+
+
+</section>
+
+
+
+<!-- =========================
+     AÇÕES
+========================= -->
+
+<section class="admin-acoes">
+
+
+    <div class="admin-busca">
+
+        <span>
+
+            🔎
+
+        </span>
+
+
+        <input
+            type="search"
+            id="buscarAdmin"
+            placeholder="Buscar nome, telefone ou presente..."
+        >
+
+    </div>
+
+
+
+    <select
+        id="filtroStatus"
+    >
+
+        <option value="todos">
+
+            Todos os status
+
+        </option>
+
+
+        <option value="pendente">
+
+            Pendentes
+
+        </option>
+
+
+        <option value="pago">
+
+            Pagos
+
+        </option>
+
+    </select>
+
+
+
+    <button
+        type="button"
+        class="admin-exportar"
+        onclick="exportarCSV()"
+    >
+
+        ↓ Exportar CSV
+
+    </button>
+
+
+</section>
+
+
+
+<!-- =========================
+     CONTRIBUIÇÕES
+========================= -->
+
+<section class="admin-bloco">
+
+
+    <div class="admin-titulo">
+
+        <div>
+
+            <p class="admin-etiqueta">
+
+                CHÁ DE CASA NOVA
+
+            </p>
+
+
+            <h2>
+
+                Contribuições
+
+            </h2>
+
+        </div>
+
+
+        <span
+            id="quantidadeContribuicoes"
+        >
+
+            0 registros
+
+        </span>
+
+    </div>
+
+
+
+    <div
+        id="listaContribuicoes"
+        class="admin-lista"
+    >
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================
+     CONVIDADOS
+========================= -->
+
+<section class="admin-bloco">
+
+
+    <div class="admin-titulo">
+
+        <div>
+
+            <p class="admin-etiqueta">
+
+                CASAMENTO
+
+            </p>
+
+
+            <h2>
+
+                Convidados confirmados
+
+            </h2>
+
+        </div>
+
+
+        <span
+            id="quantidadeConvidados"
+        >
+
+            0 convidados
+
+        </span>
+
+    </div>
+
+
+
+    <div
+        id="listaConvidados"
+        class="admin-lista"
+    >
+
+    </div>
+
+
+</section>
+
+
+
+</main>
 
 
 
 <script>
 
 
-// ==========================
-// CARREGAR DADOS
-// ==========================
+// ==========================================
+// DADOS
+// ==========================================
 
+let convidados = [];
 
-const convidados =
-JSON.parse(
-localStorage.getItem("convidados")
-) || [];
-
-
-
-const contribuicoes =
-JSON.parse(
-localStorage.getItem("contribuicoes")
-) || [];
+let contribuicoes = [];
 
 
 
+// ==========================================
+// FORMATAÇÃO
+// ==========================================
 
+function formatarMoeda(valor) {
 
-// ==========================
-// MOSTRAR CONVIDADOS
-// ==========================
+    return Number(valor || 0)
+    .toLocaleString(
 
+        "pt-BR",
 
-const listaConvidados =
-document.getElementById(
-"listaConvidados"
-);
+        {
 
+            style:
+            "currency",
 
+            currency:
+            "BRL"
 
-if(convidados.length === 0){
+        }
 
-
-listaConvidados.innerHTML =
-"<p>Nenhum convidado confirmado.</p>";
-
-
-}else{
-
-
-listaConvidados.innerHTML =
-
-convidados.map(c=>{
-
-
-return `
-
-<div class="gift-card">
-
-
-<h3>
-${c.nome}
-</h3>
-
-
-<p>
-Telefone:
-${c.telefone}
-</p>
-
-
-<p>
-Data:
-${c.data || "Não informado"}
-</p>
-
-
-</div>
-
-
-`;
-
-
-}).join("");
-
-
+    );
 
 }
 
 
 
+// ==========================================
+// CARREGAR
+// ==========================================
+
+function carregarDados() {
 
 
-// ==========================
-// MOSTRAR CONTRIBUIÇÕES
-// ==========================
+    convidados =
 
+    JSON.parse(
 
-const listaContribuicoes =
-document.getElementById(
-"listaContribuicoes"
-);
+        localStorage.getItem(
+            "convidados"
+        )
 
+    )
 
+    ||
 
-if(contribuicoes.length === 0){
-
-
-listaContribuicoes.innerHTML =
-"<p>Nenhuma contribuição registrada.</p>";
+    [];
 
 
 
-}else{
+    contribuicoes =
+
+    JSON.parse(
+
+        localStorage.getItem(
+            "contribuicoes"
+        )
+
+    )
+
+    ||
+
+    [];
 
 
-listaContribuicoes.innerHTML =
+
+    contribuicoes =
+
+    contribuicoes.map(
+
+        (item, indice) => ({
+
+            ...item,
+
+            id:
+
+            item.id
+
+            ||
+
+            `contribuicao-${indice}`,
 
 
-contribuicoes.map(c=>{
+
+            status:
+
+            item.status
+
+            ||
+
+            "pendente"
+
+        })
+
+    );
 
 
-return `
-
-<div class="gift-card">
-
-
-<h3>
-${c.presente}
-</h3>
-
-
-<p>
-Convidado:
-${c.nome}
-</p>
-
-
-<p>
-Valor:
-R$ ${Number(c.valor).toFixed(2)}
-</p>
-
-
-<p>
-Data:
-${c.data}
-</p>
-
-
-</div>
-
-
-`;
-
-
-}).join("");
-
-
+    salvarDados();
 
 }
 
 
 
+// ==========================================
+// SALVAR
+// ==========================================
+
+function salvarDados() {
+
+    localStorage.setItem(
+
+        "contribuicoes",
+
+        JSON.stringify(
+            contribuicoes
+        )
+
+    );
+
+}
 
 
 
-
-// ==========================
+// ==========================================
 // RESUMOS
-// ==========================
+// ==========================================
+
+function atualizarResumo() {
+
+
+    const totalInformado =
+
+    contribuicoes.reduce(
+
+        (soma, item) =>
+
+        soma +
+        Number(
+            item.valor || 0
+        ),
+
+        0
+
+    );
 
 
 
-document.getElementById(
-"totalConvidados"
-).innerHTML =
-convidados.length;
+    const totalPago =
+
+    contribuicoes
+
+    .filter(
+
+        item =>
+
+        item.status ===
+        "pago"
+
+    )
+
+    .reduce(
+
+        (soma, item) =>
+
+        soma +
+        Number(
+            item.valor || 0
+        ),
+
+        0
+
+    );
 
 
 
+    const totalPendente =
 
-let total =
+    contribuicoes
 
+    .filter(
 
-contribuicoes.reduce((soma,item)=>{
+        item =>
 
+        item.status !==
+        "pago"
 
-return soma + Number(item.valor);
+    )
 
+    .reduce(
 
-},0);
+        (soma, item) =>
 
+        soma +
+        Number(
+            item.valor || 0
+        ),
 
+        0
 
-document.getElementById(
-"totalValor"
-).innerHTML =
-
-
-"R$ " + total.toFixed(2);
-
-
-
-
-
-
-
-
-
-// ==========================
-// EXPORTAR CSV
-// ==========================
-
-
-function exportarCSV(){
+    );
 
 
 
-let csv =
+    document.getElementById(
+        "totalConvidados"
+    ).textContent =
 
-"Nome,Telefone,Presente,Valor,Data\n";
-
-
-
-
-
-contribuicoes.forEach(c=>{
-
-
-csv +=
-
-`${c.nome},${c.telefone},${c.presente},${c.valor},${c.data}\n`;
+    convidados.length;
 
 
 
-});
+    document.getElementById(
+        "totalInformado"
+    ).textContent =
+
+    formatarMoeda(
+        totalInformado
+    );
 
 
 
+    document.getElementById(
+        "totalPago"
+    ).textContent =
+
+    formatarMoeda(
+        totalPago
+    );
 
 
-const blob =
 
-new Blob(
+    document.getElementById(
+        "totalPendente"
+    ).textContent =
 
-[csv],
+    formatarMoeda(
+        totalPendente
+    );
 
-{
-type:"text/csv;charset=utf-8;"
 }
+
+
+
+// ==========================================
+// CONTRIBUIÇÕES
+// ==========================================
+
+function mostrarContribuicoes() {
+
+
+    const container =
+
+    document.getElementById(
+        "listaContribuicoes"
+    );
+
+
+
+    const busca =
+
+    document.getElementById(
+        "buscarAdmin"
+    )
+
+    .value
+
+    .trim()
+
+    .toLowerCase();
+
+
+
+    const statusFiltro =
+
+    document.getElementById(
+        "filtroStatus"
+    )
+
+    .value;
+
+
+
+    const filtradas =
+
+    contribuicoes.filter(
+
+        item => {
+
+
+            const texto =
+
+            `${
+
+                item.nome || ""
+
+            }
+
+            ${
+
+                item.telefone || ""
+
+            }
+
+            ${
+
+                item.presente || ""
+
+            }`
+
+            .toLowerCase();
+
+
+
+            const buscaOk =
+
+            texto.includes(
+                busca
+            );
+
+
+
+            const statusOk =
+
+            statusFiltro ===
+            "todos"
+
+            ||
+
+            item.status ===
+            statusFiltro;
+
+
+
+            return (
+
+                buscaOk &&
+
+                statusOk
+
+            );
+
+        }
+
+    );
+
+
+
+    document.getElementById(
+        "quantidadeContribuicoes"
+    ).textContent =
+
+    `${
+
+        filtradas.length
+
+    }
+
+    ${
+
+        filtradas.length === 1
+
+        ?
+
+        "registro"
+
+        :
+
+        "registros"
+
+    }`;
+
+
+
+    if (
+
+        filtradas.length === 0
+
+    ) {
+
+
+        container.innerHTML = `
+
+        <div class="admin-vazio">
+
+            <h3>
+
+                Nenhuma contribuição encontrada
+
+            </h3>
+
+
+            <p>
+
+                Os registros aparecerão aqui.
+
+            </p>
+
+        </div>
+
+        `;
+
+
+        return;
+
+    }
+
+
+
+    container.innerHTML =
+
+    filtradas
+
+    .slice()
+
+    .reverse()
+
+    .map(
+
+        item => {
+
+
+            const pago =
+
+            item.status ===
+            "pago";
+
+
+            return `
+
+            <article class="admin-registro">
+
+
+                <div class="admin-registro-principal">
+
+
+                    <div class="admin-avatar">
+
+                        ${
+
+                        String(
+
+                            item.nome
+
+                            ||
+
+                            "?"
+
+                        )
+
+                        .charAt(0)
+
+                        .toUpperCase()
+
+                        }
+
+                    </div>
+
+
+                    <div>
+
+
+                        <h3>
+
+                            ${
+
+                            escaparHTML(
+
+                                item.nome
+
+                                ||
+
+                                "Não informado"
+
+                            )
+
+                            }
+
+                        </h3>
+
+
+                        <p>
+
+                            ${
+
+                            escaparHTML(
+
+                                item.telefone
+
+                                ||
+
+                                "Telefone não informado"
+
+                            )
+
+                            }
+
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="admin-presente">
+
+
+                    <small>
+
+                        PRESENTE
+
+                    </small>
+
+
+                    <strong>
+
+                        ${
+
+                        escaparHTML(
+
+                            item.presente
+
+                            ||
+
+                            "Não informado"
+
+                        )
+
+                        }
+
+                    </strong>
+
+                </div>
+
+
+
+                <div class="admin-valor">
+
+
+                    <small>
+
+                        VALOR
+
+                    </small>
+
+
+                    <strong>
+
+                        ${
+
+                        formatarMoeda(
+
+                            item.valor
+
+                        )
+
+                        }
+
+                    </strong>
+
+                </div>
+
+
+
+                <div class="admin-status-area">
+
+
+                    <span
+
+                    class="status
+
+                    ${
+
+                    pago
+
+                    ?
+
+                    "status-pago"
+
+                    :
+
+                    "status-pendente"
+
+                    }
+
+                    "
+
+                    >
+
+                        ${
+
+                        pago
+
+                        ?
+
+                        "PAGO"
+
+                        :
+
+                        "PENDENTE"
+
+                        }
+
+                    </span>
+
+
+                    <small>
+
+                        ${
+
+                        escaparHTML(
+
+                            item.data
+
+                            ||
+
+                            "Data não informada"
+
+                        )
+
+                        }
+
+                    </small>
+
+                </div>
+
+
+
+                <div class="admin-botoes">
+
+
+                    <button
+
+                    class="btn-status"
+
+                    type="button"
+
+                    onclick="alterarStatus(
+
+                    '${item.id}'
+
+                    )"
+
+                    >
+
+                        ${
+
+                        pago
+
+                        ?
+
+                        "Marcar pendente"
+
+                        :
+
+                        "Marcar pago"
+
+                        }
+
+                    </button>
+
+
+
+                    <button
+
+                    class="btn-excluir"
+
+                    type="button"
+
+                    onclick="excluirContribuicao(
+
+                    '${item.id}'
+
+                    )"
+
+                    >
+
+                        Excluir
+
+                    </button>
+
+
+                </div>
+
+
+            </article>
+
+            `;
+
+        }
+
+    )
+
+    .join("");
+
+}
+
+
+
+// ==========================================
+// CONVIDADOS
+// ==========================================
+
+function mostrarConvidados() {
+
+
+    const container =
+
+    document.getElementById(
+        "listaConvidados"
+    );
+
+
+
+    document.getElementById(
+        "quantidadeConvidados"
+    ).textContent =
+
+    `${
+
+        convidados.length
+
+    }
+
+    ${
+
+        convidados.length === 1
+
+        ?
+
+        "convidado"
+
+        :
+
+        "convidados"
+
+    }`;
+
+
+
+    if (
+
+        convidados.length === 0
+
+    ) {
+
+
+        container.innerHTML = `
+
+        <div class="admin-vazio">
+
+            <h3>
+
+                Nenhum convidado confirmado
+
+            </h3>
+
+
+            <p>
+
+                As confirmações aparecerão aqui.
+
+            </p>
+
+        </div>
+
+        `;
+
+
+        return;
+
+    }
+
+
+
+    container.innerHTML =
+
+    convidados
+
+    .slice()
+
+    .reverse()
+
+    .map(
+
+        convidado => `
+
+        <article class="admin-convidado">
+
+
+            <div class="admin-avatar">
+
+
+                ${
+
+                String(
+
+                    convidado.nome
+
+                    ||
+
+                    "?"
+
+                )
+
+                .charAt(0)
+
+                .toUpperCase()
+
+                }
+
+            </div>
+
+
+            <div>
+
+
+                <h3>
+
+                    ${
+
+                    escaparHTML(
+
+                        convidado.nome
+
+                        ||
+
+                        "Não informado"
+
+                    )
+
+                    }
+
+                </h3>
+
+
+                <p>
+
+                    ${
+
+                    escaparHTML(
+
+                        convidado.telefone
+
+                        ||
+
+                        "Telefone não informado"
+
+                    )
+
+                    }
+
+                </p>
+
+            </div>
+
+
+            <small>
+
+
+                Confirmado em:
+
+
+                ${
+
+                escaparHTML(
+
+                    convidado.data
+
+                    ||
+
+                    "Data não informada"
+
+                )
+
+                }
+
+
+            </small>
+
+
+        </article>
+
+        `
+
+    )
+
+    .join("");
+
+}
+
+
+
+// ==========================================
+// STATUS
+// ==========================================
+
+function alterarStatus(id) {
+
+
+    contribuicoes =
+
+    contribuicoes.map(
+
+        item => {
+
+
+            if (
+
+                String(item.id) ===
+
+                String(id)
+
+            ) {
+
+
+                return {
+
+                    ...item,
+
+                    status:
+
+                    item.status ===
+                    "pago"
+
+                    ?
+
+                    "pendente"
+
+                    :
+
+                    "pago"
+
+                };
+
+            }
+
+
+            return item;
+
+        }
+
+    );
+
+
+    salvarDados();
+
+    atualizarPainel();
+
+}
+
+
+
+// ==========================================
+// EXCLUIR
+// ==========================================
+
+function excluirContribuicao(id) {
+
+
+    const confirmar =
+
+    confirm(
+
+        "Deseja excluir esta contribuição?"
+
+    );
+
+
+    if (
+
+        !confirmar
+
+    ) {
+
+        return;
+
+    }
+
+
+    contribuicoes =
+
+    contribuicoes.filter(
+
+        item =>
+
+        String(item.id) !==
+
+        String(id)
+
+    );
+
+
+    salvarDados();
+
+    atualizarPainel();
+
+}
+
+
+
+// ==========================================
+// ESCAPAR HTML
+// ==========================================
+
+function escaparHTML(texto) {
+
+
+    const elemento =
+
+    document.createElement(
+        "div"
+    );
+
+
+    elemento.textContent =
+
+    texto;
+
+
+    return elemento.innerHTML;
+
+}
+
+
+
+// ==========================================
+// EXPORTAR CSV
+// ==========================================
+
+function exportarCSV() {
+
+
+    const cabecalho = [
+
+        "Nome",
+
+        "Telefone",
+
+        "Presente",
+
+        "Valor",
+
+        "Status",
+
+        "Data"
+
+    ];
+
+
+
+    const linhas =
+
+    contribuicoes.map(
+
+        item => [
+
+            item.nome,
+
+            item.telefone,
+
+            item.presente,
+
+            Number(
+
+                item.valor || 0
+
+            )
+
+            .toFixed(2)
+
+            .replace(
+                ".",
+                ","
+            ),
+
+            item.status,
+
+            item.data
+
+        ]
+
+    );
+
+
+
+    const csv = [
+
+        cabecalho,
+
+        ...linhas
+
+    ]
+
+    .map(
+
+        linha =>
+
+        linha
+
+        .map(
+
+            valor =>
+
+            `"${
+
+                String(
+
+                    valor
+
+                    ||
+
+                    ""
+
+                )
+
+                .replace(
+
+                    /"/g,
+
+                    '""'
+
+                )
+
+            }"`
+
+        )
+
+        .join(";")
+
+    )
+
+    .join("\n");
+
+
+
+    const blob =
+
+    new Blob(
+
+        [
+
+            "\uFEFF" +
+
+            csv
+
+        ],
+
+        {
+
+            type:
+
+            "text/csv;charset=utf-8;"
+
+        }
+
+    );
+
+
+
+    const link =
+
+    document.createElement(
+        "a"
+    );
+
+
+
+    link.href =
+
+    URL.createObjectURL(
+        blob
+    );
+
+
+
+    link.download =
+
+    "cha-casa-nova.csv";
+
+
+
+    document.body
+    .appendChild(
+        link
+    );
+
+
+
+    link.click();
+
+
+
+    link.remove();
+
+
+
+    URL.revokeObjectURL(
+
+        link.href
+
+    );
+
+}
+
+
+
+// ==========================================
+// ATUALIZAR
+// ==========================================
+
+function atualizarPainel() {
+
+
+    carregarDados();
+
+    atualizarResumo();
+
+    mostrarContribuicoes();
+
+    mostrarConvidados();
+
+}
+
+
+
+// ==========================================
+// EVENTOS
+// ==========================================
+
+document.addEventListener(
+
+    "DOMContentLoaded",
+
+    () => {
+
+
+        atualizarPainel();
+
+
+
+        document
+
+        .getElementById(
+
+            "buscarAdmin"
+
+        )
+
+        .addEventListener(
+
+            "input",
+
+            mostrarContribuicoes
+
+        );
+
+
+
+        document
+
+        .getElementById(
+
+            "filtroStatus"
+
+        )
+
+        .addEventListener(
+
+            "change",
+
+            mostrarContribuicoes
+
+        );
+
+
+    }
 
 );
-
-
-
-
-
-const link =
-
-document.createElement("a");
-
-
-
-link.href =
-
-URL.createObjectURL(blob);
-
-
-
-link.download =
-
-"casamento_contribuicoes.csv";
-
-
-
-link.click();
-
-
-
-}
-
-
 
 
 </script>
-
 
 
 </body>

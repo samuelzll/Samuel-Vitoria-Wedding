@@ -3,658 +3,726 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<title>Chá de Casa Nova</title>
+    <title>
+        Chá de Casa Nova | Samuel & Anna Vitória
+    </title>
 
-<link rel="stylesheet" href="styles.css">
+    <link
+        rel="stylesheet"
+        href="styles.css"
+    >
 
-
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
-
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet"
+    >
 
 </head>
 
 
-<body>
+<body class="pagina-cha">
 
 
-<div class="presentes-container">
+<!-- =========================
+     TOPO
+========================= -->
+
+<header class="cha-hero">
+
+    <div class="cha-hero-overlay">
+
+        <p class="cha-pequeno-titulo">
+            Um novo capítulo
+        </p>
 
 
-
-<header class="presentes-header">
-
-
-<h1>
-Chá de Casa Nova
-</h1>
+        <h1>
+            Chá de Casa Nova
+        </h1>
 
 
-<p id="mensagemConvidado">
-
-Obrigado por confirmar sua presença ❤️
-
-</p>
+        <h2>
+            Samuel & Anna Vitória
+        </h2>
 
 
-<p>
+        <div class="cha-linha"></div>
 
-07 de Novembro de 2026
 
-</p>
+        <p class="cha-descricao">
 
+            Um novo lar começa com amor,
+            carinho e pessoas especiais.
+
+        </p>
+
+
+        <div class="cha-data">
+
+            <span>07</span>
+
+            <div>
+
+                <strong>
+                    NOVEMBRO
+                </strong>
+
+                <small>
+                    2026
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </header>
 
 
 
+<main class="cha-conteudo">
 
 
-<section class="pix-box">
+<!-- =========================
+     BOAS-VINDAS
+========================= -->
+
+<section class="cha-boas-vindas">
+
+    <p class="cha-etiqueta">
+        NOSSO NOVO LAR
+    </p>
 
 
-<h2>
-Contribuição via PIX
-</h2>
+    <h2>
+        Cada detalhe será lembrado
+        com carinho
+    </h2>
 
 
-<p>
-Chave PIX:
-</p>
+    <p>
+
+        Estamos começando uma nova etapa
+        e ficaremos muito felizes em ter você
+        fazendo parte desse momento.
+
+    </p>
 
 
-<strong id="pix">
-samuelmoreira0608@gmail.com
-</strong>
+    <p>
+
+        Escolha um presente ou contribua
+        com qualquer valor para nos ajudar
+        a construir nosso lar.
+
+    </p>
+
+</section>
 
 
-<button onclick="copiarPix()">
 
-Copiar Chave PIX
+<!-- =========================
+     PALETA
+========================= -->
 
-</button>
+<section class="paleta-section">
+
+    <div class="paleta-texto">
+
+        <p class="cha-etiqueta">
+            NOSSA INSPIRAÇÃO
+        </p>
+
+
+        <h2>
+            Paleta do nosso lar
+        </h2>
+
+
+        <p>
+
+            Escolhemos tons suaves,
+            acolhedores e naturais para
+            representar o estilo que desejamos
+            para nossa casa.
+
+        </p>
+
+
+        <div class="cores-lista">
+
+
+            <div class="cor-item">
+
+                <span class="cor marrom"></span>
+
+                <strong>
+                    Marrom
+                </strong>
+
+            </div>
+
+
+
+            <div class="cor-item">
+
+                <span class="cor bege"></span>
+
+                <strong>
+                    Bege
+                </strong>
+
+            </div>
+
+
+
+            <div class="cor-item">
+
+                <span class="cor bambu"></span>
+
+                <strong>
+                    Bambu
+                </strong>
+
+            </div>
+
+
+
+            <div class="cor-item">
+
+                <span class="cor branco"></span>
+
+                <strong>
+                    Branco
+                </strong>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <div class="paleta-imagem">
+
+        <img
+            src="img/paleta-cha.jpg"
+            alt="Paleta de cores e inspirações para a casa"
+        >
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     PIX
+========================= -->
+
+<section class="pix-premium">
+
+    <div class="pix-texto">
+
+        <p class="cha-etiqueta">
+            CONTRIBUIÇÃO LIVRE
+        </p>
+
+
+        <h2>
+            Ajude a construir
+            nosso novo lar
+        </h2>
+
+
+        <p>
+
+            Caso prefira, você pode contribuir
+            com qualquer valor pelo PIX.
+
+        </p>
+
+
+        <div class="pix-chave">
+
+            <span>
+                Chave PIX
+            </span>
+
+
+            <strong id="pix">
+                samuelmoreira0608@gmail.com
+            </strong>
+
+        </div>
+
+
+        <button
+            class="btn-principal"
+            type="button"
+            onclick="copiarPix()"
+        >
+
+            Copiar chave PIX
+
+        </button>
+
+    </div>
+
+
+    <div class="pix-qr">
+
+        <img
+            src="img/qrcode-pix.png"
+            alt="QR Code para pagamento via PIX"
+        >
+
+        <small>
+            Aponte a câmera para o QR Code
+        </small>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     LISTA DE PRESENTES
+========================= -->
+
+<section class="presentes-section">
+
+
+    <div class="titulo-presentes-area">
+
+        <p class="cha-etiqueta">
+            LISTA DE PRESENTES
+        </p>
+
+
+        <h2>
+            Escolha uma forma
+            de nos presentear
+        </h2>
+
+
+        <p>
+
+            Você pode contribuir com o valor
+            que desejar para qualquer item.
+
+        </p>
+
+    </div>
+
+
+
+    <!-- BUSCA -->
+
+    <div class="busca-presentes">
+
+        <span>
+            🔎
+        </span>
+
+
+        <input
+            type="search"
+            id="buscarPresente"
+            placeholder="Buscar um presente..."
+            autocomplete="off"
+        >
+
+    </div>
+
+
+
+    <!-- FILTROS -->
+
+    <div
+        class="filtros-presentes"
+        id="filtrosPresentes"
+    >
+
+        <button
+            class="filtro-btn ativo"
+            type="button"
+            data-categoria="todos"
+        >
+            Todos
+        </button>
+
+
+        <button
+            class="filtro-btn"
+            type="button"
+            data-categoria="Sala"
+        >
+            Sala
+        </button>
+
+
+        <button
+            class="filtro-btn"
+            type="button"
+            data-categoria="Cozinha"
+        >
+            Cozinha
+        </button>
+
+
+        <button
+            class="filtro-btn"
+            type="button"
+            data-categoria="Quarto"
+        >
+            Quarto
+        </button>
+
+
+        <button
+            class="filtro-btn"
+            type="button"
+            data-categoria="Organização"
+        >
+            Organização
+        </button>
+
+
+        <button
+            class="filtro-btn"
+            type="button"
+            data-categoria="Sonhos"
+        >
+            Sonhos
+        </button>
+
+    </div>
+
+
+
+    <!-- PRESENTES GERADOS PELO JS -->
+
+    <div
+        id="listaPresentes"
+        class="lista-presentes"
+    >
+
+    </div>
 
 
 </section>
 
 
 
+<!-- =========================
+     RESUMO
+========================= -->
 
+<section
+    class="resumo-contribuicao"
+    id="resumoContribuicao"
+>
 
+    <div>
 
-<h2 class="titulo-presentes">
+        <p>
+            Sua contribuição
+        </p>
 
-Lista de Presentes
 
-</h2>
+        <strong id="resumoQuantidade">
+            Nenhum presente selecionado
+        </strong>
 
+    </div>
 
 
+    <button
+        type="button"
+        class="btn-principal"
+        onclick="abrirResumo()"
+    >
 
+        Ver resumo
 
+    </button>
 
-<div class="gift-card">
+</section>
 
 
-<h3>
-📺 Smart TV
-</h3>
 
+<!-- =========================
+     FINAL
+========================= -->
 
-<p>
-Meta: R$ 3.000
-</p>
+<section class="cha-final">
 
+    <p class="cha-etiqueta">
+        COM CARINHO
+    </p>
 
-<div class="progress">
 
-<div 
-class="progress-bar"
-data-meta="3000"
-data-atual="1200">
+    <h2>
+        Obrigado por fazer parte
+        da nossa história
+    </h2>
 
-</div>
 
-</div>
+    <p>
 
+        Cada gesto, cada presente e cada
+        mensagem serão recebidos com muito amor.
 
-<button onclick="contribuir('Smart TV')">
+    </p>
 
-Contribuir
 
-</button>
+    <h3>
+        Samuel & Anna Vitória
+    </h3>
 
+</section>
 
-</div>
 
+</main>
 
 
 
+<!-- =========================
+     MODAL DE CONTRIBUIÇÃO
+========================= -->
 
+<div
+    class="modal"
+    id="modalContribuicao"
+    aria-hidden="true"
+>
 
 
-<div class="gift-card">
+    <div class="modal-caixa">
 
 
-<h3>
-❄️ Geladeira
-</h3>
+        <button
+            class="modal-fechar"
+            type="button"
+            onclick="fecharModal()"
+            aria-label="Fechar"
+        >
 
+            ×
 
-<p>
-Meta: R$ 3.500
-</p>
+        </button>
 
 
-<div class="progress">
+        <p class="cha-etiqueta">
+            SUA ESCOLHA
+        </p>
 
-<div 
-class="progress-bar"
-data-meta="3500"
-data-atual="700">
 
-</div>
+        <h2 id="modalTitulo">
 
-</div>
+            Presente
 
+        </h2>
 
-<button onclick="contribuir('Geladeira')">
 
-Contribuir
+        <p
+            class="modal-descricao"
+            id="modalDescricao"
+        >
 
-</button>
+        </p>
 
 
-</div>
+        <div class="modal-meta">
 
+            <span>
+                Meta do item
+            </span>
 
 
+            <strong id="modalMeta">
+                R$ 0,00
+            </strong>
 
+        </div>
 
 
+        <label
+            for="valorContribuicao"
+        >
 
+            Quanto deseja contribuir?
 
-<div class="gift-card">
+        </label>
 
 
-<h3>
-🛋️ Sofá
-</h3>
+        <div class="campo-valor">
 
+            <span>
+                R$
+            </span>
 
-<p>
-Meta: R$ 2.000
-</p>
 
+            <input
+                type="text"
+                id="valorContribuicao"
+                placeholder="0,00"
+                inputmode="decimal"
+            >
 
-<div class="progress">
+        </div>
 
-<div 
-class="progress-bar"
-data-meta="2000"
-data-atual="600">
 
-</div>
+        <div class="valores-rapidos">
 
-</div>
+            <button
+                type="button"
+                onclick="definirValor(50)"
+            >
+                R$ 50
+            </button>
 
 
+            <button
+                type="button"
+                onclick="definirValor(100)"
+            >
+                R$ 100
+            </button>
 
-<button onclick="contribuir('Sofá')">
 
-Contribuir
+            <button
+                type="button"
+                onclick="definirValor(200)"
+            >
+                R$ 200
+            </button>
 
-</button>
 
+            <button
+                type="button"
+                onclick="definirValor(500)"
+            >
+                R$ 500
+            </button>
 
-</div>
+        </div>
 
 
+        <button
+            class="btn-principal btn-largo"
+            type="button"
+            onclick="adicionarContribuicao()"
+        >
 
+            Adicionar ao resumo
 
+        </button>
 
 
-
-
-<div class="gift-card">
-
-
-<h3>
-🛏️ Cama Queen
-</h3>
-
-
-<p>
-Meta: R$ 2.500
-</p>
-
-
-<div class="progress">
-
-<div 
-class="progress-bar"
-data-meta="2500"
-data-atual="2500">
-
-</div>
-
-</div>
-
-
-
-<span class="gift-ok">
-
-Presente concluído ❤️
-
-</span>
-
-
-
-<button onclick="contribuir('Cama Queen')">
-
-Ajudar Mesmo Assim
-
-</button>
-
-
-</div>
-
-
-
-
-
-
-
-
-<div class="gift-card">
-
-<h3>
-🌬️ Ventilador
-</h3>
-
-
-<p>
-Meta: R$ 300
-</p>
-
-
-<button onclick="contribuir('Ventilador')">
-
-Contribuir
-
-</button>
-
-
-</div>
-
-
-
-
-
-
-
-
-<div class="gift-card">
-
-<h3>
-🚪 Guarda-Roupa
-</h3>
-
-
-<p>
-Meta: R$ 2.200
-</p>
-
-
-<button onclick="contribuir('Guarda-Roupa')">
-
-Contribuir
-
-</button>
-
+    </div>
 
 </div>
 
 
 
+<!-- =========================
+     MODAL RESUMO
+========================= -->
+
+<div
+    class="modal"
+    id="modalResumo"
+    aria-hidden="true"
+>
 
 
+    <div class="modal-caixa modal-resumo">
 
 
+        <button
+            class="modal-fechar"
+            type="button"
+            onclick="fecharResumo()"
+            aria-label="Fechar"
+        >
 
-<div class="gift-card">
+            ×
 
-<h3>
-🗄️ Armário
-</h3>
+        </button>
 
 
-<p>
-Meta: R$ 1.200
-</p>
+        <p class="cha-etiqueta">
+            SEU RESUMO
+        </p>
 
 
-<button onclick="contribuir('Armário')">
+        <h2>
+            Contribuições escolhidas
+        </h2>
 
-Contribuir
 
-</button>
+        <div
+            id="itensResumo"
+            class="itens-resumo"
+        >
 
+        </div>
+
+
+        <div class="total-resumo">
+
+            <span>
+                Total
+            </span>
+
+
+            <strong id="totalResumo">
+
+                R$ 0,00
+
+            </strong>
+
+        </div>
+
+
+        <button
+            class="btn-principal btn-largo"
+            type="button"
+            onclick="finalizarContribuicao()"
+        >
+
+            Confirmar pelo WhatsApp
+
+        </button>
+
+
+        <p class="aviso-pix">
+
+            Após confirmar, realize o pagamento
+            pelo PIX informado acima.
+
+        </p>
+
+
+    </div>
 
 </div>
-
-
-
-
-
-
-
-
-<div class="gift-card">
-
-<h3>
-🍳 Fogão
-</h3>
-
-
-<p>
-Meta: R$ 2.000
-</p>
-
-
-<button onclick="contribuir('Fogão')">
-
-Contribuir
-
-</button>
-
-
-</div>
-
-
-
-
-
-
-
-
-<div class="gift-card">
-
-<h3>
-🍟 Air Fryer
-</h3>
-
-
-<p>
-Meta: R$ 500
-</p>
-
-
-<button onclick="contribuir('Air Fryer')">
-
-Contribuir
-
-</button>
-
-
-</div>
-
-
-
-
-
-
-
-
-<div class="gift-card">
-
-<h3>
-📡 Micro-ondas
-</h3>
-
-
-<p>
-Meta: R$ 700
-</p>
-
-
-<button onclick="contribuir('Microondas')">
-
-Contribuir
-
-</button>
-
-
-</div>
-
-
-
-
-
-
-
-
-<div class="gift-card">
-
-<h3>
-🍲 Jogo de Panelas
-</h3>
-
-
-<p>
-Meta: R$ 500
-</p>
-
-
-<button onclick="contribuir('Jogo de Panelas')">
-
-Contribuir
-
-</button>
-
-
-</div>
-
-
-
-
-
-
-
-
-<div class="gift-card">
-
-<h3>
-🛌 Jogo de Cama
-</h3>
-
-
-<p>
-Meta: R$ 350
-</p>
-
-
-<button onclick="contribuir('Jogo de Cama')">
-
-Contribuir
-
-</button>
-
-
-</div>
-
-
-
-
-
-
-
-
-<div class="gift-card destaque">
-
-
-<h3>
-✈️ Lua de Mel
-</h3>
-
-
-<p>
-
-Contribua com qualquer valor ❤️
-
-</p>
-
-
-<button onclick="contribuir('Lua de Mel')">
-
-Contribuir
-
-</button>
-
-
-</div>
-
-
-
-
-
-
-
-
-<div class="gift-card destaque">
-
-
-<h3>
-🏡 Fundo Casa Nova
-</h3>
-
-
-<p>
-
-Contribua com qualquer valor ❤️
-
-</p>
-
-
-<button onclick="contribuir('Fundo Casa Nova')">
-
-Contribuir
-
-</button>
-
-
-</div>
-
-
-
-
-
-
-
-
-<div class="whatsapp-box">
-
-
-<h2>
-
-Finalizar
-
-</h2>
-
-
-
-<p>
-
-Depois da contribuição,
-confirme pelo WhatsApp.
-
-</p>
-
-
-
-<button 
-class="whatsapp-btn"
-onclick="enviarWhatsapp()">
-
-
-Confirmar no WhatsApp
-
-
-</button>
-
-
-
-</div>
-
-
-
-
-
-</div>
-
 
 
 
 <script src="scripts.js"></script>
-
-
-
-<script>
-
-
-document.addEventListener("DOMContentLoaded",()=>{
-
-
-const nome =
-localStorage.getItem("nomeConvidado");
-
-
-if(nome){
-
-document.getElementById("mensagemConvidado").innerHTML =
-
-`Obrigado por confirmar sua presença, ${nome} ❤️`;
-
-}
-
-
-
-document.querySelectorAll(".progress-bar")
-.forEach(bar=>{
-
-
-let meta =
-Number(bar.dataset.meta);
-
-
-let atual =
-Number(bar.dataset.atual);
-
-
-let porcentagem =
-(atual/meta)*100;
-
-
-if(porcentagem > 100)
-porcentagem = 100;
-
-
-bar.style.width =
-porcentagem+"%";
-
-
-});
-
-
-});
-
-
-</script>
-
-
 
 </body>
 
