@@ -4812,3 +4812,575 @@ max-width:
     }
 
 }
+
+/* PRESENTES SEM META */
+
+.presente-sem-meta {
+
+    display:
+    flex;
+
+    align-items:
+    center;
+
+    justify-content:
+    center;
+
+    min-height:
+    45px;
+
+    margin-bottom:
+    18px;
+
+    padding:
+    12px 15px;
+
+    border-radius:
+    14px;
+
+    background:
+    rgba(
+        180,
+        142,
+        77,
+        .08
+    );
+
+    color:
+    var(--marrom);
+
+    text-align:
+    center;
+
+    font-family:
+    "Montserrat",
+    sans-serif;
+
+    font-size:
+    .76rem;
+
+    letter-spacing:
+    .4px;
+
+}
+
+/* ==========================================
+   SISTEMA NOVO DE RESERVA DE PRESENTES
+========================================== */
+
+.btn-presente {
+
+    width: 100%;
+
+    padding: 13px 18px;
+
+    border: 1px solid var(--bambu);
+
+    border-radius: 30px;
+
+    background: transparent;
+
+    color: var(--marrom);
+
+    font-family:
+        "Montserrat",
+        sans-serif;
+
+    font-size: .82rem;
+
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition: .25s ease;
+
+}
+
+
+.btn-presente:hover {
+
+    background:
+        var(--bambu);
+
+    color:
+        white;
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+.btn-presente:disabled {
+
+    cursor:
+        not-allowed;
+
+    background:
+        #ebe7e2;
+
+    border-color:
+        #d6d0ca;
+
+    color:
+        #8c827a;
+
+    transform:
+        none;
+
+}
+
+
+.presente-reservado {
+
+    border-color:
+        rgba(90, 130, 92, .28);
+
+    background:
+        rgba(250, 252, 249, .96);
+
+}
+
+
+.status-reservado {
+
+    position:
+        absolute;
+
+    top:
+        18px;
+
+    right:
+        18px;
+
+    padding:
+        7px 11px;
+
+    border-radius:
+        20px;
+
+    background:
+        #edf5ed;
+
+    color:
+        #5a825c;
+
+    font-size:
+        .65rem;
+
+    font-weight:
+        600;
+
+    letter-spacing:
+        1px;
+
+}
+
+
+.presente-sem-meta {
+
+    margin-bottom:
+        15px;
+
+    color:
+        #81756d;
+
+    font-family:
+        "Montserrat",
+        sans-serif;
+
+    font-size:
+        .76rem;
+
+    line-height:
+        1.5;
+
+}
+
+
+.nenhum-presente {
+
+    width:
+        100%;
+
+    padding:
+        50px 25px;
+
+    text-align:
+        center;
+
+    background:
+        rgba(255,255,255,.75);
+
+    border-radius:
+        24px;
+
+}
+
+
+.nenhum-presente h3 {
+
+    margin:
+        0 0 10px;
+
+    color:
+        var(--marrom-escuro);
+
+}
+
+
+.nenhum-presente p {
+
+    color:
+        #81756d;
+
+}
+
+
+/* ==========================================
+   BOTÃO VOLTAR
+========================================== */
+
+.btn-voltar {
+
+    display:
+        inline-block;
+
+    margin-top:
+        25px;
+
+    padding:
+        13px 28px;
+
+    border:
+        1px solid var(--bambu);
+
+    border-radius:
+        30px;
+
+    color:
+        var(--marrom);
+
+    text-decoration:
+        none;
+
+    font-family:
+        "Montserrat",
+        sans-serif;
+
+    font-size:
+        .82rem;
+
+    transition:
+        .25s ease;
+
+}
+
+
+.btn-voltar:hover {
+
+    background:
+        var(--bambu);
+
+    color:
+        white;
+
+}
+
+
+/* ==========================================
+   CONVITE
+========================================== */
+
+.data-casamento {
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        center;
+
+    gap:
+        18px;
+
+    margin:
+        30px 0;
+
+}
+
+
+.data-casamento > strong {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        4rem;
+
+    line-height:
+        1;
+
+    color:
+        #d9bd6b;
+
+}
+
+
+.data-casamento div {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        flex-start;
+
+    padding-left:
+        18px;
+
+    border-left:
+        1px solid
+        rgba(121,102,90,.25);
+
+}
+
+
+.data-casamento span {
+
+    font-family:
+        "Montserrat",
+        sans-serif;
+
+    font-size:
+        .8rem;
+
+    letter-spacing:
+        3px;
+
+    color:
+        #79665a;
+
+}
+
+
+.data-casamento small {
+
+    margin-top:
+        5px;
+
+    color:
+        #79665a;
+
+}
+
+
+.convite-aviso {
+
+    margin-bottom:
+        20px;
+
+    color:
+        #79665a;
+
+    font-size:
+        .9rem;
+
+    line-height:
+        1.8;
+
+}
+
+
+.confirmado-box {
+
+    padding:
+        10px 0;
+
+}
+
+
+.confirmado-icone {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    width:
+        60px;
+
+    height:
+        60px;
+
+    margin:
+        0 auto 20px;
+
+    border-radius:
+        50%;
+
+    background:
+        #edf5ed;
+
+    color:
+        #5a825c;
+
+    font-size:
+        1.7rem;
+
+}
+
+
+/* ==========================================
+   COUNTDOWN
+========================================== */
+
+#countdown {
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    align-items:
+        baseline;
+
+    gap:
+        6px;
+
+    flex-wrap:
+        wrap;
+
+}
+
+
+#countdown span {
+
+    font-family:
+        "Cormorant Garamond",
+        serif;
+
+    font-size:
+        2rem;
+
+    color:
+        #d9bd6b;
+
+}
+
+
+#countdown small {
+
+    color:
+        #79665a;
+
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media(max-width:768px) {
+
+    .gift-grid-novo {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .categoria-presente {
+
+        margin-top:
+            45px;
+
+    }
+
+
+    .categoria-presente h3 {
+
+        font-size:
+            1.9rem;
+
+    }
+
+
+    .gift-card-novo {
+
+        min-height:
+            320px;
+
+    }
+
+
+    .cha-conteudo {
+
+        padding:
+            60px 18px;
+
+    }
+
+
+    .paleta-section {
+
+        grid-template-columns:
+            1fr;
+
+        padding:
+            30px;
+
+    }
+
+
+    .data-casamento > strong {
+
+        font-size:
+            3.2rem;
+
+    }
+
+
+    .page-content {
+
+        padding:
+            28px 20px;
+
+    }
+
+
+    .hero-image {
+
+        height:
+            250px;
+
+    }
+
+
+    .nomes {
+
+        font-size:
+            3.2rem;
+
+    }
+
+
+    .nomes span {
+
+        font-size:
+            2.2rem;
+
+    }
+
+}

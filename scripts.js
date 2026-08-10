@@ -1,39 +1,41 @@
 // ==========================================
-// CONFIGURAÇÕES DO CASAMENTO 
+// FIREBASE
+// ==========================================
+
+import {
+
+    db,
+    collection,
+    addDoc,
+    serverTimestamp,
+    doc,
+    runTransaction,
+    onSnapshot
+
+} from "./firebase.js";
+
+
+// ==========================================
+// CONFIGURAÇÕES
 // ==========================================
 
 const CONFIG = {
 
-    casamento: "2027-01-24T15:30:00",
+    casamento:
+        "2027-01-24T16:00:00-03:00",
 
-    pix: "samuelmoreira0608@gmail.com",
+    whatsapp:
+        "5585988338580",
 
-    whatsapp: "5585988338580"
+    localizacao:
+        ""
 
 };
 
 
-
 // ==========================================
-// LISTA EDITÁVEL DE PRESENTES barra-progresso
+// LISTA DE PRESENTES
 // ==========================================
-
-// Para adicionar um presente, copie um objeto
-// e altere os dados.
-//
-// Exemplo:
-//
-// {
-//     id: "novo-item",
-//     nome: "Nome do presente",
-//     categoria: "Sala",
-//     icone: "🎁",
-//     descricao: "Descrição do presente.",
-//     meta: 500,
-//     arrecadado: 0,
-//     concluido: false
-// }
-
 
 const presentes = [
 
@@ -42,10 +44,8 @@ const presentes = [
         nome: "Smart TV",
         categoria: "Sala",
         icone: "📺",
-        descricao: "Para deixar nossa sala ainda mais especial.",
-        meta: 3000,
-        arrecadado: 0,
-        concluido: false
+        descricao:
+            "Para deixar nossa sala ainda mais especial."
     },
 
     {
@@ -54,10 +54,7 @@ const presentes = [
         categoria: "Sala",
         icone: "🛋️",
         descricao:
-        "Nosso cantinho para descansar e receber.",
-        meta: 2500,
-        arrecadado: 0,
-        concluido: false
+            "Nosso cantinho para descansar e receber."
     },
 
     {
@@ -66,10 +63,7 @@ const presentes = [
         categoria: "Sala",
         icone: "🪵",
         descricao:
-        "Para completar a organização da sala.",
-        meta: 900,
-        arrecadado: 0,
-        concluido: false
+            "Para completar a organização da sala."
     },
 
     {
@@ -78,10 +72,7 @@ const presentes = [
         categoria: "Cozinha",
         icone: "❄️",
         descricao:
-        "Um item essencial para nossa nova casa.",
-        meta: 3500,
-        arrecadado: 0,
-        concluido: false
+            "Um item essencial para nossa nova casa."
     },
 
     {
@@ -90,10 +81,7 @@ const presentes = [
         categoria: "Cozinha",
         icone: "🍳",
         descricao:
-        "Para preparar muitas histórias e refeições.",
-        meta: 2000,
-        arrecadado: 0,
-        concluido: false
+            "Para preparar muitas histórias e refeições."
     },
 
     {
@@ -102,10 +90,7 @@ const presentes = [
         categoria: "Cozinha",
         icone: "🍟",
         descricao:
-        "Praticidade para o nosso dia a dia.",
-        meta: 500,
-        arrecadado: 0,
-        concluido: false
+            "Praticidade para o nosso dia a dia."
     },
 
     {
@@ -114,10 +99,7 @@ const presentes = [
         categoria: "Cozinha",
         icone: "🍲",
         descricao:
-        "Para cozinhar com carinho em nosso lar.",
-        meta: 800,
-        arrecadado: 0,
-        concluido: false
+            "Para cozinhar com carinho em nosso lar."
     },
 
     {
@@ -126,22 +108,16 @@ const presentes = [
         categoria: "Cozinha",
         icone: "📦",
         descricao:
-        "Mais praticidade para a nossa rotina.",
-        meta: 700,
-        arrecadado: 0,
-        concluido: false
+            "Mais praticidade para nossa rotina."
     },
 
     {
         id: "cama",
-        nome: "Cama ",
+        nome: "Cama",
         categoria: "Quarto",
         icone: "🛏️",
         descricao:
-        "Nosso espaço de descanso já foi presenteado.",
-        meta: 2500,
-        arrecadado: 2500,
-        concluido: true
+            "Nosso espaço de descanso."
     },
 
     {
@@ -150,10 +126,7 @@ const presentes = [
         categoria: "Quarto",
         icone: "🚪",
         descricao:
-        "Para organizar nosso novo quarto.",
-        meta: 2200,
-        arrecadado: 0,
-        concluido: false
+            "Para organizar nosso novo quarto."
     },
 
     {
@@ -162,10 +135,7 @@ const presentes = [
         categoria: "Quarto",
         icone: "🛌",
         descricao:
-        "Conforto e aconchego para o nosso lar.",
-        meta: 350,
-        arrecadado: 0,
-        concluido: false
+            "Conforto e aconchego para nosso lar."
     },
 
     {
@@ -174,10 +144,7 @@ const presentes = [
         categoria: "Organização",
         icone: "🧺",
         descricao:
-        "Para manter nossa rotina mais organizada.",
-        meta: 250,
-        arrecadado: 0,
-        concluido: false
+            "Para manter nossa rotina mais organizada."
     },
 
     {
@@ -186,10 +153,7 @@ const presentes = [
         categoria: "Organização",
         icone: "🫙",
         descricao:
-        "Para organizar a cozinha com praticidade.",
-        meta: 250,
-        arrecadado: 0,
-        concluido: false
+            "Para organizar a cozinha com praticidade."
     },
 
     {
@@ -198,1584 +162,90 @@ const presentes = [
         categoria: "Organização",
         icone: "🗃️",
         descricao:
-        "Para deixar cada espaço em seu lugar.",
-        meta: 400,
-        arrecadado: 0,
-        concluido: false
-    },
-
-    {
-        id: "lua-de-mel",
-        nome: "Lua de Mel",
-        categoria: "Sonhos",
-        icone: "✈️",
-        descricao:
-        "Contribua com qualquer valor para esse sonho.",
-        arrecadado: 0,
-        concluido: false
-    },
-
-    {
-        id: "fundo-casa",
-        nome: "Fundo Casa Nova",
-        categoria: "Sonhos",
-        icone: "🏡",
-        descricao:
-        "Ajude nos detalhes e necessidades do nosso lar.",
-        arrecadado: 0,
-        concluido: false
+            "Para deixar cada espaço em seu lugar."
     }
 
 ];
 
 
-
 // ==========================================
-// ESTADO DA PÁGINA
-// ==========================================
-
-let categoriaAtual = "todos";
-
-let presenteSelecionado = null;
-
-let resumoContribuicoes = [];
-
-
-
-// ==========================================
-// FORMATAR MOEDA
+// ESTADO
 // ==========================================
 
-function formatarMoeda(valor) {
+let categoriaAtual =
+    "todos";
 
-    return Number(valor).toLocaleString(
 
-        "pt-BR",
+let reservas =
+    {};
 
-        {
-            style: "currency",
-            currency: "BRL"
-        }
 
-    );
+// ==========================================
+// AUXILIARES
+// ==========================================
+
+function obterElemento(id) {
+
+    return document.getElementById(id);
 
 }
 
 
-
-// ==========================================
-// ESCAPAR TEXTO
-// ==========================================
-
 function escaparHTML(texto) {
 
     const elemento =
-    document.createElement("div");
+        document.createElement("div");
 
     elemento.textContent =
-    texto;
+        String(texto);
 
     return elemento.innerHTML;
 
 }
 
 
+function telefoneNormalizado(telefone) {
+
+    return String(telefone)
+        .replace(/\D/g, "");
+
+}
+
 
 // ==========================================
-// GERAR PRESENTES
+// PRESENÇA
 // ==========================================
 
-function renderizarPresentes() {
+async function confirmarPresenca(evento) {
 
-    const container =
-    document.getElementById(
-        "listaPresentes"
-    );
+    if (evento) {
 
-
-    if (!container) return;
-
-
-    const busca =
-    document.getElementById(
-        "buscarPresente"
-    );
-
-
-    const termo =
-    busca
-    ?
-    busca.value
-    .trim()
-    .toLowerCase()
-    :
-    "";
-
-
-    const filtrados =
-    presentes.filter(item => {
-
-        const categoriaOk =
-
-        categoriaAtual === "todos"
-
-        ||
-
-        item.categoria ===
-        categoriaAtual;
-
-
-        const buscaOk =
-
-        item.nome
-        .toLowerCase()
-        .includes(termo)
-
-        ||
-
-        item.descricao
-        .toLowerCase()
-        .includes(termo);
-
-
-        return (
-            categoriaOk &&
-            buscaOk
-        );
-
-    });
-
-
-    if (
-        filtrados.length === 0
-    ) {
-
-        container.innerHTML = `
-
-        <div class="nenhum-presente">
-
-            <h3>
-                Nenhum presente encontrado
-            </h3>
-
-            <p>
-                Tente pesquisar outro nome.
-            </p>
-
-        </div>
-
-        `;
-
-        return;
+        evento.preventDefault();
 
     }
 
-
-    const categorias = [
-
-        "Sala",
-
-        "Cozinha",
-
-        "Quarto",
-
-        "Organização",
-
-        "Sonhos"
-
-    ];
-
-
-    container.innerHTML =
-
-    categorias.map(categoria => {
-
-
-        const itensCategoria =
-
-        filtrados.filter(item =>
-
-            item.categoria ===
-            categoria
-
-        );
-
-
-        if (
-            itensCategoria.length === 0
-        ) {
-
-            return "";
-
-        }
-
-
-        return `
-
-        <div class="categoria-presente">
-
-            <h3>
-                ${categoria}
-            </h3>
-
-        </div>
-
-
-        <div class="gift-grid-novo">
-
-            ${itensCategoria
-            .map(criarCardPresente)
-            .join("")}
-
-        </div>
-
-        `;
-
-
-    }).join("");
-
-}
-
-
-
-// ==========================================
-// CRIAR CARD
-// ==========================================
-
-function criarCardPresente(item) {
-
-    const percentual =
-
-    item.meta > 0
-
-    ?
-
-    Math.min(
-
-        100,
-
-        (
-            item.arrecadado /
-            item.meta
-        ) * 100
-
-    )
-
-    :
-
-    0;
-
-
-    const classeConcluido =
-
-    item.concluido
-
-    ?
-
-    "gift-concluido"
-
-    :
-
-    "";
-
-
-    const status =
-
-    item.concluido
-
-    ?
-
-    `
-
-    <span class="status-concluido">
-
-        CONCLUÍDO
-
-    </span>
-
-    `
-
-    :
-
-    "";
-
-
-    const textoBotao =
-
-    item.concluido
-
-    ?
-
-    "Ajudar mesmo assim"
-
-    :
-
-    "Contribuir";
-
-
-    return `
-
-    <article
-
-    class="
-    gift-card-novo
-    ${classeConcluido}
-    "
-
-    >
-
-        ${status}
-
-
-        <div class="gift-icone">
-
-            ${item.icone}
-
-        </div>
-
-
-        <h3>
-
-            ${escaparHTML(
-                item.nome
-            )}
-
-        </h3>
-
-
-        <p>
-
-            ${escaparHTML(
-                item.descricao
-            )}
-
-        </p>
-
-
-        <div class="gift-meta">
-
-
-            <div class="gift-meta-topo">
-
-                <span>
-
-                    Meta:
-                    ${formatarMoeda(
-                        item.meta
-                    )}
-
-                </span>
-
-
-                <strong>
-
-                    ${Math.round(
-                        percentual
-                    )}%
-
-                </strong>
-
-            </div>
-
-
-            <div class="barra-progresso">
-
-                <span
-
-                style="
-                width:
-                ${percentual}%
-                "
-
-                ></span>
-
-            </div>
-
-
-            <button
-
-            type="button"
-
-            onclick="
-            abrirContribuicao(
-            '${item.id}'
-            )
-            "
-
-            >
-
-                ${textoBotao}
-
-            </button>
-
-
-        </div>
-
-    </article>
-
-    `;
-
-}
-
-
-
-// ==========================================
-// FILTROS
-// ==========================================
-
-function iniciarFiltros() {
-
-    const filtros =
-
-    document.querySelectorAll(
-        ".filtro-btn"
-    );
-
-
-    filtros.forEach(botao => {
-
-        botao.addEventListener(
-
-            "click",
-
-            () => {
-
-                filtros.forEach(item => {
-
-                    item.classList
-                    .remove("ativo");
-
-                });
-
-
-                botao.classList
-                .add("ativo");
-
-
-                categoriaAtual =
-
-                botao.dataset
-                .categoria;
-
-
-                renderizarPresentes();
-
-            }
-
-        );
-
-    });
-
-}
-
-
-
-// ==========================================
-// BUSCA
-// ==========================================
-
-function iniciarBusca() {
-
-    const campo =
-
-    document.getElementById(
-        "buscarPresente"
-    );
-
-
-    if (!campo) return;
-
-
-    campo.addEventListener(
-
-        "input",
-
-        renderizarPresentes
-
-    );
-
-}
-
-
-
-// ==========================================
-// ABRIR CONTRIBUIÇÃO
-// ==========================================
-
-function abrirContribuicao(id) {
-
-    presenteSelecionado =
-
-    presentes.find(item =>
-
-        item.id === id
-
-    );
-
-
-    if (!presenteSelecionado) {
-
-        return;
-
-    }
-
-
-    document.getElementById(
-        "modalTitulo"
-    ).textContent =
-
-    presenteSelecionado.nome;
-
-
-    document.getElementById(
-        "modalDescricao"
-    ).textContent =
-
-    presenteSelecionado.descricao;
-
-
-    document.getElementById(
-        "modalMeta"
-    ).textContent =
-
-    formatarMoeda(
-        presenteSelecionado.meta
-    );
-
-
-    document.getElementById(
-        "valorContribuicao"
-    ).value = "";
-
-
-    const modal =
-
-    document.getElementById(
-        "modalContribuicao"
-    );
-
-
-    modal.classList
-    .add("aberto");
-
-
-    modal.setAttribute(
-
-        "aria-hidden",
-
-        "false"
-
-    );
-
-
-    document.body.style
-    .overflow = "hidden";
-
-}
-
-
-
-// ==========================================
-// FECHAR MODAL
-// ==========================================
-
-function fecharModal() {
-
-    const modal =
-
-    document.getElementById(
-        "modalContribuicao"
-    );
-
-
-    if (!modal) return;
-
-
-    modal.classList
-    .remove("aberto");
-
-
-    modal.setAttribute(
-
-        "aria-hidden",
-
-        "true"
-
-    );
-
-
-    document.body.style
-    .overflow = "";
-
-
-
-    presenteSelecionado = null;
-
-}
-
-
-
-// ==========================================
-// VALOR RÁPIDO
-// ==========================================
-
-function definirValor(valor) {
-
-    const campo =
-
-    document.getElementById(
-        "valorContribuicao"
-    );
-
-
-    if (!campo) return;
-
-
-    campo.value =
-
-    Number(valor)
-    .toLocaleString(
-
-        "pt-BR",
-
-        {
-            minimumFractionDigits: 2,
-            maximumFractionDigits: 2
-        }
-
-    );
-
-}
-
-
-
-// ==========================================
-// CONVERTER VALOR
-// ==========================================
-
-function converterValor(valor) {
-
-    let texto =
-
-    String(valor)
-
-    .trim()
-
-    .replace(
-        "R$",
-        ""
-    )
-
-    .replace(
-        /\s/g,
-        ""
-    );
-
-
-    if (
-        texto.includes(",")
-        &&
-        texto.includes(".")
-    ) {
-
-        texto =
-
-        texto.replace(
-            /\./g,
-            ""
-        );
-
-    }
-
-
-    texto =
-
-    texto.replace(
-        ",",
-        "."
-    );
-
-
-    return Number(texto);
-
-}
-
-
-
-// ==========================================
-// ADICIONAR AO RESUMO
-// ==========================================
-
-function adicionarContribuicao() {
-
-    if (!presenteSelecionado) {
-
-        return;
-
-    }
-
-
-    const campo =
-
-    document.getElementById(
-        "valorContribuicao"
-    );
-
-
-    const valor =
-
-    converterValor(
-        campo.value
-    );
-
-
-    if (
-
-        !Number.isFinite(valor)
-
-        ||
-
-        valor <= 0
-
-    ) {
-
-        alert(
-
-        "Digite um valor válido."
-
-        );
-
-        campo.focus();
-
-        return;
-
-    }
-
-
-    resumoContribuicoes.push({
-
-        id:
-
-        Date.now()
-        +
-        Math.random(),
-
-
-        presenteId:
-
-        presenteSelecionado.id,
-
-
-        presente:
-
-        presenteSelecionado.nome,
-
-
-        valor:
-
-        valor
-
-    });
-
-
-    atualizarResumoFixo();
-
-
-    fecharModal();
-
-
-    abrirResumo();
-
-}
-
-
-
-// ==========================================
-// RESUMO FIXO
-// ==========================================
-
-function atualizarResumoFixo() {
-
-    const elemento =
-
-    document.getElementById(
-        "resumoQuantidade"
-    );
-
-
-    if (!elemento) return;
-
-
-    const quantidade =
-
-    resumoContribuicoes.length;
-
-
-    if (
-        quantidade === 0
-    ) {
-
-        elemento.textContent =
-
-        "Nenhum presente selecionado";
-
-        return;
-
-    }
-
-
-    const total =
-
-    resumoContribuicoes.reduce(
-
-        (soma, item) =>
-
-        soma + item.valor,
-
-        0
-
-    );
-
-
-    elemento.textContent =
-
-    `${quantidade}
-    ${quantidade === 1
-    ?
-    "contribuição"
-    :
-    "contribuições"}
-    ·
-    ${formatarMoeda(total)}`;
-
-}
-
-
-
-// ==========================================
-// ABRIR RESUMO
-// ==========================================
-
-function abrirResumo() {
-
-    const modal =
-
-    document.getElementById(
-        "modalResumo"
-    );
-
-
-    if (
-        resumoContribuicoes.length === 0
-    ) {
-
-        alert(
-
-        "Escolha pelo menos um presente."
-
-        );
-
-        return;
-
-    }
-
-
-    renderizarResumo();
-
-
-    modal.classList
-    .add("aberto");
-
-
-    modal.setAttribute(
-
-        "aria-hidden",
-
-        "false"
-
-    );
-
-
-    document.body.style
-    .overflow = "hidden";
-
-}
-
-
-
-// ==========================================
-// FECHAR RESUMO
-// ==========================================
-
-function fecharResumo() {
-
-    const modal =
-
-    document.getElementById(
-        "modalResumo"
-    );
-
-
-    if (!modal) return;
-
-
-    modal.classList
-    .remove("aberto");
-
-
-    modal.setAttribute(
-
-        "aria-hidden",
-
-        "true"
-
-    );
-
-
-    document.body.style
-    .overflow = "";
-
-}
-
-
-
-// ==========================================
-// RENDERIZAR RESUMO
-// ==========================================
-
-function renderizarResumo() {
-
-    const container =
-
-    document.getElementById(
-        "itensResumo"
-    );
-
-
-    const totalElemento =
-
-    document.getElementById(
-        "totalResumo"
-    );
-
-
-    if (
-        !container ||
-        !totalElemento
-    ) {
-
-        return;
-
-    }
-
-
-    container.innerHTML =
-
-    resumoContribuicoes.map(
-
-        item => `
-
-        <div class="item-resumo">
-
-            <div>
-
-                <strong>
-
-                    ${escaparHTML(
-                        item.presente
-                    )}
-
-                </strong>
-
-
-                <small>
-
-                    ${formatarMoeda(
-                        item.valor
-                    )}
-
-                </small>
-
-            </div>
-
-
-            <button
-
-            class="remover-item"
-
-            type="button"
-
-            onclick="
-            removerDoResumo(
-            '${item.id}'
-            )
-            "
-
-            >
-
-                Remover
-
-            </button>
-
-        </div>
-
-        `
-
-    ).join("");
-
-
-    const total =
-
-    resumoContribuicoes.reduce(
-
-        (soma, item) =>
-
-        soma + item.valor,
-
-        0
-
-    );
-
-
-    totalElemento.textContent =
-
-    formatarMoeda(total);
-
-}
-
-
-
-// ==========================================
-// REMOVER DO RESUMO
-// ==========================================
-
-function removerDoResumo(id) {
-
-    resumoContribuicoes =
-
-    resumoContribuicoes.filter(
-
-        item =>
-
-        String(item.id) !==
-        String(id)
-
-    );
-
-
-    atualizarResumoFixo();
-
-
-    if (
-        resumoContribuicoes.length === 0
-    ) {
-
-        fecharResumo();
-
-        return;
-
-    }
-
-
-    renderizarResumo();
-
-}
-
-
-
-// ==========================================
-// FINALIZAR
-// ==========================================
-
-function finalizarContribuicao() {
-
-    if (
-        resumoContribuicoes.length === 0
-    ) {
-
-        return;
-
-    }
-
-
-    const nome =
-
-    localStorage.getItem(
-        "nomeConvidado"
-    )
-
-    ||
-
-    "Convidado";
-
-
-    const telefone =
-
-    localStorage.getItem(
-        "telefoneConvidado"
-    )
-
-    ||
-
-    "";
-
-
-    const total =
-
-    resumoContribuicoes.reduce(
-
-        (soma, item) =>
-
-        soma + item.valor,
-
-        0
-
-    );
-
-
-    const lista =
-
-    resumoContribuicoes.map(
-
-        item =>
-
-        `• ${item.presente}: ${formatarMoeda(
-            item.valor
-        )}`
-
-    ).join("\n");
-
-
-    const mensagem =
-
-`Olá, Samuel e Anna Vitória! ❤️
-
-Gostaria de confirmar minha contribuição para o Chá de Casa Nova.
-
-Nome:
-${nome}
-
-Telefone:
-${telefone}
-
-Contribuições:
-${lista}
-
-Total:
-${formatarMoeda(total)}
-
-Realizarei o pagamento pelo PIX.
-
-Com carinho! 🤍`;
-
-
-    salvarContribuicoes();
-
-
-    const url =
-
-    `https://wa.me/${CONFIG.whatsapp}?text=`
-
-    +
-
-    encodeURIComponent(
-        mensagem
-    );
-
-
-    window.open(
-
-        url,
-
-        "_blank"
-
-    );
-
-
-
-    resumoContribuicoes = [];
-
-
-    atualizarResumoFixo();
-
-
-    fecharResumo();
-
-}
-
-
-
-// ==========================================
-// SALVAR CONTRIBUIÇÕES
-// ==========================================
-
-function salvarContribuicoes() {
-
-    const nome =
-
-    localStorage.getItem(
-        "nomeConvidado"
-    )
-
-    ||
-
-    "Não informado";
-
-
-    const telefone =
-
-    localStorage.getItem(
-        "telefoneConvidado"
-    )
-
-    ||
-
-    "";
-
-
-    const contribuicoes =
-
-    JSON.parse(
-
-        localStorage.getItem(
-            "contribuicoes"
-        )
-
-    )
-
-    ||
-
-    [];
-
-
-    resumoContribuicoes.forEach(
-
-        item => {
-
-            contribuicoes.push({
-
-                nome:
-
-                nome,
-
-
-                telefone:
-
-                telefone,
-
-
-                presente:
-
-                item.presente,
-
-
-                valor:
-
-                item.valor,
-
-
-                data:
-
-                new Date()
-                .toLocaleString(
-                    "pt-BR"
-                )
-
-            });
-
-        }
-
-    );
-
-
-    localStorage.setItem(
-
-        "contribuicoes",
-
-        JSON.stringify(
-            contribuicoes
-        )
-
-    );
-
-}
-
-
-
-// ==========================================
-// COPIAR PIX
-// ==========================================
-
-async function copiarPix() {
-
-    try {
-
-        await navigator
-        .clipboard
-        .writeText(
-
-            CONFIG.pix
-
-        );
-
-
-        alert(
-
-        "Chave PIX copiada ❤️"
-
-        );
-
-
-    } catch (erro) {
-
-        const campo =
-
-        document.createElement(
-            "textarea"
-        );
-
-
-        campo.value =
-
-        CONFIG.pix;
-
-
-        document.body
-        .appendChild(
-            campo
-        );
-
-
-        campo.select();
-
-
-        document.execCommand(
-            "copy"
-        );
-
-
-        campo.remove();
-
-
-        alert(
-
-        "Chave PIX copiada ❤️"
-
-        );
-
-    }
-
-}
-
-
-
-// ==========================================
-// CONTAGEM REGRESSIVA
-// ==========================================
-
-function iniciarContagem() {
-
-    const contador =
-
-    document.getElementById(
-        "countdown"
-    );
-
-
-    if (!contador) return;
-
-
-    const casamento =
-
-    new Date(
-        CONFIG.casamento
-    );
-
-
-    function atualizar() {
-
-        const agora =
-
-        new Date();
-
-
-        const distancia =
-
-        casamento - agora;
-
-
-        if (
-            distancia <= 0
-        ) {
-
-            contador.innerHTML =
-
-            "Chegou o grande dia ❤️";
-
-            return;
-
-        }
-
-
-        const dias =
-
-        Math.floor(
-
-            distancia /
-
-            (
-                1000 *
-                60 *
-                60 *
-                24
-            )
-
-        );
-
-
-        const horas =
-
-        Math.floor(
-
-            (
-
-                distancia %
-
-                (
-                    1000 *
-                    60 *
-                    60 *
-                    24
-                )
-
-            )
-
-            /
-
-            (
-                1000 *
-                60 *
-                60
-            )
-
-        );
-
-
-        const minutos =
-
-        Math.floor(
-
-            (
-
-                distancia %
-
-                (
-                    1000 *
-                    60 *
-                    60
-                )
-
-            )
-
-            /
-
-            (
-                1000 *
-                60
-            )
-
-        );
-
-
-        const segundos =
-
-        Math.floor(
-
-            (
-
-                distancia %
-
-                (
-                    1000 *
-                    60
-                )
-
-            )
-
-            /
-
-            1000
-
-        );
-
-
-        contador.innerHTML =
-
-        `${dias} dias<br>
-
-        ${String(horas)
-        .padStart(2, "0")}h :
-
-        ${String(minutos)
-        .padStart(2, "0")}m :
-
-        ${String(segundos)
-        .padStart(2, "0")}s`;
-
-    }
-
-
-    atualizar();
-
-
-    setInterval(
-
-        atualizar,
-
-        1000
-
-    );
-
-}
-
-
-
-// ==========================================
-// CONFIRMAR PRESENÇA
-// ==========================================
-
-function confirmarPresenca() {
 
     const nomeCampo =
-
-    document.getElementById(
-        "nome"
-    );
+        obterElemento("nome");
 
 
     const telefoneCampo =
-
-    document.getElementById(
-        "telefone"
-    );
+        obterElemento("telefone");
 
 
     const confirmacao =
-
-    document.getElementById(
-        "confirmacao"
-    );
+        obterElemento("confirmacao");
 
 
     if (
-
         !nomeCampo ||
-
         !telefoneCampo ||
-
         !confirmacao
-
     ) {
+
+        console.error(
+            "Campos da confirmação não encontrados."
+        );
 
         return;
 
@@ -1783,23 +253,17 @@ function confirmarPresenca() {
 
 
     const nome =
-
-    nomeCampo.value
-    .trim();
+        nomeCampo.value.trim();
 
 
     const telefone =
-
-    telefoneCampo.value
-    .trim();
+        telefoneCampo.value.trim();
 
 
     if (!nome) {
 
         alert(
-
-        "Digite seu nome."
-
+            "Digite seu nome."
         );
 
         nomeCampo.focus();
@@ -1812,9 +276,7 @@ function confirmarPresenca() {
     if (!telefone) {
 
         alert(
-
-        "Digite seu telefone."
-
+            "Digite seu telefone."
         );
 
         telefoneCampo.focus();
@@ -1824,14 +286,10 @@ function confirmarPresenca() {
     }
 
 
-    if (
-        !confirmacao.checked
-    ) {
+    if (!confirmacao.checked) {
 
         alert(
-
-        "Marque a confirmação de presença."
-
+            "Marque a confirmação de presença."
         );
 
         return;
@@ -1839,146 +297,121 @@ function confirmarPresenca() {
     }
 
 
-    const convidados =
-
-    JSON.parse(
-
-        localStorage.getItem(
-            "convidados"
-        )
-
-    )
-
-    ||
-
-    [];
+    const botao =
+        obterElemento("btnConfirmar");
 
 
-    const existe =
+    if (botao) {
 
-    convidados.some(
+        botao.disabled = true;
 
-        convidado =>
+        botao.textContent =
+            "Confirmando...";
 
-        convidado.telefone ===
-        telefone
-
-    );
+    }
 
 
-    if (!existe) {
+    try {
 
-        convidados.push({
-
-            nome:
-
-            nome,
-
-
-            telefone:
-
-            telefone,
+        const id =
+            telefoneNormalizado(
+                telefone
+            );
 
 
-            data:
+        await runTransaction(
 
-            new Date()
-            .toLocaleString(
-                "pt-BR"
-            )
+            db,
 
-        });
+            async transaction => {
+
+                const referencia =
+                    doc(
+                        db,
+                        "convidados",
+                        id
+                    );
+
+
+                transaction.set(
+
+                    referencia,
+
+                    {
+
+                        nome:
+                            nome,
+
+                        telefone:
+                            telefone,
+
+                        confirmado:
+                            true,
+
+                        criadoEm:
+                            serverTimestamp()
+
+                    },
+
+                    {
+                        merge: true
+                    }
+
+                );
+
+            }
+
+        );
 
 
         localStorage.setItem(
-
-            "convidados",
-
-            JSON.stringify(
-                convidados
-            )
-
+            "nomeConvidado",
+            nome
         );
 
-    }
+
+        localStorage.setItem(
+            "telefoneConvidado",
+            telefone
+        );
 
 
-    localStorage.setItem(
-
-        "nomeConvidado",
-
-        nome
-
-    );
+        localStorage.setItem(
+            "confirmado",
+            "sim"
+        );
 
 
-    localStorage.setItem(
-
-        "telefoneConvidado",
-
-        telefone
-
-    );
+        window.location.href =
+            "casa.html";
 
 
-    localStorage.setItem(
+    } catch (erro) {
 
-        "confirmado",
+        console.error(
+            "Erro ao confirmar presença:",
+            erro
+        );
 
-        "sim"
-
-    );
-
-
-    alert(
-
-    "Presença confirmada com sucesso ❤️"
-
-    );
-
-
-    window.location.href =
-
-    "casa.html";
-
-}
-
-
-
-// ==========================================
-// ABRIR CHÁ
-// ==========================================
-
-function abrirCasaNova() {
-
-    const confirmado =
-
-    localStorage.getItem(
-        "confirmado"
-    );
-
-
-    if (
-        confirmado !== "sim"
-    ) {
 
         alert(
-
-        "Confirme sua presença primeiro."
-
+            "Não foi possível confirmar sua presença.\n\nVerifique sua conexão e tente novamente."
         );
 
-        return;
+
+        if (botao) {
+
+            botao.disabled =
+                false;
+
+            botao.textContent =
+                "Confirmar presença";
+
+        }
 
     }
 
-
-    window.location.href =
-
-    "casa.html";
-
 }
-
 
 
 // ==========================================
@@ -1988,9 +421,8 @@ function abrirCasaNova() {
 function protegerCasaNova() {
 
     const pagina =
-
-    window.location.pathname
-    .toLowerCase();
+        window.location.pathname
+            .toLowerCase();
 
 
     if (
@@ -2005,124 +437,199 @@ function protegerCasaNova() {
 
 
     const confirmado =
-
-    localStorage.getItem(
-        "confirmado"
-    );
+        localStorage.getItem(
+            "confirmado"
+        );
 
 
     if (
-        confirmado !== "sim"
+        confirmado !==
+        "sim"
     ) {
 
         window.location.href =
-
-        "index.html";
+            "index.html";
 
     }
 
 }
 
 
-
 // ==========================================
-// MODAIS
+// CONTAGEM
 // ==========================================
 
-function iniciarModais() {
+function iniciarContagem() {
 
-    const modais =
+    const contador =
+        obterElemento(
+            "countdown"
+        );
 
-    document.querySelectorAll(
-        ".modal"
-    );
+
+    if (!contador) {
+
+        return;
+
+    }
 
 
-    modais.forEach(
+    const data =
+        new Date(
+            CONFIG.casamento
+        );
 
-        modal => {
 
-            modal.addEventListener(
+    function atualizar() {
 
-                "click",
+        const distancia =
+            data -
+            new Date();
 
-                evento => {
 
-                    if (
+        if (
+            distancia <= 0
+        ) {
 
-                        evento.target ===
-                        modal
+            contador.textContent =
+                "Chegou o grande dia ❤️";
 
-                    ) {
+            return;
 
-                        if (
+        }
 
-                            modal.id ===
-                            "modalResumo"
 
-                        ) {
-
-                            fecharResumo();
-
-                        } else {
-
-                            fecharModal();
-
-                        }
-
-                    }
-
-                }
-
+        const dias =
+            Math.floor(
+                distancia /
+                (
+                    1000 *
+                    60 *
+                    60 *
+                    24
+                )
             );
 
-        }
 
-    );
+        const horas =
+            Math.floor(
+                (
+                    distancia %
+                    (
+                        1000 *
+                        60 *
+                        60 *
+                        24
+                    )
+                )
+                /
+                (
+                    1000 *
+                    60 *
+                    60
+                )
+            );
 
 
-    document.addEventListener(
+        const minutos =
+            Math.floor(
+                (
+                    distancia %
+                    (
+                        1000 *
+                        60 *
+                        60
+                    )
+                )
+                /
+                (
+                    1000 *
+                    60
+                )
+            );
 
-        "keydown",
 
-        evento => {
+        const segundos =
+            Math.floor(
+                (
+                    distancia %
+                    (
+                        1000 *
+                        60
+                    )
+                )
+                /
+                1000
+            );
 
-            if (
 
-                evento.key ===
-                "Escape"
+        contador.innerHTML = `
 
-            ) {
+            <span>
+                ${dias}
+            </span>
 
-                fecharModal();
+            <small>
+                dias
+            </small>
 
-                fecharResumo();
+            <span>
+                ${String(horas)
+                    .padStart(2, "0")}
+            </span>
 
-            }
+            <small>
+                h
+            </small>
 
-        }
+            <span>
+                ${String(minutos)
+                    .padStart(2, "0")}
+            </span>
 
+            <small>
+                m
+            </small>
+
+            <span>
+                ${String(segundos)
+                    .padStart(2, "0")}
+            </span>
+
+            <small>
+                s
+            </small>
+
+        `;
+
+    }
+
+
+    atualizar();
+
+
+    setInterval(
+        atualizar,
+        1000
     );
 
 }
 
 
-
 // ==========================================
-// LIVRO
+// LIVRO DO CONVITE
 // ==========================================
 
 function iniciarLivro() {
 
-    const pages =
-
-    document.querySelectorAll(
-        ".page"
-    );
+    const paginas =
+        document.querySelectorAll(
+            ".page"
+        );
 
 
     if (
-        pages.length === 0
+        paginas.length === 0
     ) {
 
         return;
@@ -2130,129 +637,1086 @@ function iniciarLivro() {
     }
 
 
-    let currentPage = 0;
+    let paginaAtual = 0;
 
 
-    function showPage(index) {
+    function mostrarPagina(indice) {
 
-        pages.forEach(
+        if (
+            indice < 0 ||
+            indice >= paginas.length
+        ) {
 
-            page => {
+            return;
 
-                page.classList
-                .remove("active");
+        }
+
+
+        paginas.forEach(
+            pagina => {
+
+                pagina.classList
+                    .remove(
+                        "active"
+                    );
+
+            }
+        );
+
+
+        paginas[indice]
+            .classList
+            .add("active");
+
+
+        paginaAtual =
+            indice;
+
+    }
+
+
+    document.addEventListener(
+        "click",
+        evento => {
+
+            const proximo =
+                evento.target.closest(
+                    ".next-btn"
+                );
+
+
+            const anterior =
+                evento.target.closest(
+                    ".prev-btn"
+                );
+
+
+            if (proximo) {
+
+                mostrarPagina(
+                    paginaAtual + 1
+                );
+
+            }
+
+
+            if (anterior) {
+
+                mostrarPagina(
+                    paginaAtual - 1
+                );
+
+            }
+
+        }
+    );
+
+
+    mostrarPagina(0);
+
+}
+
+
+// ==========================================
+// PRESENTES
+// ==========================================
+
+function iniciarFiltros() {
+
+    const filtros =
+        document.querySelectorAll(
+            ".filtro-btn"
+        );
+
+
+    filtros.forEach(
+        botao => {
+
+            botao.addEventListener(
+                "click",
+                () => {
+
+                    filtros.forEach(
+                        item => {
+
+                            item.classList
+                                .remove(
+                                    "ativo"
+                                );
+
+                        }
+                    );
+
+
+                    botao.classList
+                        .add("ativo");
+
+
+                    categoriaAtual =
+                        botao.dataset
+                            .categoria
+                        ||
+                        "todos";
+
+
+                    renderizarPresentes();
+
+                }
+            );
+
+        }
+    );
+
+}
+
+
+// ==========================================
+// BUSCA
+// ==========================================
+
+function iniciarBusca() {
+
+    const campo =
+        obterElemento(
+            "buscarPresente"
+        );
+
+
+    if (!campo) {
+
+        return;
+
+    }
+
+
+    campo.addEventListener(
+        "input",
+        renderizarPresentes
+    );
+
+}
+
+
+// ==========================================
+// RENDERIZAR PRESENTES
+// ==========================================
+
+function renderizarPresentes() {
+
+    const container =
+        obterElemento(
+            "listaPresentes"
+        );
+
+
+    if (!container) {
+
+        return;
+
+    }
+
+
+    const campoBusca =
+        obterElemento(
+            "buscarPresente"
+        );
+
+
+    const termo =
+        campoBusca
+            ? campoBusca.value
+                .trim()
+                .toLowerCase()
+            : "";
+
+
+    const filtrados =
+        presentes.filter(
+            item => {
+
+                const categoriaOk =
+
+                    categoriaAtual ===
+                    "todos"
+
+                    ||
+
+                    item.categoria ===
+                    categoriaAtual;
+
+
+                const buscaOk =
+
+                    item.nome
+                        .toLowerCase()
+                        .includes(
+                            termo
+                        )
+
+                    ||
+
+                    item.descricao
+                        .toLowerCase()
+                        .includes(
+                            termo
+                        );
+
+
+                return (
+                    categoriaOk &&
+                    buscaOk
+                );
+
+            }
+        );
+
+
+    if (
+        filtrados.length === 0
+    ) {
+
+        container.innerHTML = `
+
+            <div class="nenhum-presente">
+
+                <h3>
+                    Nenhum presente encontrado
+                </h3>
+
+                <p>
+                    Tente pesquisar outro nome.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    const categorias = [
+
+        "Sala",
+        "Cozinha",
+        "Quarto",
+        "Organização"
+
+    ];
+
+
+    container.innerHTML =
+
+        categorias.map(
+            categoria => {
+
+                const itens =
+                    filtrados.filter(
+                        item =>
+                            item.categoria ===
+                            categoria
+                    );
+
+
+                if (
+                    itens.length === 0
+                ) {
+
+                    return "";
+
+                }
+
+
+                return `
+
+                    <div class="categoria-presente">
+
+                        <h3>
+                            ${categoria}
+                        </h3>
+
+                    </div>
+
+
+                    <div class="gift-grid-novo">
+
+                        ${itens
+                            .map(
+                                criarCardPresente
+                            )
+                            .join("")
+                        }
+
+                    </div>
+
+                `;
+
+            }
+        )
+        .join("");
+
+}
+
+
+// ==========================================
+// CARD
+// ==========================================
+
+function criarCardPresente(item) {
+
+    const reserva =
+        reservas[item.id];
+
+
+    const reservado =
+        Boolean(reserva);
+
+
+    return `
+
+        <article
+            class="
+                gift-card-novo
+                ${reservado
+                    ? "presente-reservado"
+                    : ""}
+            "
+        >
+
+            ${
+                reservado
+
+                ?
+
+                `
+                    <span class="status-reservado">
+
+                        ✓ RESERVADO
+
+                    </span>
+                `
+
+                :
+
+                ""
+            }
+
+
+            <div class="gift-icone">
+
+                ${item.icone}
+
+            </div>
+
+
+            <h3>
+
+                ${escaparHTML(
+                    item.nome
+                )}
+
+            </h3>
+
+
+            <p>
+
+                ${escaparHTML(
+                    item.descricao
+                )}
+
+            </p>
+
+
+            <div class="gift-meta">
+
+                <div
+                    class="presente-sem-meta"
+                >
+
+                    ${
+                        reservado
+
+                        ?
+
+                        "Este presente já foi escolhido."
+
+                        :
+
+                        "Presente para nosso lar."
+                    }
+
+                </div>
+
+
+                <button
+
+                    type="button"
+
+                    class="btn-presente"
+
+                    data-presente="${item.id}"
+
+                    ${
+                        reservado
+                        ? "disabled"
+                        : ""
+                    }
+
+                >
+
+                    ${
+                        reservado
+
+                        ?
+
+                        "Reservado"
+
+                        :
+
+                        "Vou presentear"
+                    }
+
+                </button>
+
+            </div>
+
+        </article>
+
+    `;
+
+}
+
+
+// ==========================================
+// CLIQUE NOS PRESENTES
+// ==========================================
+
+function iniciarBotoesPresentes() {
+
+    document.addEventListener(
+        "click",
+        evento => {
+
+            const botao =
+                evento.target.closest(
+                    ".btn-presente"
+                );
+
+
+            if (!botao) {
+
+                return;
+
+            }
+
+
+            if (
+                botao.disabled
+            ) {
+
+                return;
+
+            }
+
+
+            const id =
+                botao.dataset
+                    .presente;
+
+
+            const presente =
+                presentes.find(
+                    item =>
+                        item.id === id
+                );
+
+
+            if (!presente) {
+
+                return;
+
+            }
+
+
+            reservarPresente(
+                presente,
+                botao
+            );
+
+        }
+    );
+
+}
+
+
+// ==========================================
+// RESERVAR PRESENTE
+// ==========================================
+
+async function reservarPresente(
+    presente,
+    botao
+) {
+
+    const confirmado =
+        localStorage.getItem(
+            "confirmado"
+        );
+
+
+    if (
+        confirmado !==
+        "sim"
+    ) {
+
+        alert(
+            "Confirme sua presença primeiro."
+        );
+
+        window.location.href =
+            "index.html";
+
+        return;
+
+    }
+
+
+    const nome =
+        localStorage.getItem(
+            "nomeConvidado"
+        )
+        ||
+        "Convidado";
+
+
+    const telefone =
+        localStorage.getItem(
+            "telefoneConvidado"
+        )
+        ||
+        "";
+
+
+    const confirmar =
+        window.confirm(
+
+            `Você deseja escolher:\n\n🎁 ${presente.nome}\n\ncomo seu presente para nós?`
+
+        );
+
+
+    if (!confirmar) {
+
+        return;
+
+    }
+
+
+    const janela =
+        window.open(
+            "",
+            "_blank"
+        );
+
+
+    botao.disabled =
+        true;
+
+    botao.textContent =
+        "Reservando...";
+
+
+    const reservaRef =
+        doc(
+            db,
+            "reservas",
+            presente.id
+        );
+
+
+    const detalheRef =
+        doc(
+            db,
+            "reservas_detalhes",
+            presente.id
+        );
+
+
+    try {
+
+        await runTransaction(
+
+            db,
+
+            async transaction => {
+
+                const reservaSnapshot =
+                    await transaction.get(
+                        reservaRef
+                    );
+
+
+                if (
+                    reservaSnapshot.exists()
+                ) {
+
+                    throw new Error(
+                        "PRESENTE_JA_RESERVADO"
+                    );
+
+                }
+
+
+                transaction.set(
+
+                    reservaRef,
+
+                    {
+
+                        presenteId:
+                            presente.id,
+
+                        presente:
+                            presente.nome,
+
+                        reservado:
+                            true,
+
+                        criadoEm:
+                            serverTimestamp()
+
+                    }
+
+                );
+
+
+                transaction.set(
+
+                    detalheRef,
+
+                    {
+
+                        presenteId:
+                            presente.id,
+
+                        presente:
+                            presente.nome,
+
+                        nome:
+                            nome,
+
+                        telefone:
+                            telefone,
+
+                        criadoEm:
+                            serverTimestamp()
+
+                    }
+
+                );
 
             }
 
         );
 
 
-        pages[index]
-        .classList
-        .add("active");
+        reservas[
+            presente.id
+        ] = {
+
+            presente:
+                presente.nome
+
+        };
+
+
+        renderizarPresentes();
+
+
+        const mensagem = `Olá, Samuel e Anna Vitória! ❤️
+
+Gostaria de presentear vocês com:
+
+🎁 ${presente.nome}
+
+Nome:
+${nome}
+
+Telefone:
+${telefone}
+
+Acabei de reservar este presente pelo site.
+
+Com carinho! 🤍`;
+
+
+        const url =
+
+            `https://wa.me/${CONFIG.whatsapp}?text=`
+
+            +
+
+            encodeURIComponent(
+                mensagem
+            );
+
+
+        if (janela) {
+
+            janela.location.href =
+                url;
+
+        } else {
+
+            window.location.href =
+                url;
+
+        }
+
+
+    } catch (erro) {
+
+        console.error(
+            "Erro ao reservar presente:",
+            erro
+        );
+
+
+        if (janela) {
+
+            janela.close();
+
+        }
+
+
+        if (
+            erro.message ===
+            "PRESENTE_JA_RESERVADO"
+        ) {
+
+            alert(
+                "Esse presente acabou de ser reservado por outra pessoa. Escolha outro presente. ❤️"
+            );
+
+        } else {
+
+            alert(
+                "Não foi possível reservar este presente. Tente novamente."
+            );
+
+        }
+
+
+        botao.disabled =
+            false;
+
+        botao.textContent =
+            "Vou presentear";
+
+    }
+
+}
+
+
+// ==========================================
+// ATUALIZAÇÃO EM TEMPO REAL
+// ==========================================
+
+function acompanharReservas() {
+
+    const container =
+        obterElemento(
+            "listaPresentes"
+        );
+
+
+    if (!container) {
+
+        return;
 
     }
 
 
-    document.addEventListener(
+    const referencia =
+        collection(
+            db,
+            "reservas"
+        );
 
-        "click",
 
-        evento => {
+    onSnapshot(
 
-            if (
+        referencia,
 
-                evento.target
-                .classList
-                .contains(
-                    "next-btn"
-                )
+        snapshot => {
 
-            ) {
+            reservas =
+                {};
 
-                if (
 
-                    currentPage <
-                    pages.length - 1
+            snapshot.forEach(
+                documento => {
 
-                ) {
-
-                    currentPage++;
-
-                    showPage(
-                        currentPage
-                    );
+                    reservas[
+                        documento.id
+                    ] =
+                        documento.data();
 
                 }
+            );
 
-            }
+
+            renderizarPresentes();
+
+        },
+
+        erro => {
+
+            console.error(
+                "Erro ao carregar reservas:",
+                erro
+            );
 
 
-            if (
+            container.innerHTML = `
 
-                evento.target
-                .classList
-                .contains(
-                    "prev-btn"
-                )
+                <div class="nenhum-presente">
 
-            ) {
+                    <h3>
+                        Não foi possível carregar a lista.
+                    </h3>
 
-                if (
+                    <p>
+                        Atualize a página e tente novamente.
+                    </p>
 
-                    currentPage > 0
+                </div>
 
-                ) {
-
-                    currentPage--;
-
-                    showPage(
-                        currentPage
-                    );
-
-                }
-
-            }
+            `;
 
         }
 
     );
 
+}
 
-    showPage(
-        currentPage
+
+// ==========================================
+// LOCALIZAÇÃO
+// ==========================================
+
+function iniciarLocalizacao() {
+
+    const botao =
+        obterElemento(
+            "btnLocalizacao"
+        );
+
+
+    if (!botao) {
+
+        return;
+
+    }
+
+
+    botao.addEventListener(
+        "click",
+        () => {
+
+            if (
+                CONFIG.localizacao
+            ) {
+
+                window.open(
+                    CONFIG.localizacao,
+                    "_blank"
+                );
+
+                return;
+
+            }
+
+
+            alert(
+                "O link da localização ainda não foi configurado."
+            );
+
+        }
     );
 
 }
 
 
+// ==========================================
+// ESTADO DA PRESENÇA
+// ==========================================
+
+function verificarPresencaAnterior() {
+
+    const confirmado =
+        localStorage.getItem(
+            "confirmado"
+        );
+
+
+    const paginaConfirmada =
+        obterElemento(
+            "paginaConfirmada"
+        );
+
+
+    const paginaConfirmacao =
+        obterElemento(
+            "paginaConfirmacao"
+        );
+
+
+    if (
+        !paginaConfirmada ||
+        !paginaConfirmacao
+    ) {
+
+        return;
+
+    }
+
+
+    if (
+        confirmado ===
+        "sim"
+    ) {
+
+        paginaConfirmacao
+            .style
+            .display =
+            "none";
+
+
+        paginaConfirmada
+            .style
+            .display =
+            "block";
+
+    } else {
+
+        paginaConfirmada
+            .style
+            .display =
+            "none";
+
+
+        paginaConfirmacao
+            .style
+            .display =
+            "block";
+
+    }
+
+}
+
 
 // ==========================================
-// INICIAR SITE
+// BOTÃO CHÁ
+// ==========================================
+
+function iniciarBotaoCasaNova() {
+
+    const botao =
+        obterElemento(
+            "btnCasaNova"
+        );
+
+
+    if (!botao) {
+
+        return;
+
+    }
+
+
+    botao.addEventListener(
+        "click",
+        () => {
+
+            if (
+                localStorage.getItem(
+                    "confirmado"
+                ) !==
+                "sim"
+            ) {
+
+                alert(
+                    "Confirme sua presença primeiro."
+                );
+
+                return;
+
+            }
+
+
+            window.location.href =
+                "casa.html";
+
+        }
+    );
+
+}
+
+
+// ==========================================
+// INICIALIZAÇÃO
 // ==========================================
 
 document.addEventListener(
-
     "DOMContentLoaded",
-
     () => {
+
+        console.log(
+            "Sistema do convite carregado."
+        );
+
 
         protegerCasaNova();
 
-        iniciarLivro();
-
         iniciarContagem();
+
+        iniciarLivro();
 
         iniciarFiltros();
 
         iniciarBusca();
 
-        iniciarModais();
+        iniciarBotoesPresentes();
+
+        iniciarLocalizacao();
+
+        iniciarBotaoCasaNova();
+
+        verificarPresencaAnterior();
+
+
+        const botaoConfirmar =
+            obterElemento(
+                "btnConfirmar"
+            );
+
+
+        if (botaoConfirmar) {
+
+            botaoConfirmar
+                .addEventListener(
+                    "click",
+                    confirmarPresenca
+                );
+
+        }
+
 
         renderizarPresentes();
 
-        atualizarResumoFixo();
+        acompanharReservas();
 
     }
-
 );

@@ -3,496 +3,336 @@
 
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
 
-<title>Samuel & Anna Vitória</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-<link rel="stylesheet" href="styles.css">
+    <title>
+        Samuel & Anna Vitória
+    </title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link
+        rel="stylesheet"
+        href="styles.css"
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet"
+    >
 
 </head>
 
+
 <body>
 
-<div class="book">
 
-<!-- PÁGINA 1 -->
+    <main class="book">
 
-<section class="page active">
 
-<div class="page-content capa">
+        <!-- =========================
+             PÁGINA 1
+        ========================= -->
 
+        <section class="page active">
 
-<img src="img/foto.jpeg" class="hero-image">
+            <div class="page-content">
 
+                <img
+                    class="hero-image"
+                    src="fotos/local.jpg"
+                    alt="Samuel e Anna Vitória"
+                    onerror="this.style.display='none'"
+                >
 
-<h1 class="nomes">
 
-Samuel
+                <h1 class="nomes">
 
-<span>e</span>
+                    Samuel
 
-Anna Vitória
+                    <span>
+                        e
+                    </span>
 
-</h1>
+                    Anna Vitória
 
+                </h1>
 
-<p class="subtitle">
 
-Temos a alegria de convidar você para celebrar nosso casamento
+                <p class="subtitle">
 
-</p>
+                    Temos a alegria de convidar você
+                    para celebrar nosso casamento.
 
+                </p>
 
-<button class="next-btn">
 
-Abrir Convite
+                <button
+                    type="button"
+                    class="next-btn"
+                >
 
-</button>
+                    Abrir Convite
 
+                </button>
 
-</div>
+            </div>
 
-</section>
+        </section>
 
 
 
+        <!-- =========================
+             PÁGINA 2
+        ========================= -->
 
+        <section class="page">
 
-<!-- PÁGINA 2 -->
+            <div class="page-content">
 
-<section class="page">
 
-<div class="page-content">
+                <p class="cha-etiqueta">
+                    NOSSO GRANDE DIA
+                </p>
 
 
-<h2>Nossa História</h2>
+                <h2>
+                    Samuel & Anna Vitória
+                </h2>
 
 
-<img src="img/logo.jpg" class="story-photo">
+                <p>
 
+                    Será uma alegria celebrar esse
+                    momento tão especial ao lado
+                    das pessoas que amamos.
 
-<p>
-Cada história de amor é única.
-</p>
+                </p>
 
 
-<p>
-A nossa foi construída com carinho,
-respeito, cumplicidade e muitos sonhos compartilhados.
-</p>
+                <div class="data-casamento">
 
+                    <strong>
+                        24
+                    </strong>
 
-<p>
-Agora chegou o momento de celebrar esse amor
-ao lado das pessoas mais importantes das nossas vidas.
-</p>
+                    <div>
 
+                        <span>
+                            JANEIRO
+                        </span>
 
+                        <small>
+                            2027
+                        </small>
 
-<div class="nav-buttons">
+                    </div>
 
-<button class="prev-btn">
-Voltar
-</button>
+                </div>
 
 
-<button class="next-btn">
-Próximo
-</button>
+                <p>
 
+                    Domingo · 15h30
 
-</div>
+                </p>
 
 
-</div>
+                <button
+                    type="button"
+                    class="maps-btn"
+                    id="btnLocalizacao"
+                >
 
-</section>
+                    Ver localização
 
+                </button>
 
 
+                <div class="nav-buttons">
 
+                    <button
+                        type="button"
+                        class="prev-btn"
+                    >
+                        Voltar
+                    </button>
 
 
-<!-- PÁGINA 3 -->
+                    <button
+                        type="button"
+                        class="next-btn"
+                    >
+                        Continuar
+                    </button>
 
-<section class="page">
+                </div>
 
-<div class="page-content">
+            </div>
 
+        </section>
 
-<img src="fotos/save-date.jpg" class="story-photo">
 
 
-<h2>
-Save The Date
-</h2>
+        <!-- =========================
+             PÁGINA 3
+        ========================= -->
 
+        <section class="page">
 
-<h3>
-24 de Janeiro de 2027
-</h3>
+            <div class="page-content">
 
 
-<h3>
-15:30
-</h3>
+                <p class="convite-aviso">
 
+                    Este convite é pessoal,
+                    individual e intransferível.
 
-<p>
-Reserve esta data especial em sua agenda.
-</p>
+                </p>
 
 
+                <p>
 
-<div class="nav-buttons">
+                    A confirmação de presença é válida
+                    apenas para o convidado identificado.
 
-<button class="prev-btn">
-Voltar
-</button>
+                </p>
 
 
-<button class="next-btn">
-Próximo
-</button>
+                <div id="paginaConfirmacao">
 
 
-</div>
+                    <input
+                        type="text"
+                        id="nome"
+                        placeholder="Seu nome completo"
+                        autocomplete="name"
+                    >
 
 
-</div>
+                    <input
+                        type="tel"
+                        id="telefone"
+                        placeholder="Seu telefone"
+                        autocomplete="tel"
+                    >
 
-</section>
 
+                    <label class="checkbox">
 
+                        <input
+                            type="checkbox"
+                            id="confirmacao"
+                        >
 
+                        Confirmo minha presença
 
+                    </label>
 
 
+                    <button
+                        type="button"
+                        id="btnConfirmar"
+                    >
 
-<!-- PÁGINA 4 -->
+                        Confirmar presença
 
-<section class="page">
+                    </button>
 
-<div class="page-content">
 
+                    <div class="nav-buttons">
 
-<img src="fotos/local.jpg" class="story-photo">
+                        <button
+                            type="button"
+                            class="prev-btn"
+                        >
 
+                            Voltar
 
-<h2>
-Local
-</h2>
+                        </button>
 
+                    </div>
 
-<p>
-Rosas Buffet Maraponga
-</p>
+                </div>
 
 
-<p>
-Rua Bibio Frota, 591
-</p>
 
+                <!-- =========================
+                     JÁ CONFIRMADO
+                ========================= -->
 
-<p>
-Fortaleza - Ceará
-</p>
+                <div
+                    id="paginaConfirmada"
+                    style="display:none;"
+                >
 
+                    <div class="confirmado-box">
 
+                        <span class="confirmado-icone">
+                            ✓
+                        </span>
 
-<a class="maps-btn"
-href="https://maps.google.com/?q=Rua+Bibio+Frota+591+Fortaleza"
-target="_blank">
 
-Ver localização
+                        <h2>
+                            Sua presença já foi confirmada ❤️
+                        </h2>
 
-</a>
 
+                        <p>
+                            Obrigado por confirmar
+                            sua presença.
+                        </p>
 
 
-<div class="nav-buttons">
+                        <button
+                            type="button"
+                            id="btnCasaNova"
+                        >
 
-<button class="prev-btn">
-Voltar
-</button>
+                            Chá de Casa Nova
 
+                        </button>
 
-<button class="next-btn">
-Próximo
-</button>
 
+                        <div class="nav-buttons">
 
-</div>
+                            <button
+                                type="button"
+                                class="prev-btn"
+                            >
 
+                                Voltar
 
-</div>
+                            </button>
 
-</section>
+                        </div>
 
+                    </div>
 
+                </div>
 
+            </div>
 
+        </section>
 
 
 
-<!-- PÁGINA 5 -->
+    </main>
 
-<section class="page">
 
-<div class="page-content">
+    <div
+        id="countdown"
+        style="display:none;"
+    ></div>
 
 
-<h2>
-Convite Individual
-</h2>
-
-
-
-<div class="alert-box">
-
-Este convite é pessoal,
-individual e intransferível.
-
-<br><br>
-
-A confirmação de presença é válida
-apenas para o convidado identificado.
-
-</div>
-
-
-
-<div class="nav-buttons">
-
-<button class="prev-btn">
-Voltar
-</button>
-
-
-<button class="next-btn">
-Próximo
-</button>
-
-
-</div>
-
-
-</div>
-
-</section>
-
-
-
-
-
-
-
-<!-- PÁGINA 6 -->
-
-<section class="page">
-
-<div class="page-content">
-
-
-<h2>
-Contagem Regressiva
-</h2>
-
-
-<div id="countdown"></div>
-
-
-
-<div class="nav-buttons">
-
-<button class="prev-btn">
-Voltar
-</button>
-
-
-<button class="next-btn">
-Próximo
-</button>
-
-
-</div>
-
-
-</div>
-
-</section>
-
-
-
-
-
-
-
-
-<!-- PÁGINA 7 -->
-
-<section class="page">
-
-<div class="page-content">
-
-
-<h2>
-Nossos Momentos
-</h2>
-
-
-
-<div class="galeria">
-
-
-<img src="img/foto1.jpeg">
-
-<img src="img/foto2.jpeg">
-
-<img src="img/foto3.jpeg">
-
-<img src="img/foto4.jpeg">
-
-<img src="img/foto5.jpeg">
-
-<img src="img/foto6.jpeg">
-
-
-</div>
-
-
-
-<div class="nav-buttons">
-
-<button class="prev-btn">
-Voltar
-</button>
-
-
-<button class="next-btn">
-Próximo
-</button>
-
-
-</div>
-
-
-</div>
-
-</section>
-
-
-
-
-
-
-
-
-<!-- PÁGINA 8 -->
-
-<section class="page">
-
-<div class="page-content">
-
-
-<h2>
-Confirmação de Presença
-</h2>
-
-
-
-<input 
-type="text"
-id="nome"
-placeholder="Digite seu nome">
-
-
-
-<input 
-type="tel"
-id="telefone"
-placeholder="Telefone">
-
-
-<label class="checkbox">
-
-<input 
-type="checkbox"
-id="confirmacao">
-
-Confirmo minha presença
-
-</label>
-
-
-
-
-<button 
-class="confirm-btn"
-onclick="confirmarPresenca()">
-
-Confirmar Presença
-
-</button>
-
-
-
-
-
-<div id="acessoCasa"
-style="display:none">
-
-
-<p>
-
-Sua presença já foi confirmada ❤️
-
-</p>
-
-
-<button onclick="abrirCasaNova()">
-
-Chá de Casa Nova
-
-</button>
-
-
-</div>
-
-
-
-
-<div class="nav-buttons">
-
-<button class="prev-btn">
-
-Voltar
-
-</button>
-
-</div>
-
-
-
-</div>
-
-</section>
-
-
-
-
-
-
-</div>
-
-
-
-
-<script src="scripts.js"></script>
-
+    <script
+        type="module"
+        src="scripts.js"
+    ></script>
 
 </body>
 
