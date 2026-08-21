@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 
 <head>
@@ -11,7 +12,7 @@
     >
 
     <title>
-        Painel Administrativo | Samuel & Anna Vitória
+        Administração | Samuel & Anna Vitória
     </title>
 
     <link
@@ -20,7 +21,7 @@
     >
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap"
         rel="stylesheet"
     >
 
@@ -30,1677 +31,394 @@
 <body class="pagina-admin">
 
 
-<main class="admin-container">
+<!-- =====================================
+     LOGIN
+====================================== -->
 
+<section
+    id="adminLogin"
+    class="admin-login"
+>
 
-<!-- =========================
-     CABEÇALHO
-========================= -->
+    <div class="admin-login-box">
 
-<header class="admin-topo">
-
-
-    <div>
-
-        <p class="admin-etiqueta">
-
-            SAMUEL & ANNA VITÓRIA
-
+        <p class="cha-etiqueta">
+            ÁREA RESTRITA
         </p>
 
 
         <h1>
-
-            Painel Administrativo
-
+            Administração
         </h1>
 
 
         <p>
-
-            Acompanhe os convidados
-            e as contribuições do
-            Chá de Casa Nova.
-
+            Samuel & Anna Vitória
         </p>
+
+
+        <input
+            type="email"
+            id="adminEmail"
+            placeholder="E-mail"
+            autocomplete="username"
+        >
+
+
+        <input
+            type="password"
+            id="adminSenha"
+            placeholder="Senha"
+            autocomplete="current-password"
+        >
+
+
+        <button
+            type="button"
+            id="btnLoginAdmin"
+        >
+            Entrar
+        </button>
+
+
+        <p
+            id="adminLoginErro"
+            class="admin-erro"
+        ></p>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================
+     PAINEL
+====================================== -->
+
+<main
+    id="adminPainel"
+    class="admin-painel"
+    style="display:none;"
+>
+
+
+<header class="admin-header">
+
+    <div>
+
+        <p class="cha-etiqueta">
+            PAINEL ADMINISTRATIVO
+        </p>
+
+
+        <h1>
+            Samuel & Anna Vitória
+        </h1>
 
     </div>
 
 
-    <button
-        type="button"
-        class="admin-atualizar"
-        onclick="atualizarPainel()"
-    >
+    <div class="admin-header-acoes">
 
-        ↻ Atualizar
+        <button
+            type="button"
+            id="btnAtualizar"
+        >
+            Atualizar
+        </button>
 
-    </button>
 
+        <button
+            type="button"
+            id="btnSair"
+        >
+            Sair
+        </button>
+
+    </div>
 
 </header>
 
 
 
-<!-- =========================
-     RESUMOS
-========================= -->
+<!-- =====================================
+     RESUMO
+====================================== -->
 
-<section class="admin-resumos">
+<section class="admin-resumo">
 
+    <div class="admin-card-resumo">
 
-    <article class="admin-resumo-card">
-
-
-        <span class="admin-icone">
-
-            👥
-
+        <span>
+            Convidados
         </span>
 
+        <strong id="totalConvidados">
+            0
+        </strong>
 
-        <div>
-
-            <small>
-
-                CONVIDADOS CONFIRMADOS
-
-            </small>
+    </div>
 
 
-            <strong
-                id="totalConvidados"
-            >
+    <div class="admin-card-resumo">
 
-                0
-
-            </strong>
-
-        </div>
-
-
-    </article>
-
-
-
-    <article class="admin-resumo-card">
-
-
-        <span class="admin-icone">
-
-            🤍
-
+        <span>
+            Presentes reservados
         </span>
 
+        <strong id="totalReservas">
+            0
+        </strong>
 
-        <div>
-
-            <small>
-
-                TOTAL INFORMADO
-
-            </small>
+    </div>
 
 
-            <strong
-                id="totalInformado"
-            >
+    <div class="admin-card-resumo">
 
-                R$ 0,00
-
-            </strong>
-
-        </div>
-
-
-    </article>
-
-
-
-    <article class="admin-resumo-card pago">
-
-
-        <span class="admin-icone">
-
-            ✓
-
+        <span>
+            Contribuições
         </span>
 
+        <strong id="totalContribuicoes">
+            0
+        </strong>
 
-        <div>
-
-            <small>
-
-                TOTAL PAGO
-
-            </small>
+    </div>
 
 
-            <strong
-                id="totalPago"
-            >
+    <div class="admin-card-resumo">
 
-                R$ 0,00
-
-            </strong>
-
-        </div>
-
-
-    </article>
-
-
-
-    <article class="admin-resumo-card pendente">
-
-
-        <span class="admin-icone">
-
-            ⏳
-
+        <span>
+            Lua de Mel
         </span>
 
+        <strong id="totalLuaMel">
+            R$ 0,00
+        </strong>
 
-        <div>
-
-            <small>
-
-                PENDENTE
-
-            </small>
-
-
-            <strong
-                id="totalPendente"
-            >
-
-                R$ 0,00
-
-            </strong>
-
-        </div>
-
-
-    </article>
-
+    </div>
 
 </section>
 
 
 
-<!-- =========================
-     AÇÕES
-========================= -->
+<!-- =====================================
+     LUA DE MEL
+====================================== -->
 
-<section class="admin-acoes">
+<section class="admin-secao">
+
+    <div class="admin-secao-topo">
+
+        <div>
+
+            <p class="cha-etiqueta">
+                SONHO
+            </p>
+
+            <h2>
+                Lua de Mel
+            </h2>
+
+        </div>
 
 
-    <div class="admin-busca">
-
-        <span>
-
-            🔎
-
-        </span>
-
-
-        <input
-            type="search"
-            id="buscarAdmin"
-            placeholder="Buscar nome, telefone ou presente..."
+        <button
+            type="button"
+            id="btnAtualizarLua"
         >
+            Atualizar porcentagem
+        </button>
 
     </div>
 
 
+    <div class="admin-lua-grid">
 
-    <select
-        id="filtroStatus"
-    >
+        <div>
 
-        <option value="todos">
+            <span>
+                Meta privada
+            </span>
 
-            Todos os status
+            <strong id="metaLuaMel">
+                Não configurada
+            </strong>
 
-        </option>
-
-
-        <option value="pendente">
-
-            Pendentes
-
-        </option>
+        </div>
 
 
-        <option value="pago">
+        <div>
 
-            Pagos
+            <span>
+                Arrecadado
+            </span>
 
-        </option>
+            <strong id="arrecadadoLuaMel">
+                R$ 0,00
+            </strong>
 
-    </select>
+        </div>
 
+
+        <div>
+
+            <span>
+                Percentual público
+            </span>
+
+            <strong id="percentualAdminLua">
+                0%
+            </strong>
+
+        </div>
+
+    </div>
 
 
     <button
         type="button"
-        class="admin-exportar"
-        onclick="exportarCSV()"
+        id="btnConfigurarMeta"
+        class="btn-secundario"
     >
-
-        ↓ Exportar CSV
-
+        Configurar meta privada
     </button>
 
-
 </section>
 
 
 
-<!-- =========================
-     CONTRIBUIÇÕES
-========================= -->
-
-<section class="admin-bloco">
-
-
-    <div class="admin-titulo">
-
-        <div>
-
-            <p class="admin-etiqueta">
-
-                CHÁ DE CASA NOVA
-
-            </p>
-
-
-            <h2>
-
-                Contribuições
-
-            </h2>
-
-        </div>
-
-
-        <span
-            id="quantidadeContribuicoes"
-        >
-
-            0 registros
-
-        </span>
-
-    </div>
-
-
-
-    <div
-        id="listaContribuicoes"
-        class="admin-lista"
-    >
-
-    </div>
-
-
-</section>
-
-
-
-<!-- =========================
+<!-- =====================================
      CONVIDADOS
-========================= -->
+====================================== -->
 
-<section class="admin-bloco">
+<section class="admin-secao">
 
-
-    <div class="admin-titulo">
+    <div class="admin-secao-topo">
 
         <div>
 
-            <p class="admin-etiqueta">
-
-                CASAMENTO
-
+            <p class="cha-etiqueta">
+                RSVP
             </p>
 
-
             <h2>
-
-                Convidados confirmados
-
+                Convidados
             </h2>
 
         </div>
 
 
-        <span
-            id="quantidadeConvidados"
+        <button
+            type="button"
+            id="btnExportarConvidados"
         >
-
-            0 convidados
-
-        </span>
+            Exportar CSV
+        </button>
 
     </div>
-
 
 
     <div
-        id="listaConvidados"
+        id="listaAdminConvidados"
         class="admin-lista"
     >
+    </div>
+
+</section>
+
+
+
+<!-- =====================================
+     RESERVAS
+====================================== -->
+
+<section class="admin-secao">
+
+    <div class="admin-secao-topo">
+
+        <div>
+
+            <p class="cha-etiqueta">
+                LISTA DE PRESENTES
+            </p>
+
+            <h2>
+                Presentes reservados
+            </h2>
+
+        </div>
+
+
+        <button
+            type="button"
+            id="btnExportarReservas"
+        >
+            Exportar CSV
+        </button>
 
     </div>
 
 
+    <div
+        id="listaAdminReservas"
+        class="admin-lista"
+    >
+    </div>
+
 </section>
 
+
+
+<!-- =====================================
+     CONTRIBUIÇÕES
+====================================== -->
+
+<section class="admin-secao">
+
+    <div class="admin-secao-topo">
+
+        <div>
+
+            <p class="cha-etiqueta">
+                CONTRIBUIÇÕES
+            </p>
+
+            <h2>
+                Registro de contribuições
+            </h2>
+
+        </div>
+
+
+        <button
+            type="button"
+            id="btnExportarContribuicoes"
+        >
+            Exportar CSV
+        </button>
+
+    </div>
+
+
+    <div
+        id="listaAdminContribuicoes"
+        class="admin-lista"
+    >
+    </div>
+
+</section>
 
 
 </main>
 
 
+<script
+    type="module"
+    src="admin.js"
+></script>
 
-<script>
-
-
-// ==========================================
-// DADOS
-// ==========================================
-
-let convidados = [];
-
-let contribuicoes = [];
-
-
-
-// ==========================================
-// FORMATAÇÃO
-// ==========================================
-
-function formatarMoeda(valor) {
-
-    return Number(valor || 0)
-    .toLocaleString(
-
-        "pt-BR",
-
-        {
-
-            style:
-            "currency",
-
-            currency:
-            "BRL"
-
-        }
-
-    );
-
-}
-
-
-
-// ==========================================
-// CARREGAR
-// ==========================================
-
-function carregarDados() {
-
-
-    convidados =
-
-    JSON.parse(
-
-        localStorage.getItem(
-            "convidados"
-        )
-
-    )
-
-    ||
-
-    [];
-
-
-
-    contribuicoes =
-
-    JSON.parse(
-
-        localStorage.getItem(
-            "contribuicoes"
-        )
-
-    )
-
-    ||
-
-    [];
-
-
-
-    contribuicoes =
-
-    contribuicoes.map(
-
-        (item, indice) => ({
-
-            ...item,
-
-            id:
-
-            item.id
-
-            ||
-
-            `contribuicao-${indice}`,
-
-
-
-            status:
-
-            item.status
-
-            ||
-
-            "pendente"
-
-        })
-
-    );
-
-
-    salvarDados();
-
-}
-
-
-
-// ==========================================
-// SALVAR
-// ==========================================
-
-function salvarDados() {
-
-    localStorage.setItem(
-
-        "contribuicoes",
-
-        JSON.stringify(
-            contribuicoes
-        )
-
-    );
-
-}
-
-
-
-// ==========================================
-// RESUMOS
-// ==========================================
-
-function atualizarResumo() {
-
-
-    const totalInformado =
-
-    contribuicoes.reduce(
-
-        (soma, item) =>
-
-        soma +
-        Number(
-            item.valor || 0
-        ),
-
-        0
-
-    );
-
-
-
-    const totalPago =
-
-    contribuicoes
-
-    .filter(
-
-        item =>
-
-        item.status ===
-        "pago"
-
-    )
-
-    .reduce(
-
-        (soma, item) =>
-
-        soma +
-        Number(
-            item.valor || 0
-        ),
-
-        0
-
-    );
-
-
-
-    const totalPendente =
-
-    contribuicoes
-
-    .filter(
-
-        item =>
-
-        item.status !==
-        "pago"
-
-    )
-
-    .reduce(
-
-        (soma, item) =>
-
-        soma +
-        Number(
-            item.valor || 0
-        ),
-
-        0
-
-    );
-
-
-
-    document.getElementById(
-        "totalConvidados"
-    ).textContent =
-
-    convidados.length;
-
-
-
-    document.getElementById(
-        "totalInformado"
-    ).textContent =
-
-    formatarMoeda(
-        totalInformado
-    );
-
-
-
-    document.getElementById(
-        "totalPago"
-    ).textContent =
-
-    formatarMoeda(
-        totalPago
-    );
-
-
-
-    document.getElementById(
-        "totalPendente"
-    ).textContent =
-
-    formatarMoeda(
-        totalPendente
-    );
-
-}
-
-
-
-// ==========================================
-// CONTRIBUIÇÕES
-// ==========================================
-
-function mostrarContribuicoes() {
-
-
-    const container =
-
-    document.getElementById(
-        "listaContribuicoes"
-    );
-
-
-
-    const busca =
-
-    document.getElementById(
-        "buscarAdmin"
-    )
-
-    .value
-
-    .trim()
-
-    .toLowerCase();
-
-
-
-    const statusFiltro =
-
-    document.getElementById(
-        "filtroStatus"
-    )
-
-    .value;
-
-
-
-    const filtradas =
-
-    contribuicoes.filter(
-
-        item => {
-
-
-            const texto =
-
-            `${
-
-                item.nome || ""
-
-            }
-
-            ${
-
-                item.telefone || ""
-
-            }
-
-            ${
-
-                item.presente || ""
-
-            }`
-
-            .toLowerCase();
-
-
-
-            const buscaOk =
-
-            texto.includes(
-                busca
-            );
-
-
-
-            const statusOk =
-
-            statusFiltro ===
-            "todos"
-
-            ||
-
-            item.status ===
-            statusFiltro;
-
-
-
-            return (
-
-                buscaOk &&
-
-                statusOk
-
-            );
-
-        }
-
-    );
-
-
-
-    document.getElementById(
-        "quantidadeContribuicoes"
-    ).textContent =
-
-    `${
-
-        filtradas.length
-
-    }
-
-    ${
-
-        filtradas.length === 1
-
-        ?
-
-        "registro"
-
-        :
-
-        "registros"
-
-    }`;
-
-
-
-    if (
-
-        filtradas.length === 0
-
-    ) {
-
-
-        container.innerHTML = `
-
-        <div class="admin-vazio">
-
-            <h3>
-
-                Nenhuma contribuição encontrada
-
-            </h3>
-
-
-            <p>
-
-                Os registros aparecerão aqui.
-
-            </p>
-
-        </div>
-
-        `;
-
-
-        return;
-
-    }
-
-
-
-    container.innerHTML =
-
-    filtradas
-
-    .slice()
-
-    .reverse()
-
-    .map(
-
-        item => {
-
-
-            const pago =
-
-            item.status ===
-            "pago";
-
-
-            return `
-
-            <article class="admin-registro">
-
-
-                <div class="admin-registro-principal">
-
-
-                    <div class="admin-avatar">
-
-                        ${
-
-                        String(
-
-                            item.nome
-
-                            ||
-
-                            "?"
-
-                        )
-
-                        .charAt(0)
-
-                        .toUpperCase()
-
-                        }
-
-                    </div>
-
-
-                    <div>
-
-
-                        <h3>
-
-                            ${
-
-                            escaparHTML(
-
-                                item.nome
-
-                                ||
-
-                                "Não informado"
-
-                            )
-
-                            }
-
-                        </h3>
-
-
-                        <p>
-
-                            ${
-
-                            escaparHTML(
-
-                                item.telefone
-
-                                ||
-
-                                "Telefone não informado"
-
-                            )
-
-                            }
-
-                        </p>
-
-                    </div>
-
-
-                </div>
-
-
-
-                <div class="admin-presente">
-
-
-                    <small>
-
-                        PRESENTE
-
-                    </small>
-
-
-                    <strong>
-
-                        ${
-
-                        escaparHTML(
-
-                            item.presente
-
-                            ||
-
-                            "Não informado"
-
-                        )
-
-                        }
-
-                    </strong>
-
-                </div>
-
-
-
-                <div class="admin-valor">
-
-
-                    <small>
-
-                        VALOR
-
-                    </small>
-
-
-                    <strong>
-
-                        ${
-
-                        formatarMoeda(
-
-                            item.valor
-
-                        )
-
-                        }
-
-                    </strong>
-
-                </div>
-
-
-
-                <div class="admin-status-area">
-
-
-                    <span
-
-                    class="status
-
-                    ${
-
-                    pago
-
-                    ?
-
-                    "status-pago"
-
-                    :
-
-                    "status-pendente"
-
-                    }
-
-                    "
-
-                    >
-
-                        ${
-
-                        pago
-
-                        ?
-
-                        "PAGO"
-
-                        :
-
-                        "PENDENTE"
-
-                        }
-
-                    </span>
-
-
-                    <small>
-
-                        ${
-
-                        escaparHTML(
-
-                            item.data
-
-                            ||
-
-                            "Data não informada"
-
-                        )
-
-                        }
-
-                    </small>
-
-                </div>
-
-
-
-                <div class="admin-botoes">
-
-
-                    <button
-
-                    class="btn-status"
-
-                    type="button"
-
-                    onclick="alterarStatus(
-
-                    '${item.id}'
-
-                    )"
-
-                    >
-
-                        ${
-
-                        pago
-
-                        ?
-
-                        "Marcar pendente"
-
-                        :
-
-                        "Marcar pago"
-
-                        }
-
-                    </button>
-
-
-
-                    <button
-
-                    class="btn-excluir"
-
-                    type="button"
-
-                    onclick="excluirContribuicao(
-
-                    '${item.id}'
-
-                    )"
-
-                    >
-
-                        Excluir
-
-                    </button>
-
-
-                </div>
-
-
-            </article>
-
-            `;
-
-        }
-
-    )
-
-    .join("");
-
-}
-
-
-
-// ==========================================
-// CONVIDADOS
-// ==========================================
-
-function mostrarConvidados() {
-
-
-    const container =
-
-    document.getElementById(
-        "listaConvidados"
-    );
-
-
-
-    document.getElementById(
-        "quantidadeConvidados"
-    ).textContent =
-
-    `${
-
-        convidados.length
-
-    }
-
-    ${
-
-        convidados.length === 1
-
-        ?
-
-        "convidado"
-
-        :
-
-        "convidados"
-
-    }`;
-
-
-
-    if (
-
-        convidados.length === 0
-
-    ) {
-
-
-        container.innerHTML = `
-
-        <div class="admin-vazio">
-
-            <h3>
-
-                Nenhum convidado confirmado
-
-            </h3>
-
-
-            <p>
-
-                As confirmações aparecerão aqui.
-
-            </p>
-
-        </div>
-
-        `;
-
-
-        return;
-
-    }
-
-
-
-    container.innerHTML =
-
-    convidados
-
-    .slice()
-
-    .reverse()
-
-    .map(
-
-        convidado => `
-
-        <article class="admin-convidado">
-
-
-            <div class="admin-avatar">
-
-
-                ${
-
-                String(
-
-                    convidado.nome
-
-                    ||
-
-                    "?"
-
-                )
-
-                .charAt(0)
-
-                .toUpperCase()
-
-                }
-
-            </div>
-
-
-            <div>
-
-
-                <h3>
-
-                    ${
-
-                    escaparHTML(
-
-                        convidado.nome
-
-                        ||
-
-                        "Não informado"
-
-                    )
-
-                    }
-
-                </h3>
-
-
-                <p>
-
-                    ${
-
-                    escaparHTML(
-
-                        convidado.telefone
-
-                        ||
-
-                        "Telefone não informado"
-
-                    )
-
-                    }
-
-                </p>
-
-            </div>
-
-
-            <small>
-
-
-                Confirmado em:
-
-
-                ${
-
-                escaparHTML(
-
-                    convidado.data
-
-                    ||
-
-                    "Data não informada"
-
-                )
-
-                }
-
-
-            </small>
-
-
-        </article>
-
-        `
-
-    )
-
-    .join("");
-
-}
-
-
-
-// ==========================================
-// STATUS
-// ==========================================
-
-function alterarStatus(id) {
-
-
-    contribuicoes =
-
-    contribuicoes.map(
-
-        item => {
-
-
-            if (
-
-                String(item.id) ===
-
-                String(id)
-
-            ) {
-
-
-                return {
-
-                    ...item,
-
-                    status:
-
-                    item.status ===
-                    "pago"
-
-                    ?
-
-                    "pendente"
-
-                    :
-
-                    "pago"
-
-                };
-
-            }
-
-
-            return item;
-
-        }
-
-    );
-
-
-    salvarDados();
-
-    atualizarPainel();
-
-}
-
-
-
-// ==========================================
-// EXCLUIR
-// ==========================================
-
-function excluirContribuicao(id) {
-
-
-    const confirmar =
-
-    confirm(
-
-        "Deseja excluir esta contribuição?"
-
-    );
-
-
-    if (
-
-        !confirmar
-
-    ) {
-
-        return;
-
-    }
-
-
-    contribuicoes =
-
-    contribuicoes.filter(
-
-        item =>
-
-        String(item.id) !==
-
-        String(id)
-
-    );
-
-
-    salvarDados();
-
-    atualizarPainel();
-
-}
-
-
-
-// ==========================================
-// ESCAPAR HTML
-// ==========================================
-
-function escaparHTML(texto) {
-
-
-    const elemento =
-
-    document.createElement(
-        "div"
-    );
-
-
-    elemento.textContent =
-
-    texto;
-
-
-    return elemento.innerHTML;
-
-}
-
-
-
-// ==========================================
-// EXPORTAR CSV
-// ==========================================
-
-function exportarCSV() {
-
-
-    const cabecalho = [
-
-        "Nome",
-
-        "Telefone",
-
-        "Presente",
-
-        "Valor",
-
-        "Status",
-
-        "Data"
-
-    ];
-
-
-
-    const linhas =
-
-    contribuicoes.map(
-
-        item => [
-
-            item.nome,
-
-            item.telefone,
-
-            item.presente,
-
-            Number(
-
-                item.valor || 0
-
-            )
-
-            .toFixed(2)
-
-            .replace(
-                ".",
-                ","
-            ),
-
-            item.status,
-
-            item.data
-
-        ]
-
-    );
-
-
-
-    const csv = [
-
-        cabecalho,
-
-        ...linhas
-
-    ]
-
-    .map(
-
-        linha =>
-
-        linha
-
-        .map(
-
-            valor =>
-
-            `"${
-
-                String(
-
-                    valor
-
-                    ||
-
-                    ""
-
-                )
-
-                .replace(
-
-                    /"/g,
-
-                    '""'
-
-                )
-
-            }"`
-
-        )
-
-        .join(";")
-
-    )
-
-    .join("\n");
-
-
-
-    const blob =
-
-    new Blob(
-
-        [
-
-            "\uFEFF" +
-
-            csv
-
-        ],
-
-        {
-
-            type:
-
-            "text/csv;charset=utf-8;"
-
-        }
-
-    );
-
-
-
-    const link =
-
-    document.createElement(
-        "a"
-    );
-
-
-
-    link.href =
-
-    URL.createObjectURL(
-        blob
-    );
-
-
-
-    link.download =
-
-    "cha-casa-nova.csv";
-
-
-
-    document.body
-    .appendChild(
-        link
-    );
-
-
-
-    link.click();
-
-
-
-    link.remove();
-
-
-
-    URL.revokeObjectURL(
-
-        link.href
-
-    );
-
-}
-
-
-
-// ==========================================
-// ATUALIZAR
-// ==========================================
-
-function atualizarPainel() {
-
-
-    carregarDados();
-
-    atualizarResumo();
-
-    mostrarContribuicoes();
-
-    mostrarConvidados();
-
-}
-
-
-
-// ==========================================
-// EVENTOS
-// ==========================================
-
-document.addEventListener(
-
-    "DOMContentLoaded",
-
-    () => {
-
-
-        atualizarPainel();
-
-
-
-        document
-
-        .getElementById(
-
-            "buscarAdmin"
-
-        )
-
-        .addEventListener(
-
-            "input",
-
-            mostrarContribuicoes
-
-        );
-
-
-
-        document
-
-        .getElementById(
-
-            "filtroStatus"
-
-        )
-
-        .addEventListener(
-
-            "change",
-
-            mostrarContribuicoes
-
-        );
-
-
-    }
-
-);
-
-
-</script>
-
-<script type="module" src="scripts.js"></script>
 
 </body>
 

@@ -1,5 +1,5 @@
 // ==========================================
-// FIREBASE
+// FIREBASE.JS
 // ==========================================
 
 import {
@@ -10,12 +10,15 @@ import {
     getFirestore,
     collection,
     addDoc,
+    setDoc,
     serverTimestamp,
     doc,
+    getDoc,
     runTransaction,
     onSnapshot,
     getDocs,
-    deleteDoc
+    deleteDoc,
+    writeBatch
 } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 import {
@@ -27,7 +30,7 @@ import {
 
 
 // ==========================================
-// CONFIGURAÇÃO
+// CONFIGURAÇÃO DO FIREBASE
 // ==========================================
 
 const firebaseConfig = {
@@ -57,51 +60,41 @@ const firebaseConfig = {
 
 
 // ==========================================
-// INICIAR
+// INICIALIZAÇÃO
 // ==========================================
 
-const app =
-    initializeApp(firebaseConfig);
+const app = initializeApp(
+    firebaseConfig
+);
 
 
-const db =
-    getFirestore(app);
+const db = getFirestore(app);
 
 
-const auth =
-    getAuth(app);
+const auth = getAuth(app);
 
 
 // ==========================================
-// EXPORTAR
+// EXPORTAÇÕES
 // ==========================================
 
 export {
 
     db,
-
     auth,
-
     collection,
-
     addDoc,
-
+    setDoc,
     serverTimestamp,
-
     doc,
-
+    getDoc,
     runTransaction,
-
     onSnapshot,
-
     getDocs,
-
     deleteDoc,
-
+    writeBatch,
     signInWithEmailAndPassword,
-
     onAuthStateChanged,
-
     signOut
 
 };

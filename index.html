@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 
 <head>
@@ -30,124 +31,214 @@
 <body>
 
 
-    <main class="book">
+<main class="book">
 
 
-        <!-- =========================
-             PÁGINA 1
-        ========================= -->
+    <!-- =====================================
+         PÁGINA 1
+    ====================================== -->
 
-        <section class="page active">
+    <section class="page active">
 
-            <div class="page-content">
+        <div class="page-content">
 
-                <img
-                    class="hero-image"
-                    src="fotos/local.jpg"
-                    alt="Samuel e Anna Vitória"
-                    onerror="this.style.display='none'"
-                >
+            <img
+                class="hero-image"
+                src="img/local.jpg"
+                alt="Samuel e Anna Vitória"
+                onerror="this.style.display='none'"
+            >
 
 
-                <h1 class="nomes">
+            <h1 class="nomes">
 
-                    Samuel
+                Samuel
+
+                <span>
+                    e
+                </span>
+
+                Anna Vitória
+
+            </h1>
+
+
+            <p class="subtitle">
+
+                Temos a alegria de convidar você
+                para celebrar nosso casamento.
+
+            </p>
+
+
+            <button
+                type="button"
+                class="next-btn"
+            >
+
+                Abrir Convite
+
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================
+         PÁGINA 2
+    ====================================== -->
+
+    <section class="page">
+
+        <div class="page-content">
+
+            <p class="cha-etiqueta">
+                NOSSO GRANDE DIA
+            </p>
+
+
+            <h2>
+                Samuel & Anna Vitória
+            </h2>
+
+
+            <p>
+
+                Será uma alegria celebrar esse
+                momento tão especial ao lado
+                das pessoas que amamos.
+
+            </p>
+
+
+            <div class="data-casamento">
+
+                <strong>
+                    24
+                </strong>
+
+                <div>
 
                     <span>
-                        e
+                        JANEIRO
                     </span>
 
-                    Anna Vitória
+                    <small>
+                        2027
+                    </small>
 
-                </h1>
+                </div>
+
+            </div>
 
 
-                <p class="subtitle">
+            <p>
+                Domingo · 15h30
+            </p>
 
-                    Temos a alegria de convidar você
-                    para celebrar nosso casamento.
 
-                </p>
+            <button
+                type="button"
+                class="maps-btn"
+                id="btnLocalizacao"
+            >
+
+                Ver localização
+
+            </button>
+
+
+            <div class="nav-buttons">
+
+                <button
+                    type="button"
+                    class="prev-btn"
+                >
+                    Voltar
+                </button>
 
 
                 <button
                     type="button"
                     class="next-btn"
                 >
-
-                    Abrir Convite
-
+                    Continuar
                 </button>
 
             </div>
 
-        </section>
+        </div>
+
+    </section>
 
 
 
-        <!-- =========================
-             PÁGINA 2
-        ========================= -->
+    <!-- =====================================
+         PÁGINA 3
+    ====================================== -->
 
-        <section class="page">
+    <section class="page">
 
-            <div class="page-content">
+        <div class="page-content">
 
+            <p class="convite-aviso">
 
-                <p class="cha-etiqueta">
-                    NOSSO GRANDE DIA
-                </p>
+                Este convite é pessoal,
+                individual e intransferível.
 
-
-                <h2>
-                    Samuel & Anna Vitória
-                </h2>
+            </p>
 
 
-                <p>
+            <p>
 
-                    Será uma alegria celebrar esse
-                    momento tão especial ao lado
-                    das pessoas que amamos.
+                A confirmação de presença é válida
+                apenas para o convidado identificado.
 
-                </p>
-
-
-                <div class="data-casamento">
-
-                    <strong>
-                        24
-                    </strong>
-
-                    <div>
-
-                        <span>
-                            JANEIRO
-                        </span>
-
-                        <small>
-                            2027
-                        </small>
-
-                    </div>
-
-                </div>
+            </p>
 
 
-                <p>
+            <!-- =================================
+                 FORMULÁRIO
+            ================================== -->
 
-                    Domingo · 15h30
+            <div id="paginaConfirmacao">
 
-                </p>
+                <input
+                    type="text"
+                    id="nome"
+                    placeholder="Seu nome completo"
+                    autocomplete="name"
+                >
+
+
+                <input
+                    type="tel"
+                    id="telefone"
+                    placeholder="Seu telefone"
+                    autocomplete="tel"
+                >
+
+
+                <label class="checkbox">
+
+                    <input
+                        type="checkbox"
+                        id="confirmacao"
+                    >
+
+                    Confirmo minha presença
+
+                </label>
 
 
                 <button
                     type="button"
-                    class="maps-btn"
-                    id="btnLocalizacao"
+                    id="btnConfirmar"
                 >
 
-                    Ver localização
+                    Confirmar presença
 
                 </button>
 
@@ -158,87 +249,50 @@
                         type="button"
                         class="prev-btn"
                     >
+
                         Voltar
-                    </button>
 
-
-                    <button
-                        type="button"
-                        class="next-btn"
-                    >
-                        Continuar
                     </button>
 
                 </div>
 
             </div>
 
-        </section>
 
 
+            <!-- =================================
+                 CONFIRMADO
+            ================================== -->
 
-        <!-- =========================
-             PÁGINA 3
-        ========================= -->
+            <div
+                id="paginaConfirmada"
+                style="display:none;"
+            >
 
-        <section class="page">
+                <div class="confirmado-box">
 
-            <div class="page-content">
-
-
-                <p class="convite-aviso">
-
-                    Este convite é pessoal,
-                    individual e intransferível.
-
-                </p>
+                    <span class="confirmado-icone">
+                        ✓
+                    </span>
 
 
-                <p>
-
-                    A confirmação de presença é válida
-                    apenas para o convidado identificado.
-
-                </p>
+                    <h2>
+                        Sua presença já foi confirmada ❤️
+                    </h2>
 
 
-                <div id="paginaConfirmacao">
-
-
-                    <input
-                        type="text"
-                        id="nome"
-                        placeholder="Seu nome completo"
-                        autocomplete="name"
-                    >
-
-
-                    <input
-                        type="tel"
-                        id="telefone"
-                        placeholder="Seu telefone"
-                        autocomplete="tel"
-                    >
-
-
-                    <label class="checkbox">
-
-                        <input
-                            type="checkbox"
-                            id="confirmacao"
-                        >
-
-                        Confirmo minha presença
-
-                    </label>
+                    <p>
+                        Obrigado por confirmar
+                        sua presença.
+                    </p>
 
 
                     <button
                         type="button"
-                        id="btnConfirmar"
+                        id="btnCasaNova"
                     >
 
-                        Confirmar presença
+                        Chá de Casa Nova
 
                     </button>
 
@@ -258,81 +312,21 @@
 
                 </div>
 
-
-
-                <!-- =========================
-                     JÁ CONFIRMADO
-                ========================= -->
-
-                <div
-                    id="paginaConfirmada"
-                    style="display:none;"
-                >
-
-                    <div class="confirmado-box">
-
-                        <span class="confirmado-icone">
-                            ✓
-                        </span>
-
-
-                        <h2>
-                            Sua presença já foi confirmada ❤️
-                        </h2>
-
-
-                        <p>
-                            Obrigado por confirmar
-                            sua presença.
-                        </p>
-
-
-                        <button
-                            type="button"
-                            id="btnCasaNova"
-                        >
-
-                            Chá de Casa Nova
-
-                        </button>
-
-
-                        <div class="nav-buttons">
-
-                            <button
-                                type="button"
-                                class="prev-btn"
-                            >
-
-                                Voltar
-
-                            </button>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
             </div>
 
-        </section>
+        </div>
+
+    </section>
+
+</main>
 
 
 
-    </main>
+<script
+    type="module"
+    src="scripts.js"
+></script>
 
-
-    <div
-        id="countdown"
-        style="display:none;"
-    ></div>
-
-
-    <script
-        type="module"
-        src="scripts.js"
-    ></script>
 
 </body>
 

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 
 <head>
@@ -30,55 +31,173 @@
 <body class="pagina-cha">
 
 
-    <!-- =========================
-         TOPO
-    ========================= -->
+<header class="cha-hero">
 
-    <header class="cha-hero">
+    <div class="cha-hero-overlay">
 
-        <div class="cha-hero-overlay">
+        <p class="cha-pequeno-titulo">
+            UM NOVO CAPÍTULO
+        </p>
 
-            <p class="cha-pequeno-titulo">
-                UM NOVO CAPÍTULO
+
+        <h1>
+            Chá de Casa Nova
+        </h1>
+
+
+        <h2>
+            Samuel & Anna Vitória
+        </h2>
+
+
+        <div class="cha-linha"></div>
+
+
+        <p class="cha-descricao">
+
+            Um novo lar começa com amor,
+            carinho e pessoas especiais.
+
+        </p>
+
+
+        <div class="cha-data">
+
+            <span>
+                07
+            </span>
+
+            <div>
+
+                <strong>
+                    NOVEMBRO
+                </strong>
+
+                <small>
+                    2026
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<main class="cha-conteudo">
+
+
+    <!-- =================================
+         BOAS VINDAS
+    ================================== -->
+
+    <section class="cha-boas-vindas">
+
+        <p class="cha-etiqueta">
+            NOSSO NOVO LAR
+        </p>
+
+
+        <h2>
+            Cada detalhe será lembrado
+            com carinho
+        </h2>
+
+
+        <p>
+
+            Estamos começando uma nova etapa
+            e ficaremos muito felizes em ter você
+            fazendo parte desse momento.
+
+        </p>
+
+
+        <p>
+
+            Escolha um presente da nossa lista
+            para fazer parte da construção
+            do nosso novo lar.
+
+        </p>
+
+    </section>
+
+
+
+    <!-- =================================
+         PALETA
+    ================================== -->
+
+    <section class="paleta-section">
+
+        <div class="paleta-texto">
+
+            <p class="cha-etiqueta">
+                NOSSA INSPIRAÇÃO
             </p>
-
-
-            <h1>
-                Chá de Casa Nova
-            </h1>
 
 
             <h2>
-                Samuel & Anna Vitória
+                Paleta do nosso lar
             </h2>
 
 
-            <div class="cha-linha"></div>
+            <p>
 
-
-            <p class="cha-descricao">
-
-                Um novo lar começa com amor,
-                carinho e pessoas especiais.
+                Escolhemos tons suaves,
+                acolhedores e naturais para
+                representar o estilo que desejamos
+                para nossa casa.
 
             </p>
 
 
-            <div class="cha-data">
+            <div class="cores-lista">
 
-                <span>
-                    07
-                </span>
+                <div class="cor-item">
 
-                <div>
+                    <span class="cor marrom"></span>
 
                     <strong>
-                        NOVEMBRO
+                        Marrom
                     </strong>
 
-                    <small>
-                        2026
-                    </small>
+                </div>
+
+
+                <div class="cor-item">
+
+                    <span class="cor bege"></span>
+
+                    <strong>
+                        Bege
+                    </strong>
+
+                </div>
+
+
+                <div class="cor-item">
+
+                    <span class="cor bambu"></span>
+
+                    <strong>
+                        Bambu
+                    </strong>
+
+                </div>
+
+
+                <div class="cor-item">
+
+                    <span class="cor branco"></span>
+
+                    <strong>
+                        Branco
+                    </strong>
 
                 </div>
 
@@ -86,328 +205,322 @@
 
         </div>
 
-    </header>
+
+        <div class="paleta-imagem">
+
+            <img
+                src="img/paleta-cha.jpg"
+                alt="Inspiração para nossa casa"
+                onerror="this.style.display='none'"
+            >
+
+        </div>
+
+    </section>
 
 
 
-    <main class="cha-conteudo">
+    <!-- =================================
+         LISTA
+    ================================== -->
 
+    <section class="presentes-section">
 
-        <!-- =========================
-             BOAS-VINDAS
-        ========================= -->
-
-        <section class="cha-boas-vindas">
+        <div class="titulo-presentes-area">
 
             <p class="cha-etiqueta">
-                NOSSO NOVO LAR
+                LISTA DE PRESENTES
             </p>
 
 
             <h2>
-                Cada detalhe será lembrado
-                com carinho
+                Escolha um presente
+                para nosso lar
             </h2>
 
 
             <p>
 
-                Estamos começando uma nova etapa
-                e ficaremos muito felizes em ter você
-                fazendo parte desse momento.
+                Escolha um dos itens abaixo.
+                Ao confirmar sua escolha,
+                o presente ficará reservado
+                para você.
 
             </p>
 
-
-            <p>
-
-                Escolha um presente da nossa lista
-                para fazer parte da construção
-                do nosso novo lar.
-
-            </p>
-
-        </section>
+        </div>
 
 
 
-        <!-- =========================
-             PALETA
-        ========================= -->
+        <div class="busca-presentes">
 
-        <section class="paleta-section">
-
-            <div class="paleta-texto">
-
-                <p class="cha-etiqueta">
-                    NOSSA INSPIRAÇÃO
-                </p>
+            <span>
+                🔎
+            </span>
 
 
-                <h2>
-                    Paleta do nosso lar
-                </h2>
+            <input
+                type="search"
+                id="buscarPresente"
+                placeholder="Buscar um presente..."
+                autocomplete="off"
+            >
 
+        </div>
+
+
+
+        <div
+            class="filtros-presentes"
+            id="filtrosPresentes"
+        >
+
+            <button
+                class="filtro-btn ativo"
+                type="button"
+                data-categoria="todos"
+            >
+                Todos
+            </button>
+
+
+            <button
+                class="filtro-btn"
+                type="button"
+                data-categoria="Sala"
+            >
+                Sala
+            </button>
+
+
+            <button
+                class="filtro-btn"
+                type="button"
+                data-categoria="Cozinha"
+            >
+                Cozinha
+            </button>
+
+
+            <button
+                class="filtro-btn"
+                type="button"
+                data-categoria="Quarto"
+            >
+                Quarto
+            </button>
+
+
+            <button
+                class="filtro-btn"
+                type="button"
+                data-categoria="Organização"
+            >
+                Organização
+            </button>
+
+
+            <button
+                class="filtro-btn"
+                type="button"
+                data-categoria="Sonhos"
+            >
+                Sonhos
+            </button>
+
+        </div>
+
+
+
+        <div
+            id="listaPresentes"
+            class="lista-presentes"
+        >
+
+            <div class="nenhum-presente">
 
                 <p>
-
-                    Escolhemos tons suaves,
-                    acolhedores e naturais para
-                    representar o estilo que desejamos
-                    para nossa casa.
-
-                </p>
-
-
-                <div class="cores-lista">
-
-                    <div class="cor-item">
-
-                        <span class="cor marrom"></span>
-
-                        <strong>
-                            Marrom
-                        </strong>
-
-                    </div>
-
-
-                    <div class="cor-item">
-
-                        <span class="cor bege"></span>
-
-                        <strong>
-                            Bege
-                        </strong>
-
-                    </div>
-
-
-                    <div class="cor-item">
-
-                        <span class="cor bambu"></span>
-
-                        <strong>
-                            Bambu
-                        </strong>
-
-                    </div>
-
-
-                    <div class="cor-item">
-
-                        <span class="cor branco"></span>
-
-                        <strong>
-                            Branco
-                        </strong>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="paleta-imagem">
-
-                <img
-                    src="img/paleta-cha.jpg"
-                    alt="Inspiração para nossa casa"
-                >
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =========================
-             LISTA DE PRESENTES
-        ========================= -->
-
-        <section class="presentes-section">
-
-
-            <div class="titulo-presentes-area">
-
-                <p class="cha-etiqueta">
-                    LISTA DE PRESENTES
-                </p>
-
-
-                <h2>
-                    Escolha um presente
-                    para nosso lar
-                </h2>
-
-
-                <p>
-
-                    Escolha um dos itens abaixo.
-                    Ao confirmar sua escolha,
-                    o presente ficará reservado
-                    para você.
-
+                    Carregando presentes...
                 </p>
 
             </div>
 
+        </div>
 
-
-            <!-- BUSCA -->
-
-            <div class="busca-presentes">
-
-                <span>
-                    🔎
-                </span>
-
-
-                <input
-
-                    type="search"
-
-                    id="buscarPresente"
-
-                    placeholder="Buscar um presente..."
-
-                    autocomplete="off"
-
-                >
-
-            </div>
+    </section>
 
 
 
-            <!-- FILTROS -->
+    <!-- =================================
+         FINAL
+    ================================== -->
 
-            <div
-                class="filtros-presentes"
-                id="filtrosPresentes"
-            >
+    <section class="cha-final">
 
-                <button
-                    class="filtro-btn ativo"
-                    type="button"
-                    data-categoria="todos"
-                >
-                    Todos
-                </button>
+        <p class="cha-etiqueta">
+            COM CARINHO
+        </p>
 
 
-                <button
-                    class="filtro-btn"
-                    type="button"
-                    data-categoria="Sala"
-                >
-                    Sala
-                </button>
+        <h2>
+            Obrigado por fazer parte
+            da nossa história
+        </h2>
 
 
-                <button
-                    class="filtro-btn"
-                    type="button"
-                    data-categoria="Cozinha"
-                >
-                    Cozinha
-                </button>
+        <p>
+
+            Cada gesto, cada presente e cada
+            mensagem serão recebidos com muito amor.
+
+        </p>
 
 
-                <button
-                    class="filtro-btn"
-                    type="button"
-                    data-categoria="Quarto"
-                >
-                    Quarto
-                </button>
+        <h3>
+            Samuel & Anna Vitória
+        </h3>
 
 
-                <button
-                    class="filtro-btn"
-                    type="button"
-                    data-categoria="Organização"
-                >
-                    Organização
-                </button>
+        <a
+            href="index.html"
+            class="btn-voltar"
+        >
+            Voltar
+        </a>
 
-            </div>
+    </section>
+
+</main>
 
 
 
-            <!-- PRESENTES -->
+<!-- =====================================
+     MODAL DE CONTRIBUIÇÃO
+====================================== -->
 
-            <div
-                id="listaPresentes"
-                class="lista-presentes"
-            >
+<div
+    class="modal-contribuicao"
+    id="modalContribuicao"
+>
 
-                <div class="nenhum-presente">
+    <div class="modal-conteudo">
 
-                    <p>
-                        Carregando presentes...
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =========================
-             FINAL
-        ========================= -->
-
-        <section class="cha-final">
-
-            <p class="cha-etiqueta">
-                COM CARINHO
-            </p>
+        <button
+            type="button"
+            class="modal-fechar"
+            id="btnFecharContribuicao"
+        >
+            ×
+        </button>
 
 
-            <h2>
-                Obrigado por fazer parte
-                da nossa história
-            </h2>
+        <p class="cha-etiqueta">
+            CONTRIBUIÇÃO
+        </p>
 
 
-            <p>
-
-                Cada gesto, cada presente e cada
-                mensagem serão recebidos com muito amor.
-
-            </p>
+        <h2 id="modalTitulo">
+            Lua de Mel
+        </h2>
 
 
-            <h3>
-                Samuel & Anna Vitória
-            </h3>
+        <p id="modalDescricao">
+        </p>
 
 
-            <a
-                href="index.html"
-                class="btn-voltar"
-            >
-                Voltar
-            </a>
-
-        </section>
-
-    </main>
+        <p
+            id="modalMeta"
+            class="modal-meta"
+        >
+        </p>
 
 
+        <input
+            type="text"
+            id="valorContribuicao"
+            inputmode="decimal"
+            placeholder="Digite o valor"
+            autocomplete="off"
+        >
 
-    <!-- IMPORTANTE:
-         scripts.js usa import,
-         portanto precisa de type="module".
-    -->
 
-    <script
-        type="module"
-        src="scripts.js"
-    ></script>
+        <button
+            type="button"
+            id="btnAdicionarContribuicao"
+        >
+            Adicionar contribuição
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================
+     MODAL RESUMO
+====================================== -->
+
+<div
+    class="modal-contribuicao"
+    id="modalResumo"
+>
+
+    <div class="modal-conteudo">
+
+        <button
+            type="button"
+            class="modal-fechar"
+            id="btnFecharResumo"
+        >
+            ×
+        </button>
+
+
+        <p class="cha-etiqueta">
+            SEU RESUMO
+        </p>
+
+
+        <h2>
+            Contribuições
+        </h2>
+
+
+        <div id="itensResumo"></div>
+
+
+        <div class="resumo-total">
+
+            <span>
+                Total
+            </span>
+
+            <strong id="totalResumo">
+                R$ 0,00
+            </strong>
+
+        </div>
+
+
+        <button
+            type="button"
+            id="btnFinalizarContribuicao"
+        >
+            Continuar pelo WhatsApp
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<script
+    type="module"
+    src="scripts.js"
+></script>
+
 
 </body>
 

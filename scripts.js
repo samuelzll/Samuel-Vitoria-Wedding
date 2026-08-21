@@ -5,12 +5,15 @@
 import {
 
     db,
+
     collection,
     addDoc,
+    setDoc,
     serverTimestamp,
     doc,
     runTransaction,
-    onSnapshot
+    onSnapshot,
+    getDocs
 
 } from "./firebase.js";
 
@@ -22,7 +25,7 @@ import {
 const CONFIG = {
 
     casamento:
-        "2027-01-24T16:00:00-03:00",
+        "2027-01-24T15:30:00",
 
     whatsapp:
         "5585988338580",
@@ -34,7 +37,7 @@ const CONFIG = {
 
 
 // ==========================================
-// LISTA DE PRESENTES
+// PRESENTES
 // ==========================================
 
 const presentes = [
@@ -144,7 +147,7 @@ const presentes = [
         categoria: "Organização",
         icone: "🧺",
         descricao:
-            "Para manter nossa rotina mais organizada."
+            "Para manter nossa rotina organizada."
     },
 
     {
@@ -163,6 +166,28 @@ const presentes = [
         icone: "🗃️",
         descricao:
             "Para deixar cada espaço em seu lugar."
+    },
+
+    {
+        id: "lua-de-mel",
+        nome: "Lua de Mel",
+        categoria: "Sonhos",
+        icone: "✈️",
+        descricao:
+            "Contribua com qualquer valor para esse sonho.",
+        tipo:
+            "contribuicao"
+    },
+
+    {
+        id: "fundo-casa",
+        nome: "Fundo Casa Nova",
+        categoria: "Sonhos",
+        icone: "🏡",
+        descricao:
+            "Ajude nos detalhes e necessidades do nosso lar.",
+        tipo:
+            "contribuicao"
     }
 
 ];
@@ -175,9 +200,14 @@ const presentes = [
 let categoriaAtual =
     "todos";
 
+let presenteSelecionado =
+    null;
 
-let reservas =
-    {};
+let resumoContribuicoes =
+    [];
+
+let reservasAtuais =
+    new Map();
 
 
 // ==========================================
@@ -197,41 +227,259 @@ function escaparHTML(texto) {
         document.createElement("div");
 
     elemento.textContent =
-        String(texto);
+        String(texto ?? "");
 
     return elemento.innerHTML;
 
 }
 
 
-function telefoneNormalizado(telefone) {
+function formatarMoeda(valor) {
 
-    return String(telefone)
-        .replace(/\D/g, "");
+    return Number(valor || 0)
+        .toLocaleString(
+            "pt-BR",
+            {
+                style: "currency",
+                currency: "BRL"
+            }
+        );
+
+}
+
+
+function ehContribuicao(item) {
+
+    return item?.tipo ===
+        "contribuicao";
 
 }
 
 
 // ==========================================
-// PRESENÇA
+// INICIALIZAR CONVITE
+// ==========================================
+
+function iniciarConvite() {
+
+    const paginas =
+        Array.from(
+            document.querySelectorAll(".page")
+        );
+
+    if (!paginas.length) {
+        return;
+    }
+
+
+    let paginaAtual = 0;
+
+
+    function mostrarPagina(indice) {
+
+        if (
+            indice < 0 ||
+            indice >= paginas.length
+        ) {
+            return;
+        }
+
+
+        paginaAtual = indice;
+
+
+        paginas.forEach(
+            (pagina, i) => {
+
+                pagina.classList.toggle(
+                    "active",
+                    i === paginaAtual
+                );
+
+            }
+        );
+
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+
+        atualizarConfirmacaoVisual();
+
+    }
+
+
+    document.querySelectorAll(
+        ".next-btn"
+    ).forEach(
+        botao => {
+
+            botao.addEventListener(
+                "click",
+                () => {
+
+                    mostrarPagina(
+                        paginaAtual + 1
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+    document.querySelectorAll(
+        ".prev-btn"
+    ).forEach(
+        botao => {
+
+            botao.addEventListener(
+                "click",
+                () => {
+
+                    mostrarPagina(
+                        paginaAtual - 1
+                    );
+
+                }
+            );
+
+        }
+    );
+
+
+    const btnCasaNova =
+        obterElemento(
+            "btnCasaNova"
+        );
+
+
+    if (btnCasaNova) {
+
+        btnCasaNova.addEventListener(
+            "click",
+            () => {
+
+                window.location.href =
+                    "casa.html";
+
+            }
+        );
+
+    }
+
+
+    const btnLocalizacao =
+        obterElemento(
+            "btnLocalizacao"
+        );
+
+
+    if (btnLocalizacao) {
+
+        btnLocalizacao.addEventListener(
+            "click",
+            () => {
+
+                if (
+                    CONFIG.localizacao
+                ) {
+
+                    window.open(
+                        CONFIG.localizacao,
+                        "_blank"
+                    );
+
+                } else {
+
+                    alert(
+                        "Ainda falta colocar o link da localização no CONFIG do scripts.js."
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    mostrarPagina(0);
+
+}
+
+
+// ==========================================
+// CONFIRMAÇÃO VISUAL
+// ==========================================
+
+function atualizarConfirmacaoVisual() {
+
+    const paginaConfirmacao =
+        obterElemento(
+            "paginaConfirmacao"
+        );
+
+    const paginaConfirmada =
+        obterElemento(
+            "paginaConfirmada"
+        );
+
+
+    if (
+        !paginaConfirmacao ||
+        !paginaConfirmada
+    ) {
+        return;
+    }
+
+
+    const confirmado =
+        localStorage.getItem(
+            "confirmado"
+        ) === "sim";
+
+
+    if (confirmado) {
+
+        paginaConfirmacao.style.display =
+            "none";
+
+        paginaConfirmada.style.display =
+            "block";
+
+    } else {
+
+        paginaConfirmacao.style.display =
+            "block";
+
+        paginaConfirmada.style.display =
+            "none";
+
+    }
+
+}
+
+
+// ==========================================
+// CONFIRMAR PRESENÇA
 // ==========================================
 
 async function confirmarPresenca(evento) {
 
     if (evento) {
-
         evento.preventDefault();
-
     }
 
 
     const nomeCampo =
         obterElemento("nome");
 
-
     const telefoneCampo =
         obterElemento("telefone");
-
 
     const confirmacao =
         obterElemento("confirmacao");
@@ -242,19 +490,12 @@ async function confirmarPresenca(evento) {
         !telefoneCampo ||
         !confirmacao
     ) {
-
-        console.error(
-            "Campos da confirmação não encontrados."
-        );
-
         return;
-
     }
 
 
     const nome =
         nomeCampo.value.trim();
-
 
     const telefone =
         telefoneCampo.value.trim();
@@ -263,7 +504,7 @@ async function confirmarPresenca(evento) {
     if (!nome) {
 
         alert(
-            "Digite seu nome."
+            "Digite seu nome completo."
         );
 
         nomeCampo.focus();
@@ -297,8 +538,26 @@ async function confirmarPresenca(evento) {
     }
 
 
+    const telefoneId =
+        telefone
+            .replace(/\D/g, "");
+
+
+    if (!telefoneId) {
+
+        alert(
+            "Digite um telefone válido."
+        );
+
+        return;
+
+    }
+
+
     const botao =
-        obterElemento("btnConfirmar");
+        obterElemento(
+            "btnConfirmar"
+        );
 
 
     if (botao) {
@@ -313,51 +572,27 @@ async function confirmarPresenca(evento) {
 
     try {
 
-        const id =
-            telefoneNormalizado(
-                telefone
-            );
+        await setDoc(
 
+            doc(
+                db,
+                "convidados",
+                telefoneId
+            ),
 
-        await runTransaction(
+            {
 
-            db,
+                nome:
+                    nome,
 
-            async transaction => {
+                telefone:
+                    telefone,
 
-                const referencia =
-                    doc(
-                        db,
-                        "convidados",
-                        id
-                    );
+                confirmado:
+                    true,
 
-
-                transaction.set(
-
-                    referencia,
-
-                    {
-
-                        nome:
-                            nome,
-
-                        telefone:
-                            telefone,
-
-                        confirmado:
-                            true,
-
-                        criadoEm:
-                            serverTimestamp()
-
-                    },
-
-                    {
-                        merge: true
-                    }
-
-                );
+                criadoEm:
+                    serverTimestamp()
 
             }
 
@@ -382,27 +617,62 @@ async function confirmarPresenca(evento) {
         );
 
 
-        window.location.href =
-            "casa.html";
+        atualizarConfirmacaoVisual();
+
+
+        const pagina =
+            document.querySelector(
+                ".page.active"
+            );
+
+
+        const paginas =
+            Array.from(
+                document.querySelectorAll(".page")
+            );
+
+
+        const indice =
+            paginas.indexOf(pagina);
+
+
+        if (
+            indice !== -1 &&
+            indice < paginas.length - 1
+        ) {
+
+            paginas.forEach(
+                (item, i) => {
+
+                    item.classList.toggle(
+                        "active",
+                        i === paginas.length - 1
+                    );
+
+                }
+            );
+
+        }
 
 
     } catch (erro) {
 
         console.error(
-            "Erro ao confirmar presença:",
+            "Erro ao confirmar:",
             erro
         );
 
 
         alert(
-            "Não foi possível confirmar sua presença.\n\nVerifique sua conexão e tente novamente."
+            "Não foi possível confirmar agora. Verifique sua conexão e tente novamente."
         );
 
 
+    } finally {
+
         if (botao) {
 
-            botao.disabled =
-                false;
+            botao.disabled = false;
 
             botao.textContent =
                 "Confirmar presença";
@@ -426,25 +696,18 @@ function protegerCasaNova() {
 
 
     if (
-        !pagina.includes(
+        !pagina.endsWith(
             "casa.html"
         )
     ) {
-
         return;
-
     }
 
 
-    const confirmado =
+    if (
         localStorage.getItem(
             "confirmado"
-        );
-
-
-    if (
-        confirmado !==
-        "sim"
+        ) !== "sim"
     ) {
 
         window.location.href =
@@ -456,342 +719,62 @@ function protegerCasaNova() {
 
 
 // ==========================================
-// CONTAGEM
+// RESERVAS
 // ==========================================
 
-function iniciarContagem() {
+function iniciarMonitoramentoReservas() {
 
-    const contador =
-        obterElemento(
-            "countdown"
+    const referencia =
+        collection(
+            db,
+            "presentes_status"
         );
 
 
-    if (!contador) {
+    onSnapshot(
 
-        return;
+        referencia,
 
-    }
+        snapshot => {
 
+            reservasAtuais.clear();
 
-    const data =
-        new Date(
-            CONFIG.casamento
-        );
 
+            snapshot.forEach(
+                documento => {
 
-    function atualizar() {
+                    const dados =
+                        documento.data();
 
-        const distancia =
-            data -
-            new Date();
 
+                    if (
+                        dados.reservado === true
+                    ) {
 
-        if (
-            distancia <= 0
-        ) {
+                        reservasAtuais.set(
+                            documento.id,
+                            dados
+                        );
 
-            contador.textContent =
-                "Chegou o grande dia ❤️";
-
-            return;
-
-        }
-
-
-        const dias =
-            Math.floor(
-                distancia /
-                (
-                    1000 *
-                    60 *
-                    60 *
-                    24
-                )
-            );
-
-
-        const horas =
-            Math.floor(
-                (
-                    distancia %
-                    (
-                        1000 *
-                        60 *
-                        60 *
-                        24
-                    )
-                )
-                /
-                (
-                    1000 *
-                    60 *
-                    60
-                )
-            );
-
-
-        const minutos =
-            Math.floor(
-                (
-                    distancia %
-                    (
-                        1000 *
-                        60 *
-                        60
-                    )
-                )
-                /
-                (
-                    1000 *
-                    60
-                )
-            );
-
-
-        const segundos =
-            Math.floor(
-                (
-                    distancia %
-                    (
-                        1000 *
-                        60
-                    )
-                )
-                /
-                1000
-            );
-
-
-        contador.innerHTML = `
-
-            <span>
-                ${dias}
-            </span>
-
-            <small>
-                dias
-            </small>
-
-            <span>
-                ${String(horas)
-                    .padStart(2, "0")}
-            </span>
-
-            <small>
-                h
-            </small>
-
-            <span>
-                ${String(minutos)
-                    .padStart(2, "0")}
-            </span>
-
-            <small>
-                m
-            </small>
-
-            <span>
-                ${String(segundos)
-                    .padStart(2, "0")}
-            </span>
-
-            <small>
-                s
-            </small>
-
-        `;
-
-    }
-
-
-    atualizar();
-
-
-    setInterval(
-        atualizar,
-        1000
-    );
-
-}
-
-
-// ==========================================
-// LIVRO DO CONVITE
-// ==========================================
-
-function iniciarLivro() {
-
-    const paginas =
-        document.querySelectorAll(
-            ".page"
-        );
-
-
-    if (
-        paginas.length === 0
-    ) {
-
-        return;
-
-    }
-
-
-    let paginaAtual = 0;
-
-
-    function mostrarPagina(indice) {
-
-        if (
-            indice < 0 ||
-            indice >= paginas.length
-        ) {
-
-            return;
-
-        }
-
-
-        paginas.forEach(
-            pagina => {
-
-                pagina.classList
-                    .remove(
-                        "active"
-                    );
-
-            }
-        );
-
-
-        paginas[indice]
-            .classList
-            .add("active");
-
-
-        paginaAtual =
-            indice;
-
-    }
-
-
-    document.addEventListener(
-        "click",
-        evento => {
-
-            const proximo =
-                evento.target.closest(
-                    ".next-btn"
-                );
-
-
-            const anterior =
-                evento.target.closest(
-                    ".prev-btn"
-                );
-
-
-            if (proximo) {
-
-                mostrarPagina(
-                    paginaAtual + 1
-                );
-
-            }
-
-
-            if (anterior) {
-
-                mostrarPagina(
-                    paginaAtual - 1
-                );
-
-            }
-
-        }
-    );
-
-
-    mostrarPagina(0);
-
-}
-
-
-// ==========================================
-// PRESENTES
-// ==========================================
-
-function iniciarFiltros() {
-
-    const filtros =
-        document.querySelectorAll(
-            ".filtro-btn"
-        );
-
-
-    filtros.forEach(
-        botao => {
-
-            botao.addEventListener(
-                "click",
-                () => {
-
-                    filtros.forEach(
-                        item => {
-
-                            item.classList
-                                .remove(
-                                    "ativo"
-                                );
-
-                        }
-                    );
-
-
-                    botao.classList
-                        .add("ativo");
-
-
-                    categoriaAtual =
-                        botao.dataset
-                            .categoria
-                        ||
-                        "todos";
-
-
-                    renderizarPresentes();
+                    }
 
                 }
             );
 
+
+            renderizarPresentes();
+
+        },
+
+        erro => {
+
+            console.error(
+                "Erro ao carregar reservas:",
+                erro
+            );
+
         }
-    );
 
-}
-
-
-// ==========================================
-// BUSCA
-// ==========================================
-
-function iniciarBusca() {
-
-    const campo =
-        obterElemento(
-            "buscarPresente"
-        );
-
-
-    if (!campo) {
-
-        return;
-
-    }
-
-
-    campo.addEventListener(
-        "input",
-        renderizarPresentes
     );
 
 }
@@ -810,9 +793,7 @@ function renderizarPresentes() {
 
 
     if (!container) {
-
         return;
-
     }
 
 
@@ -836,8 +817,7 @@ function renderizarPresentes() {
 
                 const categoriaOk =
 
-                    categoriaAtual ===
-                    "todos"
+                    categoriaAtual === "todos"
 
                     ||
 
@@ -849,17 +829,13 @@ function renderizarPresentes() {
 
                     item.nome
                         .toLowerCase()
-                        .includes(
-                            termo
-                        )
+                        .includes(termo)
 
                     ||
 
                     item.descricao
                         .toLowerCase()
-                        .includes(
-                            termo
-                        );
+                        .includes(termo);
 
 
                 return (
@@ -871,9 +847,7 @@ function renderizarPresentes() {
         );
 
 
-    if (
-        filtrados.length === 0
-    ) {
+    if (!filtrados.length) {
 
         container.innerHTML = `
 
@@ -901,60 +875,57 @@ function renderizarPresentes() {
         "Sala",
         "Cozinha",
         "Quarto",
-        "Organização"
+        "Organização",
+        "Sonhos"
 
     ];
 
 
     container.innerHTML =
 
-        categorias.map(
-            categoria => {
+        categorias
+            .map(
+                categoria => {
 
-                const itens =
-                    filtrados.filter(
-                        item =>
-                            item.categoria ===
-                            categoria
-                    );
+                    const itens =
+                        filtrados.filter(
+                            item =>
+                                item.categoria ===
+                                categoria
+                        );
 
 
-                if (
-                    itens.length === 0
-                ) {
+                    if (!itens.length) {
+                        return "";
+                    }
 
-                    return "";
+
+                    return `
+
+                        <div class="categoria-presente">
+
+                            <h3>
+                                ${categoria}
+                            </h3>
+
+                        </div>
+
+
+                        <div class="gift-grid-novo">
+
+                            ${itens
+                                .map(
+                                    criarCardPresente
+                                )
+                                .join("")}
+
+                        </div>
+
+                    `;
 
                 }
-
-
-                return `
-
-                    <div class="categoria-presente">
-
-                        <h3>
-                            ${categoria}
-                        </h3>
-
-                    </div>
-
-
-                    <div class="gift-grid-novo">
-
-                        ${itens
-                            .map(
-                                criarCardPresente
-                            )
-                            .join("")
-                        }
-
-                    </div>
-
-                `;
-
-            }
-        )
-        .join("");
+            )
+            .join("");
 
 }
 
@@ -965,116 +936,190 @@ function renderizarPresentes() {
 
 function criarCardPresente(item) {
 
-    const reserva =
-        reservas[item.id];
+    const contribuicao =
+        ehContribuicao(item);
 
 
     const reservado =
-        Boolean(reserva);
+        reservasAtuais.has(
+            item.id
+        );
+
+
+    if (contribuicao) {
+
+        if (
+            item.id ===
+            "lua-de-mel"
+        ) {
+
+            return `
+
+                <article
+                    class="gift-card-novo card-sonho"
+                >
+
+                    <div class="gift-icone">
+                        ${item.icone}
+                    </div>
+
+
+                    <h3>
+                        ${escaparHTML(item.nome)}
+                    </h3>
+
+
+                    <p>
+                        ${escaparHTML(item.descricao)}
+                    </p>
+
+
+                    <div class="progresso-lua">
+
+                        <div class="progresso-topo">
+
+                            <span>
+                                Nosso sonho
+                            </span>
+
+                            <strong id="percentualLuaMel">
+                                0%
+                            </strong>
+
+                        </div>
+
+
+                        <div class="progresso-barra">
+
+                            <div
+                                class="progresso-preenchimento"
+                                id="barraLuaMel"
+                                style="width:0%"
+                            ></div>
+
+                        </div>
+
+
+                        <small>
+                            Ajude a tornar esse sonho realidade.
+                        </small>
+
+                    </div>
+
+
+                    <div class="gift-meta">
+
+                        <span class="tipo-presente">
+                            Contribuição livre
+                        </span>
+
+
+                        <button
+                            type="button"
+                            class="btn-contribuir"
+                            data-presente="${item.id}"
+                        >
+                            Contribuir
+                        </button>
+
+                    </div>
+
+                </article>
+
+            `;
+
+        }
+
+
+        return `
+
+            <article class="gift-card-novo">
+
+                <div class="gift-icone">
+                    ${item.icone}
+                </div>
+
+
+                <h3>
+                    ${escaparHTML(item.nome)}
+                </h3>
+
+
+                <p>
+                    ${escaparHTML(item.descricao)}
+                </p>
+
+
+                <div class="gift-meta">
+
+                    <span class="tipo-presente">
+                        Contribuição livre
+                    </span>
+
+
+                    <button
+                        type="button"
+                        class="btn-contribuir"
+                        data-presente="${item.id}"
+                    >
+                        Contribuir
+                    </button>
+
+                </div>
+
+            </article>
+
+        `;
+
+    }
 
 
     return `
 
         <article
-            class="
-                gift-card-novo
-                ${reservado
-                    ? "presente-reservado"
-                    : ""}
-            "
+            class="gift-card-novo
+            ${reservado ? "presente-reservado" : ""}"
         >
 
-            ${
-                reservado
-
-                ?
-
-                `
-                    <span class="status-reservado">
-
-                        ✓ RESERVADO
-
-                    </span>
-                `
-
-                :
-
-                ""
-            }
-
-
             <div class="gift-icone">
-
                 ${item.icone}
-
             </div>
 
 
             <h3>
-
-                ${escaparHTML(
-                    item.nome
-                )}
-
+                ${escaparHTML(item.nome)}
             </h3>
 
 
             <p>
-
-                ${escaparHTML(
-                    item.descricao
-                )}
-
+                ${escaparHTML(item.descricao)}
             </p>
 
 
             <div class="gift-meta">
 
-                <div
-                    class="presente-sem-meta"
-                >
+                <span class="tipo-presente">
 
                     ${
                         reservado
-
-                        ?
-
-                        "Este presente já foi escolhido."
-
-                        :
-
-                        "Presente para nosso lar."
+                        ? "Presente reservado ❤️"
+                        : "Presente para nossa casa"
                     }
 
-                </div>
+                </span>
 
 
                 <button
-
                     type="button"
-
-                    class="btn-presente"
-
+                    class="btn-contribuir"
                     data-presente="${item.id}"
-
-                    ${
-                        reservado
-                        ? "disabled"
-                        : ""
-                    }
-
+                    ${reservado ? "disabled" : ""}
                 >
 
                     ${
                         reservado
-
-                        ?
-
-                        "Reservado"
-
-                        :
-
-                        "Vou presentear"
+                        ? "Reservado"
+                        : "Dar este presente"
                     }
 
                 </button>
@@ -1089,7 +1134,81 @@ function criarCardPresente(item) {
 
 
 // ==========================================
-// CLIQUE NOS PRESENTES
+// FILTROS
+// ==========================================
+
+function iniciarFiltros() {
+
+    document
+        .querySelectorAll(
+            ".filtro-btn"
+        )
+        .forEach(
+            botao => {
+
+                botao.addEventListener(
+                    "click",
+                    () => {
+
+                        document
+                            .querySelectorAll(
+                                ".filtro-btn"
+                            )
+                            .forEach(
+                                item =>
+                                    item.classList
+                                        .remove("ativo")
+                            );
+
+
+                        botao.classList
+                            .add("ativo");
+
+
+                        categoriaAtual =
+                            botao.dataset
+                                .categoria ||
+                            "todos";
+
+
+                        renderizarPresentes();
+
+                    }
+                );
+
+            }
+        );
+
+}
+
+
+// ==========================================
+// BUSCA
+// ==========================================
+
+function iniciarBusca() {
+
+    const campo =
+        obterElemento(
+            "buscarPresente"
+        );
+
+
+    if (!campo) {
+        return;
+    }
+
+
+    campo.addEventListener(
+        "input",
+        renderizarPresentes
+    );
+
+}
+
+
+// ==========================================
+// CLIQUES NOS PRESENTES
 // ==========================================
 
 function iniciarBotoesPresentes() {
@@ -1100,29 +1219,24 @@ function iniciarBotoesPresentes() {
 
             const botao =
                 evento.target.closest(
-                    ".btn-presente"
+                    ".btn-contribuir"
                 );
 
 
             if (!botao) {
-
                 return;
-
             }
 
 
             if (
                 botao.disabled
             ) {
-
                 return;
-
             }
 
 
             const id =
-                botao.dataset
-                    .presente;
+                botao.dataset.presente;
 
 
             const presente =
@@ -1133,16 +1247,27 @@ function iniciarBotoesPresentes() {
 
 
             if (!presente) {
-
                 return;
-
             }
 
 
-            reservarPresente(
-                presente,
-                botao
-            );
+            if (
+                ehContribuicao(
+                    presente
+                )
+            ) {
+
+                abrirContribuicao(
+                    id
+                );
+
+            } else {
+
+                confirmarPresente(
+                    presente
+                );
+
+            }
 
         }
     );
@@ -1154,24 +1279,26 @@ function iniciarBotoesPresentes() {
 // RESERVAR PRESENTE
 // ==========================================
 
-async function reservarPresente(
-    presente,
-    botao
+async function confirmarPresente(
+    presente
 ) {
 
-    const confirmado =
+    const nome =
         localStorage.getItem(
-            "confirmado"
-        );
+            "nomeConvidado"
+        ) || "Convidado";
 
 
-    if (
-        confirmado !==
-        "sim"
-    ) {
+    const telefone =
+        localStorage.getItem(
+            "telefoneConvidado"
+        ) || "";
+
+
+    if (!telefone) {
 
         alert(
-            "Confirme sua presença primeiro."
+            "Não encontramos sua confirmação de presença."
         );
 
         window.location.href =
@@ -1182,83 +1309,52 @@ async function reservarPresente(
     }
 
 
-    const nome =
-        localStorage.getItem(
-            "nomeConvidado"
-        )
-        ||
-        "Convidado";
-
-
-    const telefone =
-        localStorage.getItem(
-            "telefoneConvidado"
-        )
-        ||
-        "";
-
-
     const confirmar =
         window.confirm(
 
-            `Você deseja escolher:\n\n🎁 ${presente.nome}\n\ncomo seu presente para nós?`
+            `Você deseja dar o presente:\n\n${presente.nome}?`
 
         );
 
 
     if (!confirmar) {
-
         return;
-
     }
-
-
-    const janela =
-        window.open(
-            "",
-            "_blank"
-        );
-
-
-    botao.disabled =
-        true;
-
-    botao.textContent =
-        "Reservando...";
-
-
-    const reservaRef =
-        doc(
-            db,
-            "reservas",
-            presente.id
-        );
-
-
-    const detalheRef =
-        doc(
-            db,
-            "reservas_detalhes",
-            presente.id
-        );
 
 
     try {
 
+        const statusRef =
+            doc(
+                db,
+                "presentes_status",
+                presente.id
+            );
+
+
+        const reservaRef =
+            doc(
+                collection(
+                    db,
+                    "reservas"
+                )
+            );
+
+
         await runTransaction(
-
             db,
-
             async transaction => {
 
-                const reservaSnapshot =
+                const statusSnapshot =
                     await transaction.get(
-                        reservaRef
+                        statusRef
                     );
 
 
                 if (
-                    reservaSnapshot.exists()
+                    statusSnapshot.exists() &&
+                    statusSnapshot.data()
+                        .reservado === true
                 ) {
 
                     throw new Error(
@@ -1269,39 +1365,25 @@ async function reservarPresente(
 
 
                 transaction.set(
-
-                    reservaRef,
-
+                    statusRef,
                     {
 
                         presenteId:
                             presente.id,
-
-                        presente:
-                            presente.nome,
 
                         reservado:
                             true,
 
-                        criadoEm:
+                        atualizadoEm:
                             serverTimestamp()
 
                     }
-
                 );
 
 
                 transaction.set(
-
-                    detalheRef,
-
+                    reservaRef,
                     {
-
-                        presenteId:
-                            presente.id,
-
-                        presente:
-                            presente.nome,
 
                         nome:
                             nome,
@@ -1309,29 +1391,28 @@ async function reservarPresente(
                         telefone:
                             telefone,
 
+                        presente:
+                            presente.nome,
+
+                        presenteId:
+                            presente.id,
+
+                        status:
+                            "reservado",
+
                         criadoEm:
                             serverTimestamp()
 
                     }
-
                 );
 
             }
-
         );
 
 
-        reservas[
-            presente.id
-        ] = {
-
-            presente:
-                presente.nome
-
-        };
-
-
-        renderizarPresentes();
+        alert(
+            `O presente "${presente.nome}" foi reservado com sucesso!`
+        );
 
 
         const mensagem = `Olá, Samuel e Anna Vitória! ❤️
@@ -1346,48 +1427,29 @@ ${nome}
 Telefone:
 ${telefone}
 
-Acabei de reservar este presente pelo site.
-
 Com carinho! 🤍`;
 
 
         const url =
-
             `https://wa.me/${CONFIG.whatsapp}?text=`
-
             +
-
             encodeURIComponent(
                 mensagem
             );
 
 
-        if (janela) {
-
-            janela.location.href =
-                url;
-
-        } else {
-
-            window.location.href =
-                url;
-
-        }
+        window.open(
+            url,
+            "_blank"
+        );
 
 
     } catch (erro) {
 
         console.error(
-            "Erro ao reservar presente:",
+            "Erro ao reservar:",
             erro
         );
-
-
-        if (janela) {
-
-            janela.close();
-
-        }
 
 
         if (
@@ -1396,23 +1458,16 @@ Com carinho! 🤍`;
         ) {
 
             alert(
-                "Esse presente acabou de ser reservado por outra pessoa. Escolha outro presente. ❤️"
+                "Esse presente acabou de ser reservado por outra pessoa."
             );
 
         } else {
 
             alert(
-                "Não foi possível reservar este presente. Tente novamente."
+                "Não foi possível reservar o presente. Verifique sua conexão e tente novamente."
             );
 
         }
-
-
-        botao.disabled =
-            false;
-
-        botao.textContent =
-            "Vou presentear";
 
     }
 
@@ -1420,28 +1475,565 @@ Com carinho! 🤍`;
 
 
 // ==========================================
-// ATUALIZAÇÃO EM TEMPO REAL
+// MODAL CONTRIBUIÇÃO
 // ==========================================
 
-function acompanharReservas() {
+function abrirContribuicao(id) {
 
-    const container =
-        obterElemento(
-            "listaPresentes"
+    presenteSelecionado =
+        presentes.find(
+            item =>
+                item.id === id
         );
 
 
-    if (!container) {
+    if (
+        !presenteSelecionado
+    ) {
+        return;
+    }
+
+
+    const modal =
+        obterElemento(
+            "modalContribuicao"
+        );
+
+
+    const titulo =
+        obterElemento(
+            "modalTitulo"
+        );
+
+
+    const descricao =
+        obterElemento(
+            "modalDescricao"
+        );
+
+
+    const meta =
+        obterElemento(
+            "modalMeta"
+        );
+
+
+    const campo =
+        obterElemento(
+            "valorContribuicao"
+        );
+
+
+    if (
+        !modal ||
+        !titulo ||
+        !descricao ||
+        !meta ||
+        !campo
+    ) {
+
+        console.error(
+            "Estrutura do modal não encontrada."
+        );
 
         return;
 
     }
 
 
+    titulo.textContent =
+        presenteSelecionado.nome;
+
+
+    descricao.textContent =
+        presenteSelecionado.descricao;
+
+
+    meta.textContent =
+        "Escolha o valor da contribuição";
+
+
+    campo.value =
+        "";
+
+
+    modal.classList.add(
+        "aberto"
+    );
+
+
+    document.body.style.overflow =
+        "hidden";
+
+
+    setTimeout(
+        () => campo.focus(),
+        100
+    );
+
+}
+
+
+// ==========================================
+// FECHAR MODAIS
+// ==========================================
+
+function fecharModalContribuicao() {
+
+    const modal =
+        obterElemento(
+            "modalContribuicao"
+        );
+
+
+    if (!modal) {
+        return;
+    }
+
+
+    modal.classList.remove(
+        "aberto"
+    );
+
+
+    document.body.style.overflow =
+        "";
+
+
+    presenteSelecionado =
+        null;
+
+}
+
+
+function fecharResumo() {
+
+    const modal =
+        obterElemento(
+            "modalResumo"
+        );
+
+
+    if (!modal) {
+        return;
+    }
+
+
+    modal.classList.remove(
+        "aberto"
+    );
+
+
+    document.body.style.overflow =
+        "";
+
+}
+
+
+// ==========================================
+// CONVERTER VALOR
+// ==========================================
+
+function converterValor(valor) {
+
+    let texto =
+        String(valor || "")
+            .replace(
+                /R\$/gi,
+                ""
+            )
+            .replace(
+                /\s/g,
+                ""
+            );
+
+
+    if (
+        texto.includes(".") &&
+        texto.includes(",")
+    ) {
+
+        texto =
+            texto.replace(
+                /\./g,
+                ""
+            );
+
+    }
+
+
+    texto =
+        texto.replace(
+            ",",
+            "."
+        );
+
+
+    return Number(texto);
+
+}
+
+
+// ==========================================
+// ADICIONAR CONTRIBUIÇÃO
+// ==========================================
+
+function adicionarContribuicao() {
+
+    if (
+        !presenteSelecionado
+    ) {
+        return;
+    }
+
+
+    const campo =
+        obterElemento(
+            "valorContribuicao"
+        );
+
+
+    if (!campo) {
+        return;
+    }
+
+
+    const valor =
+        converterValor(
+            campo.value
+        );
+
+
+    if (
+        !Number.isFinite(valor) ||
+        valor <= 0
+    ) {
+
+        alert(
+            "Digite um valor válido."
+        );
+
+        campo.focus();
+
+        return;
+
+    }
+
+
+    resumoContribuicoes.push({
+
+        id:
+            crypto.randomUUID
+            ? crypto.randomUUID()
+            : String(Date.now()),
+
+        presente:
+            presenteSelecionado.nome,
+
+        presenteId:
+            presenteSelecionado.id,
+
+        valor:
+            valor
+
+    });
+
+
+    fecharModalContribuicao();
+
+
+    abrirResumo();
+
+}
+
+
+// ==========================================
+// ABRIR RESUMO
+// ==========================================
+
+function abrirResumo() {
+
+    const modal =
+        obterElemento(
+            "modalResumo"
+        );
+
+
+    if (!modal) {
+        return;
+    }
+
+
+    renderizarResumo();
+
+
+    modal.classList.add(
+        "aberto"
+    );
+
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+// ==========================================
+// RENDERIZAR RESUMO
+// ==========================================
+
+function renderizarResumo() {
+
+    const container =
+        obterElemento(
+            "itensResumo"
+        );
+
+
+    const totalElemento =
+        obterElemento(
+            "totalResumo"
+        );
+
+
+    if (
+        !container ||
+        !totalElemento
+    ) {
+        return;
+    }
+
+
+    container.innerHTML =
+        resumoContribuicoes
+            .map(
+                item => `
+
+                    <div class="item-resumo">
+
+                        <div>
+
+                            <strong>
+                                ${escaparHTML(item.presente)}
+                            </strong>
+
+                            <small>
+                                ${formatarMoeda(item.valor)}
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                `
+            )
+            .join("");
+
+
+    const total =
+        resumoContribuicoes.reduce(
+            (
+                soma,
+                item
+            ) =>
+                soma +
+                Number(item.valor || 0),
+            0
+        );
+
+
+    totalElemento.textContent =
+        formatarMoeda(total);
+
+}
+
+
+// ==========================================
+// FINALIZAR CONTRIBUIÇÃO
+// ==========================================
+
+async function finalizarContribuicao() {
+
+    if (
+        !resumoContribuicoes.length
+    ) {
+        return;
+    }
+
+
+    const nome =
+        localStorage.getItem(
+            "nomeConvidado"
+        ) || "Convidado";
+
+
+    const telefone =
+        localStorage.getItem(
+            "telefoneConvidado"
+        ) || "";
+
+
+    const total =
+        resumoContribuicoes.reduce(
+            (
+                soma,
+                item
+            ) =>
+                soma +
+                Number(item.valor || 0),
+            0
+        );
+
+
+    const botao =
+        obterElemento(
+            "btnFinalizarContribuicao"
+        );
+
+
+    if (botao) {
+
+        botao.disabled = true;
+
+        botao.textContent =
+            "Salvando...";
+
+    }
+
+
+    try {
+
+        for (
+            const item
+            of resumoContribuicoes
+        ) {
+
+            await addDoc(
+
+                collection(
+                    db,
+                    "contribuicoes"
+                ),
+
+                {
+
+                    nome:
+                        nome,
+
+                    telefone:
+                        telefone,
+
+                    presente:
+                        item.presente,
+
+                    presenteId:
+                        item.presenteId,
+
+                    valor:
+                        Number(item.valor),
+
+                    tipo:
+                        "contribuicao",
+
+                    criadoEm:
+                        serverTimestamp()
+
+                }
+
+            );
+
+        }
+
+
+        const lista =
+            resumoContribuicoes
+                .map(
+                    item =>
+                        `• ${item.presente}: ${formatarMoeda(item.valor)}`
+                )
+                .join("\n");
+
+
+        const mensagem = `Olá, Samuel e Anna Vitória! ❤️
+
+Gostaria de contribuir com:
+
+${lista}
+
+Total:
+${formatarMoeda(total)}
+
+Nome:
+${nome}
+
+Telefone:
+${telefone}
+
+Realizarei o pagamento pelo PIX.
+
+Com carinho! 🤍`;
+
+
+        window.open(
+
+            `https://wa.me/${CONFIG.whatsapp}?text=`
+            +
+            encodeURIComponent(
+                mensagem
+            ),
+
+            "_blank"
+
+        );
+
+
+        resumoContribuicoes =
+            [];
+
+
+        fecharResumo();
+
+
+    } catch (erro) {
+
+        console.error(
+            "Erro ao salvar contribuição:",
+            erro
+        );
+
+
+        alert(
+            "Não foi possível registrar a contribuição. Tente novamente."
+        );
+
+    } finally {
+
+        if (botao) {
+
+            botao.disabled =
+                false;
+
+            botao.textContent =
+                "Continuar pelo WhatsApp";
+
+        }
+
+    }
+
+}
+
+
+// ==========================================
+// PROGRESSO LUA DE MEL
+// ==========================================
+
+function iniciarProgressoLuaMel() {
+
     const referencia =
-        collection(
+        doc(
             db,
-            "reservas"
+            "progresso_publico",
+            "lua-de-mel"
         );
 
 
@@ -1451,49 +2043,29 @@ function acompanharReservas() {
 
         snapshot => {
 
-            reservas =
-                {};
+            const percentual =
+                snapshot.exists()
+                    ? Number(
+                        snapshot.data()
+                            .percentual || 0
+                    )
+                    : 0;
 
 
-            snapshot.forEach(
-                documento => {
-
-                    reservas[
-                        documento.id
-                    ] =
-                        documento.data();
-
-                }
+            atualizarBarraLuaMel(
+                percentual
             );
-
-
-            renderizarPresentes();
 
         },
 
         erro => {
 
             console.error(
-                "Erro ao carregar reservas:",
+                "Erro no progresso:",
                 erro
             );
 
-
-            container.innerHTML = `
-
-                <div class="nenhum-presente">
-
-                    <h3>
-                        Não foi possível carregar a lista.
-                    </h3>
-
-                    <p>
-                        Atualize a página e tente novamente.
-                    </p>
-
-                </div>
-
-            `;
+            atualizarBarraLuaMel(0);
 
         }
 
@@ -1502,162 +2074,178 @@ function acompanharReservas() {
 }
 
 
-// ==========================================
-// LOCALIZAÇÃO
-// ==========================================
+function atualizarBarraLuaMel(
+    percentual
+) {
 
-function iniciarLocalizacao() {
-
-    const botao =
+    const percentualElemento =
         obterElemento(
-            "btnLocalizacao"
+            "percentualLuaMel"
         );
 
 
-    if (!botao) {
+    const barra =
+        obterElemento(
+            "barraLuaMel"
+        );
 
+
+    if (!percentualElemento) {
         return;
+    }
+
+
+    const valor =
+        Math.max(
+            0,
+            Math.min(
+                100,
+                Number(percentual || 0)
+            )
+        );
+
+
+    percentualElemento.textContent =
+        `${valor.toFixed(1).replace(".0", "")}%`;
+
+
+    if (barra) {
+
+        barra.style.width =
+            `${valor}%`;
+
+    }
+
+}
+
+
+// ==========================================
+// EVENTOS
+// ==========================================
+
+function iniciarEventos() {
+
+    const botaoConfirmar =
+        obterElemento(
+            "btnConfirmar"
+        );
+
+
+    if (botaoConfirmar) {
+
+        botaoConfirmar.addEventListener(
+            "click",
+            confirmarPresenca
+        );
 
     }
 
 
-    botao.addEventListener(
+    const btnAdicionar =
+        obterElemento(
+            "btnAdicionarContribuicao"
+        );
+
+
+    if (btnAdicionar) {
+
+        btnAdicionar.addEventListener(
+            "click",
+            adicionarContribuicao
+        );
+
+    }
+
+
+    const btnFinalizar =
+        obterElemento(
+            "btnFinalizarContribuicao"
+        );
+
+
+    if (btnFinalizar) {
+
+        btnFinalizar.addEventListener(
+            "click",
+            finalizarContribuicao
+        );
+
+    }
+
+
+    const btnFecharContribuicao =
+        obterElemento(
+            "btnFecharContribuicao"
+        );
+
+
+    if (btnFecharContribuicao) {
+
+        btnFecharContribuicao.addEventListener(
+            "click",
+            fecharModalContribuicao
+        );
+
+    }
+
+
+    const btnFecharResumo =
+        obterElemento(
+            "btnFecharResumo"
+        );
+
+
+    if (btnFecharResumo) {
+
+        btnFecharResumo.addEventListener(
+            "click",
+            fecharResumo
+        );
+
+    }
+
+
+    document.addEventListener(
         "click",
-        () => {
+        evento => {
 
             if (
-                CONFIG.localizacao
+                evento.target.id ===
+                "modalContribuicao"
             ) {
 
-                window.open(
-                    CONFIG.localizacao,
-                    "_blank"
-                );
-
-                return;
+                fecharModalContribuicao();
 
             }
 
 
-            alert(
-                "O link da localização ainda não foi configurado."
-            );
+            if (
+                evento.target.id ===
+                "modalResumo"
+            ) {
+
+                fecharResumo();
+
+            }
 
         }
     );
 
-}
 
-
-// ==========================================
-// ESTADO DA PRESENÇA
-// ==========================================
-
-function verificarPresencaAnterior() {
-
-    const confirmado =
-        localStorage.getItem(
-            "confirmado"
-        );
-
-
-    const paginaConfirmada =
-        obterElemento(
-            "paginaConfirmada"
-        );
-
-
-    const paginaConfirmacao =
-        obterElemento(
-            "paginaConfirmacao"
-        );
-
-
-    if (
-        !paginaConfirmada ||
-        !paginaConfirmacao
-    ) {
-
-        return;
-
-    }
-
-
-    if (
-        confirmado ===
-        "sim"
-    ) {
-
-        paginaConfirmacao
-            .style
-            .display =
-            "none";
-
-
-        paginaConfirmada
-            .style
-            .display =
-            "block";
-
-    } else {
-
-        paginaConfirmada
-            .style
-            .display =
-            "none";
-
-
-        paginaConfirmacao
-            .style
-            .display =
-            "block";
-
-    }
-
-}
-
-
-// ==========================================
-// BOTÃO CHÁ
-// ==========================================
-
-function iniciarBotaoCasaNova() {
-
-    const botao =
-        obterElemento(
-            "btnCasaNova"
-        );
-
-
-    if (!botao) {
-
-        return;
-
-    }
-
-
-    botao.addEventListener(
-        "click",
-        () => {
+    document.addEventListener(
+        "keydown",
+        evento => {
 
             if (
-                localStorage.getItem(
-                    "confirmado"
-                ) !==
-                "sim"
+                evento.key ===
+                "Escape"
             ) {
 
-                alert(
-                    "Confirme sua presença primeiro."
-                );
+                fecharModalContribuicao();
 
-                return;
+                fecharResumo();
 
             }
-
-
-            window.location.href =
-                "casa.html";
 
         }
     );
@@ -1673,16 +2261,9 @@ document.addEventListener(
     "DOMContentLoaded",
     () => {
 
-        console.log(
-            "Sistema do convite carregado."
-        );
-
+        iniciarConvite();
 
         protegerCasaNova();
-
-        iniciarContagem();
-
-        iniciarLivro();
 
         iniciarFiltros();
 
@@ -1690,33 +2271,13 @@ document.addEventListener(
 
         iniciarBotoesPresentes();
 
-        iniciarLocalizacao();
+        iniciarMonitoramentoReservas();
 
-        iniciarBotaoCasaNova();
+        iniciarProgressoLuaMel();
 
-        verificarPresencaAnterior();
-
-
-        const botaoConfirmar =
-            obterElemento(
-                "btnConfirmar"
-            );
-
-
-        if (botaoConfirmar) {
-
-            botaoConfirmar
-                .addEventListener(
-                    "click",
-                    confirmarPresenca
-                );
-
-        }
-
+        iniciarEventos();
 
         renderizarPresentes();
-
-        acompanharReservas();
 
     }
 );
