@@ -2281,3 +2281,46 @@ document.addEventListener(
 
     }
 );
+
+// ==========================================
+// ACESSO SECRETO AO ADMINISTRADOR
+// ==========================================
+
+const acessoAdmin =
+    document.getElementById("acessoAdmin");
+
+let quantidadeCliques = 0;
+
+let tempoClique;
+
+if (acessoAdmin) {
+
+    acessoAdmin.addEventListener(
+        "click",
+        () => {
+
+            quantidadeCliques++;
+
+            clearTimeout(tempoClique);
+
+            tempoClique =
+                setTimeout(
+                    () => {
+
+                        quantidadeCliques = 0;
+
+                    },
+                    2000
+                );
+
+            if (quantidadeCliques >= 5) {
+
+                window.location.href =
+                    "admin.html";
+
+            }
+
+        }
+    );
+
+}

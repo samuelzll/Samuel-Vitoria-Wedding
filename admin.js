@@ -216,15 +216,13 @@ async function carregarTudo() {
 
             carregarReservas(),
 
-            carregarContribuicoes(),
-
-            carregarInformacoesLua()
+            carregarContribuicoes()
 
         ]);
 
+        await carregarInformacoesLua();
 
         atualizarResumo();
-
 
     } catch (erro) {
 
@@ -232,7 +230,6 @@ async function carregarTudo() {
             "Erro carregando painel:",
             erro
         );
-
 
         alert(
             "Não foi possível carregar todos os dados."

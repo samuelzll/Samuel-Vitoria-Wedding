@@ -6252,3 +6252,108 @@ max-width:
     }
 
 }
+
+/* ==========================================
+   MANUAL DO CONVIDADO
+========================================== */
+
+.manual-convidado {
+    max-width: 900px;
+}
+
+.manual-titulo {
+    font-family: "Great Vibes", cursive;
+    font-size: clamp(3.5rem, 8vw, 6rem);
+    color: #b58b38;
+    margin-bottom: 40px;
+}
+
+.manual-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.manual-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    padding: 18px;
+
+    background: rgba(255, 255, 255, 0.45);
+
+    border-radius: 15px;
+
+    text-align: left;
+
+    border: 1px solid
+        rgba(181, 139, 56, 0.15);
+}
+
+.manual-item span {
+    width: 45px;
+    min-width: 45px;
+
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    font-size: 1.5rem;
+
+    background: rgba(255, 255, 255, 0.7);
+}
+
+.manual-item p {
+    font-size: 0.78rem;
+
+    line-height: 1.5;
+
+    letter-spacing: 1px;
+
+    color: #5f564f;
+}
+
+.destaque-amarelo {
+    border: 1px solid
+        rgba(214, 179, 80, 0.55);
+
+    background:
+        rgba(255, 245, 200, 0.45);
+}
+
+.destaque-amarelo span {
+    background:
+        rgba(255, 224, 95, 0.35);
+}
+
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+
+    .manual-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .manual-convidado {
+        padding: 30px 20px;
+    }
+
+    .manual-titulo {
+        margin-bottom: 30px;
+    }
+
+    .manual-item {
+        padding: 14px;
+    }
+
+    .manual-item p {
+        font-size: 0.7rem;
+    }
+
+}
