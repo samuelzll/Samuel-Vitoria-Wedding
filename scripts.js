@@ -12,8 +12,7 @@ import {
     serverTimestamp,
     doc,
     runTransaction,
-    onSnapshot,
-    getDocs
+    onSnapshot
 
 } from "./firebase.js";
 
@@ -48,7 +47,25 @@ const presentes = [
         categoria: "Sala",
         icone: "📺",
         descricao:
-            "Para deixar nossa sala ainda mais especial."
+            "Para deixar nossa sala ainda mais especial.",
+
+
+          linksCompra: [
+            {
+                loja: "Mercado Livre",
+                url: "https://meli.la/2CJB5Th"
+            },
+
+            {
+                loja: "Amazon",
+                url: "https://link.amazon/B0gF1qrvw"
+            },
+
+            {
+                loja: "Magazine Luiza",
+                url: ""
+            }
+        ]
     },
 
     {
@@ -57,7 +74,25 @@ const presentes = [
         categoria: "Sala",
         icone: "🛋️",
         descricao:
-            "Nosso cantinho para descansar e receber."
+            "Nosso cantinho para descansar e receber.",
+
+          linksCompra: [
+            {
+                loja: "Mercado Livre",
+                url: "https://meli.la/1FbjJ4Q"
+            },
+
+            {
+                loja: "Amazon",
+                url: "https://link.amazon/B0eicUUoo"
+            },
+
+            {
+                loja: "Magazine Luiza",
+                url: ""
+            }
+        ]
+    
     },
 
     {
@@ -66,7 +101,24 @@ const presentes = [
         categoria: "Sala",
         icone: "🪵",
         descricao:
-            "Para completar a organização da sala."
+            "Para completar a organização da sala.",
+
+        linksCompra: [
+            {
+                loja: "Mercado Livre",
+                url: "https://meli.la/1Bbe2V8"
+            },
+
+            {
+                loja: "Amazon",
+                url: "https://link.amazon/B02Do0Jfw"
+            },
+
+            {
+                loja: "Magazine Luiza",
+                url: ""
+            }
+        ]
     },
 
     {
@@ -75,7 +127,25 @@ const presentes = [
         categoria: "Cozinha",
         icone: "❄️",
         descricao:
-            "Um item essencial para nossa nova casa."
+            "Um item essencial para nossa nova casa.",
+
+
+          linksCompra: [
+            {
+                loja: "Mercado Livre",
+                url: ""
+            },
+
+            {
+                loja: "Amazon",
+                url: ""
+            },
+
+            {
+                loja: "Magazine Luiza",
+                url: ""
+            }
+        ]
     },
 
     {
@@ -84,7 +154,24 @@ const presentes = [
         categoria: "Cozinha",
         icone: "🍳",
         descricao:
-            "Para preparar muitas histórias e refeições."
+            "Para preparar muitas histórias e refeições.",
+
+        linksCompra: [
+            {
+                loja: "Mercado Livre",
+                url: "https://meli.la/2hH3fYK"
+            },
+
+            {
+                loja: "Amazon",
+                url: "https://link.amazon/B0haNel7L"
+            },
+
+            {
+                loja: "Magazine Luiza",
+                url: "https://www.magazineluiza.com.br/fogao-5-bocas-esmaltec-preto-mesa-de-vidro-esmaltec-ideal-top-glass/p/240437900/ed/fg5b/?seller_id=magazineluiza"
+            }
+        ]
     },
 
     {
@@ -93,7 +180,25 @@ const presentes = [
         categoria: "Cozinha",
         icone: "🍟",
         descricao:
-            "Praticidade para o nosso dia a dia."
+            "Praticidade para o nosso dia a dia.",
+
+            
+        linksCompra: [
+            {
+                loja: "Mercado Livre",
+                url: "https://meli.la/2AuR75X"
+            },
+
+            {
+                loja: "Amazon",
+                url: "https://link.amazon/B05mGayig"
+            },
+
+            {
+                loja: "Magazine Luiza",
+                url: ""
+            }
+        ]
     },
 
     {
@@ -102,7 +207,50 @@ const presentes = [
         categoria: "Cozinha",
         icone: "🍲",
         descricao:
-            "Para cozinhar com carinho em nosso lar."
+            "Para cozinhar com carinho em nosso lar.",
+
+                    linksCompra: [
+            {
+                loja: "Mercado Livre",
+                url: "https://meli.la/1V4877v"
+            },
+
+            {
+                loja: "Amazon",
+                url: "https://link.amazon/B031NuqXT"
+            },
+
+            {
+                loja: "Magazine Luiza",
+                url: ""
+            }
+        ]
+    },
+
+    {
+        id: "mesa-e-cadeiras",
+        nome: "Mesa e Cadeiras",
+        categoria: "Cozinha",
+        icone: "🪑",
+        descricao:
+            "Mais praticidade para nossa rotina.",
+
+        linksCompra: [
+            {
+                loja: "Mercado Livre",
+                url: "https://meli.la/2pCw76r"
+            },
+
+            {
+                loja: "Amazon",
+                url: "https://link.amazon/B08HJ11kY"
+            },
+
+            {
+                loja: "Magazine Luiza",
+                url: ""
+            }
+        ]
     },
 
     {
@@ -111,8 +259,159 @@ const presentes = [
         categoria: "Cozinha",
         icone: "📦",
         descricao:
-            "Mais praticidade para nossa rotina."
+            "Mais praticidade para nossa rotina.",
+
+          linksCompra: [
+            {
+                loja: "Mercado Livre",
+                url: "https://meli.la/2WjKcTs"
+            },
+
+            {
+                loja: "Amazon",
+                url: "https://link.amazon/B0h0JsWJO"
+            },
+
+            {
+                loja: "Magazine Luiza",
+                url: ""
+            }
+        ]
     },
+
+
+    {
+        id: "liquidificador",
+        nome: "Liquidificador",
+        categoria: "Cozinha",
+        icone: "🥤",
+        descricao:
+            "Mais praticidade para nossa rotina.",
+
+            linksCompra: [
+            {
+                loja: "Mercado Livre",
+                url: "https://meli.la/2sNoAuw"
+            },
+
+            {
+                loja: "Amazon",
+                url: "https://link.amazon/B0bByIaEV"
+            },
+
+            {
+                loja: "Magazine Luiza",
+                url: ""
+            }
+        ]
+    },
+
+
+    {
+        id: "filtro-de-agua",
+        nome: "Gelagua",
+        categoria: "Cozinha",
+        icone: "💧",
+        descricao:
+            "Mais praticidade para nossa rotina.",
+
+        linksCompra: [
+            {
+                loja: "Mercado Livre",
+                url: "https://meli.la/2hFZyPS"
+            },
+
+            {
+                loja: "Amazon",
+                url: "https://link.amazon/B0fLKpl0p"
+            },
+
+            {
+                loja: "Magazine Luiza",
+                url: ""
+            }
+        ]
+    },
+
+    {
+        id: "pratos",
+        nome: "Pratos",
+        categoria: "Cozinha",
+        icone: "🍽️",
+        descricao:
+            "Mais praticidade para nossa rotina.",
+
+        linksCompra: [
+            {
+                loja: "Mercado Livre",
+                url: "https://meli.la/1gyK2yf"
+            },
+
+            {
+                loja: "Amazon",
+                url: "https://link.amazon/B0gbINOKU"
+            },
+
+            {
+                loja: "Magazine Luiza",
+                url: ""
+            }
+        ]
+    },
+
+    {
+            id: "talheres",
+        nome: "talheres",
+        categoria: "Cozinha",
+        icone: "🍽️",
+        descricao:
+            "Mais praticidade para nossa rotina.",
+
+        linksCompra: [
+            {
+                loja: "Mercado Livre",
+                url: "https://meli.la/2FqvvQi"
+            },
+
+            {
+                loja: "Amazon",
+                url: "https://link.amazon/B07xsbFvr"
+            },
+
+            {
+                loja: "Magazine Luiza",
+                url: ""
+            }
+        ]
+    },
+
+
+    {
+        id: "batedeira",
+        nome: "Batedeira",
+        categoria: "Cozinha",
+        icone: "🥣",
+        descricao:
+            "Mais praticidade para nossa rotina.",
+
+        linksCompra: [
+            {
+                loja: "Mercado Livre",
+                url: "https://meli.la/1qcUjhk"
+            },
+
+            {
+                loja: "Amazon",
+                url: "https://link.amazon/B0fqt4sjq"
+            },
+
+            {
+                loja: "Magazine Luiza",
+                url: ""
+            }
+        ]
+    },
+
 
     {
         id: "cama",
@@ -120,7 +419,24 @@ const presentes = [
         categoria: "Quarto",
         icone: "🛏️",
         descricao:
-            "Nosso espaço de descanso."
+            "Nosso espaço de descanso.",
+
+        linksCompra: [
+            {
+                loja: "Mercado Livre",
+                url: "https://meli.la/1CURLN1"
+            },
+
+            {
+                loja: "Amazon",
+                url: "https://link.amazon/B05FhTkJB"
+            },
+
+            {
+                loja: "Magazine Luiza",
+                url: ""
+            }
+        ]
     },
 
     {
@@ -129,26 +445,26 @@ const presentes = [
         categoria: "Quarto",
         icone: "🚪",
         descricao:
-            "Para organizar nosso novo quarto."
+            "Para organizar nosso novo quarto.",
+
+        linksCompra: [
+            {
+                loja: "Mercado Livre",
+                url: "https://meli.la/2LC1wbU"
+            },
+
+            {
+                loja: "Amazon",
+                url: "https://link.amazon/B0b2GuME1"
+            },
+
+            {
+                loja: "Magazine Luiza",
+                url: ""
+            }
+        ]
     },
 
-    {
-        id: "jogo-cama",
-        nome: "Jogo de Cama",
-        categoria: "Quarto",
-        icone: "🛌",
-        descricao:
-            "Conforto e aconchego para nosso lar."
-    },
-
-    {
-        id: "cesto-roupas",
-        nome: "Cesto de Roupas",
-        categoria: "Organização",
-        icone: "🧺",
-        descricao:
-            "Para manter nossa rotina organizada."
-    },
 
     {
         id: "potes",
@@ -156,17 +472,80 @@ const presentes = [
         categoria: "Organização",
         icone: "🫙",
         descricao:
-            "Para organizar a cozinha com praticidade."
+            "Para organizar a cozinha com praticidade.",
+
+        linksCompra: [
+            {
+                loja: "Mercado Livre",
+                url: "https://meli.la/2P7tKpi"
+            },
+
+            {
+                loja: "Amazon",
+                url: "https://link.amazon/B05GXMsbB"
+            },
+
+            {
+                loja: "Magazine Luiza",
+                url: ""
+            }
+        ]
     },
 
+
     {
-        id: "organizadores",
-        nome: "Caixas Organizadoras",
+        id: "maquina-de-lavar",
+        nome: "Máquina de Lavar",
         categoria: "Organização",
-        icone: "🗃️",
+        icone: "🧺",
         descricao:
-            "Para deixar cada espaço em seu lugar."
+            "Para deixar nossas roupas sempre bem cuidadas.",
+
+        linksCompra: [
+            {
+                loja: "Mercado Livre",
+                url: "https://meli.la/2MPEfdy"
+            },
+
+            {
+                loja: "Amazon",
+                url: "https://link.amazon/B06wLEZMl"
+            },
+
+            {
+                loja: "Magazine Luiza",
+                url: ""
+            }
+        ]
     },
+
+
+    {
+        id: "tabua-e-ferro",
+        nome: "Tábua e Ferro de Passar",
+        categoria: "Organização",
+        icone: "👕",
+        descricao:
+            "Para facilitar nossa rotina.",
+
+        linksCompra: [
+            {
+                loja: "Mercado Livre",
+                url: "https://meli.la/1VSYKT3"
+            },
+
+            {
+                loja: "Amazon",
+                url: "https://link.amazon/B01SeecwE"
+            },
+
+            {
+                loja: "Magazine Luiza",
+                url: ""
+            }
+        ]
+    },
+
 
     {
         id: "lua-de-mel",
@@ -175,17 +554,7 @@ const presentes = [
         icone: "✈️",
         descricao:
             "Contribua com qualquer valor para esse sonho.",
-        tipo:
-            "contribuicao"
-    },
 
-    {
-        id: "fundo-casa",
-        nome: "Fundo Casa Nova",
-        categoria: "Sonhos",
-        icone: "🏡",
-        descricao:
-            "Ajude nos detalhes e necessidades do nosso lar.",
         tipo:
             "contribuicao"
     }
@@ -197,17 +566,15 @@ const presentes = [
 // ESTADO
 // ==========================================
 
-let categoriaAtual =
-    "todos";
+let categoriaAtual = "todos";
 
-let presenteSelecionado =
-    null;
+let presenteSelecionado = null;
 
-let resumoContribuicoes =
-    [];
+let presenteCompraSelecionado = null;
 
-let reservasAtuais =
-    new Map();
+let resumoContribuicoes = [];
+
+let reservasAtuais = new Map();
 
 
 // ==========================================
@@ -234,6 +601,17 @@ function escaparHTML(texto) {
 }
 
 
+function escaparAtributo(valor) {
+
+    return String(valor || "")
+        .replace(/&/g, "&amp;")
+        .replace(/"/g, "&quot;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
+
+}
+
+
 function formatarMoeda(valor) {
 
     return Number(valor || 0)
@@ -250,8 +628,7 @@ function formatarMoeda(valor) {
 
 function ehContribuicao(item) {
 
-    return item?.tipo ===
-        "contribuicao";
+    return item?.tipo === "contribuicao";
 
 }
 
@@ -311,50 +688,48 @@ function iniciarConvite() {
     }
 
 
-    document.querySelectorAll(
-        ".next-btn"
-    ).forEach(
-        botao => {
+    document
+        .querySelectorAll(".next-btn")
+        .forEach(
+            botao => {
 
-            botao.addEventListener(
-                "click",
-                () => {
+                botao.addEventListener(
+                    "click",
+                    () => {
 
-                    mostrarPagina(
-                        paginaAtual + 1
-                    );
+                        mostrarPagina(
+                            paginaAtual + 1
+                        );
 
-                }
-            );
+                    }
+                );
 
-        }
-    );
+            }
+        );
 
 
-    document.querySelectorAll(
-        ".prev-btn"
-    ).forEach(
-        botao => {
+    document
+        .querySelectorAll(".prev-btn")
+        .forEach(
+            botao => {
 
-            botao.addEventListener(
-                "click",
-                () => {
+                botao.addEventListener(
+                    "click",
+                    () => {
 
-                    mostrarPagina(
-                        paginaAtual - 1
-                    );
+                        mostrarPagina(
+                            paginaAtual - 1
+                        );
 
-                }
-            );
+                    }
+                );
 
-        }
-    );
+            }
+        );
 
 
     const btnCasaNova =
-        obterElemento(
-            "btnCasaNova"
-        );
+        obterElemento("btnCasaNova");
 
 
     if (btnCasaNova) {
@@ -373,9 +748,7 @@ function iniciarConvite() {
 
 
     const btnLocalizacao =
-        obterElemento(
-            "btnLocalizacao"
-        );
+        obterElemento("btnLocalizacao");
 
 
     if (btnLocalizacao) {
@@ -384,9 +757,7 @@ function iniciarConvite() {
             "click",
             () => {
 
-                if (
-                    CONFIG.localizacao
-                ) {
+                if (CONFIG.localizacao) {
 
                     window.open(
                         CONFIG.localizacao,
@@ -419,14 +790,10 @@ function iniciarConvite() {
 function atualizarConfirmacaoVisual() {
 
     const paginaConfirmacao =
-        obterElemento(
-            "paginaConfirmacao"
-        );
+        obterElemento("paginaConfirmacao");
 
     const paginaConfirmada =
-        obterElemento(
-            "paginaConfirmada"
-        );
+        obterElemento("paginaConfirmada");
 
 
     if (
@@ -443,23 +810,16 @@ function atualizarConfirmacaoVisual() {
         ) === "sim";
 
 
-    if (confirmado) {
+    paginaConfirmacao.style.display =
+        confirmado
+            ? "none"
+            : "block";
 
-        paginaConfirmacao.style.display =
-            "none";
 
-        paginaConfirmada.style.display =
-            "block";
-
-    } else {
-
-        paginaConfirmacao.style.display =
-            "block";
-
-        paginaConfirmada.style.display =
-            "none";
-
-    }
+    paginaConfirmada.style.display =
+        confirmado
+            ? "block"
+            : "none";
 
 }
 
@@ -539,8 +899,7 @@ async function confirmarPresenca(evento) {
 
 
     const telefoneId =
-        telefone
-            .replace(/\D/g, "");
+        telefone.replace(/\D/g, "");
 
 
     if (!telefoneId) {
@@ -555,9 +914,7 @@ async function confirmarPresenca(evento) {
 
 
     const botao =
-        obterElemento(
-            "btnConfirmar"
-        );
+        obterElemento("btnConfirmar");
 
 
     if (botao) {
@@ -582,11 +939,8 @@ async function confirmarPresenca(evento) {
 
             {
 
-                nome:
-                    nome,
-
-                telefone:
-                    telefone,
+                nome,
+                telefone,
 
                 confirmado:
                     true,
@@ -620,41 +974,6 @@ async function confirmarPresenca(evento) {
         atualizarConfirmacaoVisual();
 
 
-        const pagina =
-            document.querySelector(
-                ".page.active"
-            );
-
-
-        const paginas =
-            Array.from(
-                document.querySelectorAll(".page")
-            );
-
-
-        const indice =
-            paginas.indexOf(pagina);
-
-
-        if (
-            indice !== -1 &&
-            indice < paginas.length - 1
-        ) {
-
-            paginas.forEach(
-                (item, i) => {
-
-                    item.classList.toggle(
-                        "active",
-                        i === paginas.length - 1
-                    );
-
-                }
-            );
-
-        }
-
-
     } catch (erro) {
 
         console.error(
@@ -666,7 +985,6 @@ async function confirmarPresenca(evento) {
         alert(
             "Não foi possível confirmar agora. Verifique sua conexão e tente novamente."
         );
-
 
     } finally {
 
@@ -696,9 +1014,7 @@ function protegerCasaNova() {
 
 
     if (
-        !pagina.endsWith(
-            "casa.html"
-        )
+        !pagina.endsWith("casa.html")
     ) {
         return;
     }
@@ -719,7 +1035,7 @@ function protegerCasaNova() {
 
 
 // ==========================================
-// RESERVAS
+// MONITORAR RESERVAS
 // ==========================================
 
 function iniciarMonitoramentoReservas() {
@@ -787,9 +1103,7 @@ function iniciarMonitoramentoReservas() {
 function renderizarPresentes() {
 
     const container =
-        obterElemento(
-            "listaPresentes"
-        );
+        obterElemento("listaPresentes");
 
 
     if (!container) {
@@ -798,9 +1112,7 @@ function renderizarPresentes() {
 
 
     const campoBusca =
-        obterElemento(
-            "buscarPresente"
-        );
+        obterElemento("buscarPresente");
 
 
     const termo =
@@ -914,9 +1226,7 @@ function renderizarPresentes() {
                         <div class="gift-grid-novo">
 
                             ${itens
-                                .map(
-                                    criarCardPresente
-                                )
+                                .map(criarCardPresente)
                                 .join("")}
 
                         </div>
@@ -931,7 +1241,7 @@ function renderizarPresentes() {
 
 
 // ==========================================
-// CARD
+// CARD DO PRESENTE
 // ==========================================
 
 function criarCardPresente(item) {
@@ -948,92 +1258,11 @@ function criarCardPresente(item) {
 
     if (contribuicao) {
 
-        if (
-            item.id ===
-            "lua-de-mel"
-        ) {
-
-            return `
-
-                <article
-                    class="gift-card-novo card-sonho"
-                >
-
-                    <div class="gift-icone">
-                        ${item.icone}
-                    </div>
-
-
-                    <h3>
-                        ${escaparHTML(item.nome)}
-                    </h3>
-
-
-                    <p>
-                        ${escaparHTML(item.descricao)}
-                    </p>
-
-
-                    <div class="progresso-lua">
-
-                        <div class="progresso-topo">
-
-                            <span>
-                                Nosso sonho
-                            </span>
-
-                            <strong id="percentualLuaMel">
-                                0%
-                            </strong>
-
-                        </div>
-
-
-                        <div class="progresso-barra">
-
-                            <div
-                                class="progresso-preenchimento"
-                                id="barraLuaMel"
-                                style="width:0%"
-                            ></div>
-
-                        </div>
-
-
-                        <small>
-                            Ajude a tornar esse sonho realidade.
-                        </small>
-
-                    </div>
-
-
-                    <div class="gift-meta">
-
-                        <span class="tipo-presente">
-                            Contribuição livre
-                        </span>
-
-
-                        <button
-                            type="button"
-                            class="btn-contribuir"
-                            data-presente="${item.id}"
-                        >
-                            Contribuir
-                        </button>
-
-                    </div>
-
-                </article>
-
-            `;
-
-        }
-
-
         return `
 
-            <article class="gift-card-novo">
+            <article
+                class="gift-card-novo card-sonho"
+            >
 
                 <div class="gift-icone">
                     ${item.icone}
@@ -1102,8 +1331,8 @@ function criarCardPresente(item) {
 
                     ${
                         reservado
-                        ? "Presente reservado ❤️"
-                        : "Presente para nossa casa"
+                            ? "Presente reservado ❤️"
+                            : "Presente para nossa casa"
                     }
 
                 </span>
@@ -1118,8 +1347,8 @@ function criarCardPresente(item) {
 
                     ${
                         reservado
-                        ? "Reservado"
-                        : "Dar este presente"
+                            ? "Reservado"
+                            : "Dar este presente"
                     }
 
                 </button>
@@ -1134,15 +1363,164 @@ function criarCardPresente(item) {
 
 
 // ==========================================
+// ABRIR MODAL DE COMPRA
+// ==========================================
+
+function abrirModalCompra(presente) {
+
+    presenteCompraSelecionado =
+        presente;
+
+
+    const modal =
+        obterElemento("modalCompra");
+
+    const titulo =
+        obterElemento("modalCompraTitulo");
+
+    const descricao =
+        obterElemento("modalCompraDescricao");
+
+    const lista =
+        obterElemento("listaLinksCompra");
+
+
+    if (
+        !modal ||
+        !titulo ||
+        !descricao ||
+        !lista
+    ) {
+
+        console.error(
+            "Modal de compra não encontrado no casa.html."
+        );
+
+        return;
+
+    }
+
+
+    titulo.textContent =
+        presente.nome;
+
+
+    descricao.textContent =
+        "Escolha uma loja para comprar este presente:";
+
+
+    const links =
+        Array.isArray(
+            presente.linksCompra
+        )
+            ? presente.linksCompra.filter(
+                link => link.url
+            )
+            : [];
+
+
+    if (!links.length) {
+
+        lista.innerHTML = `
+
+            <div class="sem-links-compra">
+
+                <span>🛍️</span>
+
+                <p>
+                    Ainda não cadastramos links de lojas
+                    para este presente.
+                </p>
+
+            </div>
+
+        `;
+
+    } else {
+
+        lista.innerHTML =
+
+            links
+                .map(
+                    loja => `
+
+                        <a
+                            href="${escaparAtributo(loja.url)}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="link-loja-compra"
+                        >
+
+                            <span>
+                                🛒
+                            </span>
+
+                            <strong>
+                                ${escaparHTML(loja.loja)}
+                            </strong>
+
+                            <span class="seta-loja">
+                                →
+                            </span>
+
+                        </a>
+
+                    `
+                )
+                .join("");
+
+    }
+
+
+    modal.classList.add(
+        "aberto"
+    );
+
+
+    document.body.style.overflow =
+        "hidden";
+
+}
+
+
+// ==========================================
+// FECHAR MODAL DE COMPRA
+// ==========================================
+
+function fecharModalCompra() {
+
+    const modal =
+        obterElemento("modalCompra");
+
+
+    if (!modal) {
+        return;
+    }
+
+
+    modal.classList.remove(
+        "aberto"
+    );
+
+
+    document.body.style.overflow =
+        "";
+
+
+    presenteCompraSelecionado =
+        null;
+
+}
+
+
+// ==========================================
 // FILTROS
 // ==========================================
 
 function iniciarFiltros() {
 
     document
-        .querySelectorAll(
-            ".filtro-btn"
-        )
+        .querySelectorAll(".filtro-btn")
         .forEach(
             botao => {
 
@@ -1151,23 +1529,22 @@ function iniciarFiltros() {
                     () => {
 
                         document
-                            .querySelectorAll(
-                                ".filtro-btn"
-                            )
+                            .querySelectorAll(".filtro-btn")
                             .forEach(
                                 item =>
-                                    item.classList
-                                        .remove("ativo")
+                                    item.classList.remove(
+                                        "ativo"
+                                    )
                             );
 
 
-                        botao.classList
-                            .add("ativo");
+                        botao.classList.add(
+                            "ativo"
+                        );
 
 
                         categoriaAtual =
-                            botao.dataset
-                                .categoria ||
+                            botao.dataset.categoria ||
                             "todos";
 
 
@@ -1223,12 +1600,8 @@ function iniciarBotoesPresentes() {
                 );
 
 
-            if (!botao) {
-                return;
-            }
-
-
             if (
+                !botao ||
                 botao.disabled
             ) {
                 return;
@@ -1257,13 +1630,11 @@ function iniciarBotoesPresentes() {
                 )
             ) {
 
-                abrirContribuicao(
-                    id
-                );
+                abrirContribuicao(id);
 
             } else {
 
-                confirmarPresente(
+                abrirModalCompra(
                     presente
                 );
 
@@ -1279,9 +1650,7 @@ function iniciarBotoesPresentes() {
 // RESERVAR PRESENTE
 // ==========================================
 
-async function confirmarPresente(
-    presente
-) {
+async function confirmarPresente(presente) {
 
     const nome =
         localStorage.getItem(
@@ -1311,9 +1680,7 @@ async function confirmarPresente(
 
     const confirmar =
         window.confirm(
-
-            `Você deseja dar o presente:\n\n${presente.nome}?`
-
+            `Você deseja reservar o presente:\n\n${presente.nome}?`
         );
 
 
@@ -1342,7 +1709,9 @@ async function confirmarPresente(
 
 
         await runTransaction(
+
             db,
+
             async transaction => {
 
                 const statusSnapshot =
@@ -1365,7 +1734,9 @@ async function confirmarPresente(
 
 
                 transaction.set(
+
                     statusRef,
+
                     {
 
                         presenteId:
@@ -1378,18 +1749,18 @@ async function confirmarPresente(
                             serverTimestamp()
 
                     }
+
                 );
 
 
                 transaction.set(
+
                     reservaRef,
+
                     {
 
-                        nome:
-                            nome,
-
-                        telefone:
-                            telefone,
+                        nome,
+                        telefone,
 
                         presente:
                             presente.nome,
@@ -1404,9 +1775,11 @@ async function confirmarPresente(
                             serverTimestamp()
 
                     }
+
                 );
 
             }
+
         );
 
 
@@ -1430,17 +1803,16 @@ ${telefone}
 Com carinho! 🤍`;
 
 
-        const url =
+        window.open(
+
             `https://wa.me/${CONFIG.whatsapp}?text=`
             +
             encodeURIComponent(
                 mensagem
-            );
+            ),
 
-
-        window.open(
-            url,
             "_blank"
+
         );
 
 
@@ -1475,7 +1847,7 @@ Com carinho! 🤍`;
 
 
 // ==========================================
-// MODAL CONTRIBUIÇÃO
+// MODAL DE CONTRIBUIÇÃO
 // ==========================================
 
 function abrirContribuicao(id) {
@@ -1487,9 +1859,7 @@ function abrirContribuicao(id) {
         );
 
 
-    if (
-        !presenteSelecionado
-    ) {
+    if (!presenteSelecionado) {
         return;
     }
 
@@ -1499,24 +1869,20 @@ function abrirContribuicao(id) {
             "modalContribuicao"
         );
 
-
     const titulo =
         obterElemento(
             "modalTitulo"
         );
-
 
     const descricao =
         obterElemento(
             "modalDescricao"
         );
 
-
     const meta =
         obterElemento(
             "modalMeta"
         );
-
 
     const campo =
         obterElemento(
@@ -1531,30 +1897,20 @@ function abrirContribuicao(id) {
         !meta ||
         !campo
     ) {
-
-        console.error(
-            "Estrutura do modal não encontrada."
-        );
-
         return;
-
     }
 
 
     titulo.textContent =
         presenteSelecionado.nome;
 
-
     descricao.textContent =
         presenteSelecionado.descricao;
-
 
     meta.textContent =
         "Escolha o valor da contribuição";
 
-
-    campo.value =
-        "";
+    campo.value = "";
 
 
     modal.classList.add(
@@ -1638,14 +1994,8 @@ function converterValor(valor) {
 
     let texto =
         String(valor || "")
-            .replace(
-                /R\$/gi,
-                ""
-            )
-            .replace(
-                /\s/g,
-                ""
-            );
+            .replace(/R\$/gi, "")
+            .replace(/\s/g, "");
 
 
     if (
@@ -1680,9 +2030,7 @@ function converterValor(valor) {
 
 function adicionarContribuicao() {
 
-    if (
-        !presenteSelecionado
-    ) {
+    if (!presenteSelecionado) {
         return;
     }
 
@@ -1724,8 +2072,8 @@ function adicionarContribuicao() {
 
         id:
             crypto.randomUUID
-            ? crypto.randomUUID()
-            : String(Date.now()),
+                ? crypto.randomUUID()
+                : String(Date.now()),
 
         presente:
             presenteSelecionado.nome,
@@ -1733,14 +2081,12 @@ function adicionarContribuicao() {
         presenteId:
             presenteSelecionado.id,
 
-        valor:
-            valor
+        valor
 
     });
 
 
     fecharModalContribuicao();
-
 
     abrirResumo();
 
@@ -1754,9 +2100,7 @@ function adicionarContribuicao() {
 function abrirResumo() {
 
     const modal =
-        obterElemento(
-            "modalResumo"
-        );
+        obterElemento("modalResumo");
 
 
     if (!modal) {
@@ -1785,15 +2129,10 @@ function abrirResumo() {
 function renderizarResumo() {
 
     const container =
-        obterElemento(
-            "itensResumo"
-        );
-
+        obterElemento("itensResumo");
 
     const totalElemento =
-        obterElemento(
-            "totalResumo"
-        );
+        obterElemento("totalResumo");
 
 
     if (
@@ -1832,10 +2171,7 @@ function renderizarResumo() {
 
     const total =
         resumoContribuicoes.reduce(
-            (
-                soma,
-                item
-            ) =>
+            (soma, item) =>
                 soma +
                 Number(item.valor || 0),
             0
@@ -1875,10 +2211,7 @@ async function finalizarContribuicao() {
 
     const total =
         resumoContribuicoes.reduce(
-            (
-                soma,
-                item
-            ) =>
+            (soma, item) =>
                 soma +
                 Number(item.valor || 0),
             0
@@ -1917,11 +2250,8 @@ async function finalizarContribuicao() {
 
                 {
 
-                    nome:
-                        nome,
-
-                    telefone:
-                        telefone,
+                    nome,
+                    telefone,
 
                     presente:
                         item.presente,
@@ -1987,8 +2317,7 @@ Com carinho! 🤍`;
         );
 
 
-        resumoContribuicoes =
-            [];
+        resumoContribuicoes = [];
 
 
         fecharResumo();
@@ -2010,8 +2339,7 @@ Com carinho! 🤍`;
 
         if (botao) {
 
-            botao.disabled =
-                false;
+            botao.disabled = false;
 
             botao.textContent =
                 "Continuar pelo WhatsApp";
@@ -2074,15 +2402,12 @@ function iniciarProgressoLuaMel() {
 }
 
 
-function atualizarBarraLuaMel(
-    percentual
-) {
+function atualizarBarraLuaMel(percentual) {
 
     const percentualElemento =
         obterElemento(
             "percentualLuaMel"
         );
-
 
     const barra =
         obterElemento(
@@ -2205,6 +2530,58 @@ function iniciarEventos() {
     }
 
 
+    const btnFecharCompra =
+        obterElemento(
+            "btnFecharCompra"
+        );
+
+
+    if (btnFecharCompra) {
+
+        btnFecharCompra.addEventListener(
+            "click",
+            fecharModalCompra
+        );
+
+    }
+
+
+    const btnReservarDepoisCompra =
+        obterElemento(
+            "btnReservarDepoisCompra"
+        );
+
+
+    if (btnReservarDepoisCompra) {
+
+        btnReservarDepoisCompra.addEventListener(
+            "click",
+            () => {
+
+                if (
+                    !presenteCompraSelecionado
+                ) {
+                    return;
+                }
+
+
+                const presente =
+                    presenteCompraSelecionado;
+
+
+                fecharModalCompra();
+
+
+                confirmarPresente(
+                    presente
+                );
+
+            }
+        );
+
+    }
+
+
     document.addEventListener(
         "click",
         evento => {
@@ -2228,6 +2605,16 @@ function iniciarEventos() {
 
             }
 
+
+            if (
+                evento.target.id ===
+                "modalCompra"
+            ) {
+
+                fecharModalCompra();
+
+            }
+
         }
     );
 
@@ -2244,6 +2631,8 @@ function iniciarEventos() {
                 fecharModalContribuicao();
 
                 fecharResumo();
+
+                fecharModalCompra();
 
             }
 
@@ -2282,16 +2671,21 @@ document.addEventListener(
     }
 );
 
+
 // ==========================================
 // ACESSO SECRETO AO ADMINISTRADOR
 // ==========================================
 
 const acessoAdmin =
-    document.getElementById("acessoAdmin");
+    document.getElementById(
+        "acessoAdmin"
+    );
+
 
 let quantidadeCliques = 0;
 
 let tempoClique;
+
 
 if (acessoAdmin) {
 
@@ -2301,7 +2695,10 @@ if (acessoAdmin) {
 
             quantidadeCliques++;
 
-            clearTimeout(tempoClique);
+            clearTimeout(
+                tempoClique
+            );
+
 
             tempoClique =
                 setTimeout(
@@ -2313,7 +2710,10 @@ if (acessoAdmin) {
                     2000
                 );
 
-            if (quantidadeCliques >= 5) {
+
+            if (
+                quantidadeCliques >= 5
+            ) {
 
                 window.location.href =
                     "admin.html";
