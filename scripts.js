@@ -360,8 +360,8 @@ const presentes = [
     },
 
     {
-            id: "talheres",
-        nome: "talheres",
+        id: "talheres",
+        nome: "Talheres",
         categoria: "Cozinha",
         icone: "🍽️",
         descricao:
@@ -375,7 +375,33 @@ const presentes = [
 
             {
                 loja: "Amazon",
-                url: "https://link.amazon/B07xsbFvr"
+                url: "https://link.amazon/B08wWUEBl"
+            },
+
+            {
+                loja: "Magazine Luiza",
+                url: ""
+            }
+        ]
+    },
+
+    {
+        id: "jogo-de-copos",
+        nome: "Jogo de Copos",
+        categoria: "Cozinha",
+        icone: "🍽️",
+        descricao:
+            "Mais praticidade para nossa rotina.",
+
+        linksCompra: [
+            {
+                loja: "Mercado Livre",
+                url: "https://meli.la/2ianXf6"
+            },
+
+            {
+                loja: "Amazon",
+                url: "https://link.amazon/B06vjU59h"
             },
 
             {
@@ -403,6 +429,57 @@ const presentes = [
             {
                 loja: "Amazon",
                 url: "https://link.amazon/B0fqt4sjq"
+            },
+
+            {
+                loja: "Magazine Luiza",
+                url: ""
+            }
+        ]
+    },
+
+        {
+        id: "Armario",
+        nome: "Armario",
+        categoria: "Cozinha",
+        icone: "🧱",
+        descricao:
+            "Mais praticidade para nossa rotina.",
+
+        linksCompra: [
+            {
+                loja: "Mercado Livre",
+                url: "https://meli.la/1qcUjhk"
+            },
+
+            {
+                loja: "Amazon",
+                url: "https://link.amazon/B0fqt4sjq"
+            },
+
+            {
+                loja: "Magazine Luiza",
+                url: ""
+            }
+        ]
+    },
+
+            {
+        nome: "Conjunto de Xícaras",
+        categoria: "Cozinha",
+        icone: "",
+        descricao:
+            "Mais praticidade para nossa rotina.",
+
+        linksCompra: [
+            {
+                loja: "Mercado Livre",
+                url: ""
+            },
+
+            {
+                loja: "Amazon",
+                url: ""
             },
 
             {
@@ -455,7 +532,60 @@ const presentes = [
 
             {
                 loja: "Amazon",
-                url: "https://link.amazon/B0b2GuME1"
+                url: "https://link.amazon/B0eZJHTYt"
+            },
+
+            {
+                loja: "Magazine Luiza",
+                url: ""
+            }
+        ]
+    },
+
+        {
+        id: "ventilador",
+        nome: "Ventilador",
+        categoria: "Quarto",
+        icone: "🌬️",
+        descricao:
+            "Para organizar nosso novo quarto.",
+
+        linksCompra: [
+            {
+                loja: "Mercado Livre",
+                url: "https://meli.la/1UKHdBL"
+            },
+
+            {
+                loja: "Amazon",
+                url: "https://link.amazon/B00CssEPW"
+            },
+
+            {
+                loja: "Magazine Luiza",
+                url: ""
+            }
+        ]
+    },
+
+
+    {
+        id: "Jogo-de-cama",
+        nome: "Jogo de cama",
+        categoria: "Quarto",
+        icone: "🛌",
+        descricao:
+            "Para organizar nosso novo quarto.",
+
+        linksCompra: [
+            {
+                loja: "Mercado Livre",
+                url: "https://meli.la/2arYnAR"
+            },
+
+            {
+                loja: "Amazon",
+                url: "https://link.amazon/B09yi5RnE"
             },
 
             {
@@ -468,7 +598,7 @@ const presentes = [
 
     {
         id: "potes",
-        nome: "Jogo de Potes",
+        nome: "Jogo de Potes Hermético",
         categoria: "Organização",
         icone: "🫙",
         descricao:
@@ -477,12 +607,12 @@ const presentes = [
         linksCompra: [
             {
                 loja: "Mercado Livre",
-                url: "https://meli.la/2P7tKpi"
+                url: "https://meli.la/1bQe47W"
             },
 
             {
                 loja: "Amazon",
-                url: "https://link.amazon/B05GXMsbB"
+                url: "https://link.amazon/B0bYmXApU"
             },
 
             {
@@ -521,8 +651,8 @@ const presentes = [
 
 
     {
-        id: "tabua-e-ferro",
-        nome: "Tábua e Ferro de Passar",
+        id: "ferro",
+        nome: "Ferro de Passar",
         categoria: "Organização",
         icone: "👕",
         descricao:

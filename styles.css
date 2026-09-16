@@ -9,7 +9,7 @@ body {
 
     font-family: 'Montserrat', sans-serif;
 
-    color: #979E6B;
+    color: #484f29;
 
     overflow-x: hidden;
 
@@ -18,7 +18,7 @@ body {
     rgba(255,255,255,.15),
     rgba(255,255,255,.15)
     ),
-    url("img/fundo.jpeg");
+    url("img/foto.fundo1.jpg");
 
     background-size:cover;
 
@@ -138,7 +138,7 @@ body {
 
     font-weight:400;
 
-    color:#d9bd6b;
+    color:#9b7930;
 
     letter-spacing:1px;
 
@@ -196,7 +196,7 @@ h2 {
 
     font-size: 3rem;
 
-    color: #d9bd6b;
+    color: #9b7930;
 
     margin-bottom: 25px;
 
