@@ -227,6 +227,33 @@ const presentes = [
         ]
     },
 
+        {
+        id: "panela-de-pressao",
+        nome: "Panela de Pressão",
+        categoria: "Cozinha",
+        icone: "🍲",
+        descricao:
+            "Para cozinhar com carinho em nosso lar.",
+
+                    linksCompra: [
+            {
+                loja: "Mercado Livre",
+                url: "https://meli.la/1V4877v"
+            },
+
+            {
+                loja: "Amazon",
+                url: "https://link.amazon/B031NuqXT"
+            },
+
+            {
+                loja: "Magazine Luiza",
+                url: ""
+            }
+        ]
+    },
+
+
     {
         id: "mesa-e-cadeiras",
         nome: "Mesa e Cadeiras",
@@ -586,6 +613,32 @@ const presentes = [
             {
                 loja: "Amazon",
                 url: "https://link.amazon/B09yi5RnE"
+            },
+
+            {
+                loja: "Magazine Luiza",
+                url: ""
+            }
+        ]
+    },
+
+        {
+        id: "mesa-de-cabeceira",
+        nome: "Mesa de Cabeceira",
+        categoria: "Quarto",
+        icone: "🛌",
+        descricao:
+            "Para organizar nosso novo quarto.",
+
+        linksCompra: [
+            {
+                loja: "Mercado Livre",
+                url: ""
+            },
+
+            {
+                loja: "Amazon",
+                url: ""
             },
 
             {
