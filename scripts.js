@@ -45,7 +45,7 @@ const presentes = [
         id: "smart-tv",
         nome: "Smart TV",
         categoria: "Sala",
-        icone: "📺",
+        icone: "🎁",
         descricao:
             "Para deixar nossa sala ainda mais especial.",
 
@@ -72,7 +72,7 @@ const presentes = [
         id: "sofa",
         nome: "Sofá",
         categoria: "Sala",
-        icone: "🛋️",
+        icone: "🎁",
         descricao:
             "Nosso cantinho para descansar e receber.",
 
@@ -99,7 +99,7 @@ const presentes = [
         id: "rack",
         nome: "Rack para TV",
         categoria: "Sala",
-        icone: "🪵",
+        icone: "🎁",
         descricao:
             "Para completar a organização da sala.",
 
@@ -125,7 +125,7 @@ const presentes = [
         id: "geladeira",
         nome: "Geladeira",
         categoria: "Cozinha",
-        icone: "❄️",
+        icone: "🎁",
         descricao:
             "Um item essencial para nossa nova casa.",
 
@@ -152,7 +152,7 @@ const presentes = [
         id: "fogao",
         nome: "Fogão",
         categoria: "Cozinha",
-        icone: "🍳",
+        icone: "🎁",
         descricao:
             "Para preparar muitas histórias e refeições.",
 
@@ -178,7 +178,7 @@ const presentes = [
         id: "air-fryer",
         nome: "Air Fryer",
         categoria: "Cozinha",
-        icone: "🍟",
+        icone: "🎁",
         descricao:
             "Praticidade para o nosso dia a dia.",
 
@@ -205,7 +205,7 @@ const presentes = [
         id: "jogo-panelas",
         nome: "Jogo de Panelas",
         categoria: "Cozinha",
-        icone: "🍲",
+        icone: "🎁",
         descricao:
             "Para cozinhar com carinho em nosso lar.",
 
@@ -231,7 +231,7 @@ const presentes = [
         id: "panela-de-pressao",
         nome: "Panela de Pressão",
         categoria: "Cozinha",
-        icone: "🍲",
+        icone: "🎁",
         descricao:
             "Para cozinhar com carinho em nosso lar.",
 
@@ -258,7 +258,7 @@ const presentes = [
         id: "mesa-e-cadeiras",
         nome: "Mesa e Cadeiras",
         categoria: "Cozinha",
-        icone: "🪑",
+        icone: "🎁",
         descricao:
             "Mais praticidade para nossa rotina.",
 
@@ -284,7 +284,7 @@ const presentes = [
         id: "microondas",
         nome: "Micro-ondas",
         categoria: "Cozinha",
-        icone: "📦",
+        icone: "🎁",
         descricao:
             "Mais praticidade para nossa rotina.",
 
@@ -311,7 +311,7 @@ const presentes = [
         id: "liquidificador",
         nome: "Liquidificador",
         categoria: "Cozinha",
-        icone: "🥤",
+        icone: "🎁",
         descricao:
             "Mais praticidade para nossa rotina.",
 
@@ -338,7 +338,7 @@ const presentes = [
         id: "filtro-de-agua",
         nome: "Gelagua",
         categoria: "Cozinha",
-        icone: "💧",
+        icone: "🎁",
         descricao:
             "Mais praticidade para nossa rotina.",
 
@@ -364,7 +364,7 @@ const presentes = [
         id: "pratos",
         nome: "Pratos",
         categoria: "Cozinha",
-        icone: "🍽️",
+        icone: "🎁",
         descricao:
             "Mais praticidade para nossa rotina.",
 
@@ -390,7 +390,7 @@ const presentes = [
         id: "talheres",
         nome: "Talheres",
         categoria: "Cozinha",
-        icone: "🍽️",
+        icone: "🎁",
         descricao:
             "Mais praticidade para nossa rotina.",
 
@@ -416,7 +416,7 @@ const presentes = [
         id: "jogo-de-copos",
         nome: "Jogo de Copos",
         categoria: "Cozinha",
-        icone: "🍽️",
+        icone: "🎁",
         descricao:
             "Mais praticidade para nossa rotina.",
 
@@ -443,7 +443,7 @@ const presentes = [
         id: "batedeira",
         nome: "Batedeira",
         categoria: "Cozinha",
-        icone: "🥣",
+        icone: "🎁",
         descricao:
             "Mais praticidade para nossa rotina.",
 
@@ -469,7 +469,7 @@ const presentes = [
         id: "Armario",
         nome: "Armario",
         categoria: "Cozinha",
-        icone: "🧱",
+        icone: "🎁",
         descricao:
             "Mais praticidade para nossa rotina.",
 
@@ -491,10 +491,11 @@ const presentes = [
         ]
     },
 
-            {
+    {
+        id: "Conjunto-de-xicaras",
         nome: "Conjunto de Xícaras",
         categoria: "Cozinha",
-        icone: "",
+        icone: "🎁",
         descricao:
             "Mais praticidade para nossa rotina.",
 
@@ -521,7 +522,7 @@ const presentes = [
         id: "cama",
         nome: "Cama",
         categoria: "Quarto",
-        icone: "🛏️",
+        icone: "🎁",
         descricao:
             "Nosso espaço de descanso.",
 
@@ -547,7 +548,7 @@ const presentes = [
         id: "guarda-roupa",
         nome: "Guarda-Roupa",
         categoria: "Quarto",
-        icone: "🚪",
+        icone: "🎁",
         descricao:
             "Para organizar nosso novo quarto.",
 
@@ -573,7 +574,7 @@ const presentes = [
         id: "ventilador",
         nome: "Ventilador",
         categoria: "Quarto",
-        icone: "🌬️",
+        icone: "🎁",
         descricao:
             "Para organizar nosso novo quarto.",
 
@@ -600,7 +601,7 @@ const presentes = [
         id: "Jogo-de-cama",
         nome: "Jogo de cama",
         categoria: "Quarto",
-        icone: "🛌",
+        icone: "🎁",
         descricao:
             "Para organizar nosso novo quarto.",
 
@@ -626,7 +627,7 @@ const presentes = [
         id: "mesa-de-cabeceira",
         nome: "Mesa de Cabeceira",
         categoria: "Quarto",
-        icone: "🛌",
+        icone: "🎁",
         descricao:
             "Para organizar nosso novo quarto.",
 
@@ -653,7 +654,7 @@ const presentes = [
         id: "potes",
         nome: "Jogo de Potes Hermético",
         categoria: "Organização",
-        icone: "🫙",
+        icone: "🎁",
         descricao:
             "Para organizar a cozinha com praticidade.",
 
@@ -680,7 +681,7 @@ const presentes = [
         id: "maquina-de-lavar",
         nome: "Máquina de Lavar",
         categoria: "Organização",
-        icone: "🧺",
+        icone: "🎁",
         descricao:
             "Para deixar nossas roupas sempre bem cuidadas.",
 
@@ -707,7 +708,7 @@ const presentes = [
         id: "ferro",
         nome: "Ferro de Passar",
         categoria: "Organização",
-        icone: "👕",
+        icone: "🎁",
         descricao:
             "Para facilitar nossa rotina.",
 
@@ -811,7 +812,20 @@ function formatarMoeda(valor) {
 
 function ehContribuicao(item) {
 
-    return item?.tipo === "contribuicao";
+    if (!item) {
+        return false;
+    }
+
+    const idsPermitidos = [
+        "lua-de-mel",
+        "sonhos",
+        "fundo-casa-nova"
+    ];
+
+    return (
+        item?.tipo === "contribuicao" &&
+        idsPermitidos.includes(item.id)
+    );
 
 }
 
