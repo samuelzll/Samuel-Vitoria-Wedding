@@ -2000,17 +2000,8 @@ ${telefone}
 Com carinho! 🤍`;
 
 
-        window.open(
-
-            `https://wa.me/${CONFIG.whatsapp}?text=`
-            +
-            encodeURIComponent(
-                mensagem
-            ),
-
-            "_blank"
-
-        );
+    window.location.href =
+        `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(mensagem)}`;
 
 
     } catch (erro) {
@@ -2501,18 +2492,8 @@ Realizarei o pagamento pelo PIX.
 Com carinho! 🤍`;
 
 
-        window.open(
-
-            `https://wa.me/${CONFIG.whatsapp}?text=`
-            +
-            encodeURIComponent(
-                mensagem
-            ),
-
-            "_blank"
-
-        );
-
+    window.location.href =
+        `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(mensagem)}`;
 
         resumoContribuicoes = [];
 

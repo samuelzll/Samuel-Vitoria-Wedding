@@ -6565,3 +6565,24 @@ button:disabled {
     border-radius: 15px;
     object-fit: contain;
 }
+
+/* ==========================================
+   NOME DOS PRESENTES — CELULAR
+========================================== */
+
+.gift-card h3 {
+    font-size: 1.5rem;
+    line-height: 1.3;
+    margin: 15px 0;
+    color: #8d7950;
+}
+
+@media (max-width: 768px) {
+
+    .gift-card h3 {
+        font-size: 1.4rem;
+        line-height: 1.3;
+        margin: 15px 0;
+    }
+
+}
