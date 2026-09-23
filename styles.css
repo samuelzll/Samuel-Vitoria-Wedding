@@ -6574,7 +6574,7 @@ button:disabled {
     font-size: 1.5rem;
     line-height: 1.3;
     margin: 15px 0;
-    color: #8d7950;
+    color: #826b3d;
 }
 
 @media (max-width: 768px) {
@@ -6585,4 +6585,19 @@ button:disabled {
         margin: 15px 0;
     }
 
+}
+
+/* NOME DOS PRESENTES */
+.gift-card-novo h3 {
+    font-size: 1.6rem;
+    line-height: 1.3;
+    margin: 15px 0;
+    color: #826b3d;
+}
+
+/* CELULAR */
+@media (max-width: 768px) {
+    .gift-card-novo h3 {
+        font-size: 1.6rem;
+    }
 }

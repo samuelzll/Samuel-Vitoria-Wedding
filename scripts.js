@@ -30,7 +30,7 @@ const CONFIG = {
         "5585988338580",
 
     localizacao:
-        ""
+        "https://maps.app.goo.gl/NskmYbWjWkomJ7JR6"
 
 };
 
