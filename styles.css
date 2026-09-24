@@ -6601,3 +6601,9 @@ button:disabled {
         font-size: 1.6rem;
     }
 }
+
+.localcha{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #f8f7f5;
+}

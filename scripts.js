@@ -79,7 +79,7 @@ const presentes = [
           linksCompra: [
             {
                 loja: "Mercado Livre",
-                url: "https://meli.la/1FbjJ4Q"
+                url: "https://meli.la/2xSh6ix"
             },
 
             {
@@ -106,12 +106,12 @@ const presentes = [
         linksCompra: [
             {
                 loja: "Mercado Livre",
-                url: "https://meli.la/1Bbe2V8"
+                url: "https://meli.la/1dabx7Y"
             },
 
             {
                 loja: "Amazon",
-                url: "https://link.amazon/B02Do0Jfw"
+                url: "https://link.amazon/B09L2gbKX"
             },
 
             {
@@ -133,12 +133,12 @@ const presentes = [
           linksCompra: [
             {
                 loja: "Mercado Livre",
-                url: ""
+                url: "https://meli.la/33g2q8L"
             },
 
             {
                 loja: "Amazon",
-                url: ""
+                url: "https://link.amazon/B07iVcFt6"
             },
 
             {
@@ -159,12 +159,12 @@ const presentes = [
         linksCompra: [
             {
                 loja: "Mercado Livre",
-                url: "https://meli.la/2hH3fYK"
+                url: "https://meli.la/2Ke4EXB"
             },
 
             {
                 loja: "Amazon",
-                url: "https://link.amazon/B0haNel7L"
+                url: "https://link.amazon/B0ev8lMSK"
             },
 
             {
@@ -191,13 +191,32 @@ const presentes = [
 
             {
                 loja: "Amazon",
-                url: "https://link.amazon/B05mGayig"
+                url: "https://link.amazon/B0aIxU3QR"
+            },
+
+        ]
+    },
+
+       {
+        id: "Sanduicheira",
+        nome: "Sanduicheira",
+        categoria: "Cozinha",
+        icone: "🎁",
+        descricao:
+            "Praticidade para o nosso dia a dia.",
+
+            
+        linksCompra: [
+            {
+                loja: "Mercado Livre",
+                url: "https://meli.la/2AuR75X"
             },
 
             {
-                loja: "Magazine Luiza",
-                url: ""
-            }
+                loja: "Amazon",
+                url: "https://link.amazon/B0e2HKDFa"
+            },
+
         ]
     },
 
@@ -220,10 +239,6 @@ const presentes = [
                 url: "https://link.amazon/B031NuqXT"
             },
 
-            {
-                loja: "Magazine Luiza",
-                url: ""
-            }
         ]
     },
 
@@ -238,18 +253,13 @@ const presentes = [
                     linksCompra: [
             {
                 loja: "Mercado Livre",
-                url: "https://meli.la/1V4877v"
+                url: "https://meli.la/2gP3aJH"
             },
 
             {
                 loja: "Amazon",
-                url: "https://link.amazon/B031NuqXT"
+                url: "https://link.amazon/B0hBXFFYq"
             },
-
-            {
-                loja: "Magazine Luiza",
-                url: ""
-            }
         ]
     },
 
@@ -265,18 +275,14 @@ const presentes = [
         linksCompra: [
             {
                 loja: "Mercado Livre",
-                url: "https://meli.la/2pCw76r"
+                url: "https://meli.la/2Dw6VKW"
             },
 
             {
                 loja: "Amazon",
-                url: "https://link.amazon/B08HJ11kY"
+                url: "https://link.amazon/B0g5DP0hG"
             },
 
-            {
-                loja: "Magazine Luiza",
-                url: ""
-            }
         ]
     },
 
@@ -291,18 +297,14 @@ const presentes = [
           linksCompra: [
             {
                 loja: "Mercado Livre",
-                url: "https://meli.la/2WjKcTs"
+                url: "https://meli.la/1JxV137"
             },
 
             {
                 loja: "Amazon",
-                url: "https://link.amazon/B0h0JsWJO"
+                url: "https://link.amazon/B0ahlM7M0"
             },
 
-            {
-                loja: "Magazine Luiza",
-                url: ""
-            }
         ]
     },
 
@@ -318,18 +320,14 @@ const presentes = [
             linksCompra: [
             {
                 loja: "Mercado Livre",
-                url: "https://meli.la/2sNoAuw"
+                url: "https://meli.la/1quqJMd"
             },
 
             {
                 loja: "Amazon",
-                url: "https://link.amazon/B0bByIaEV"
+                url: "https://link.amazon/B066EP9Pt"
             },
 
-            {
-                loja: "Magazine Luiza",
-                url: ""
-            }
         ]
     },
 
@@ -353,10 +351,6 @@ const presentes = [
                 url: "https://link.amazon/B0fLKpl0p"
             },
 
-            {
-                loja: "Magazine Luiza",
-                url: ""
-            }
         ]
     },
 
@@ -379,10 +373,6 @@ const presentes = [
                 url: "https://link.amazon/B0gbINOKU"
             },
 
-            {
-                loja: "Magazine Luiza",
-                url: ""
-            }
         ]
     },
 
@@ -405,10 +395,6 @@ const presentes = [
                 url: "https://link.amazon/B08wWUEBl"
             },
 
-            {
-                loja: "Magazine Luiza",
-                url: ""
-            }
         ]
     },
 
@@ -431,10 +417,6 @@ const presentes = [
                 url: "https://link.amazon/B06vjU59h"
             },
 
-            {
-                loja: "Magazine Luiza",
-                url: ""
-            }
         ]
     },
 
@@ -450,18 +432,14 @@ const presentes = [
         linksCompra: [
             {
                 loja: "Mercado Livre",
-                url: "https://meli.la/1qcUjhk"
+                url: "https://meli.la/26cBpah"
             },
 
             {
                 loja: "Amazon",
-                url: "https://link.amazon/B0fqt4sjq"
+                url: "https://link.amazon/B0h0CeTvf"
             },
 
-            {
-                loja: "Magazine Luiza",
-                url: ""
-            }
         ]
     },
 
@@ -476,18 +454,14 @@ const presentes = [
         linksCompra: [
             {
                 loja: "Mercado Livre",
-                url: "https://meli.la/1qcUjhk"
+                url: "https://meli.la/1UJygk3"
             },
 
             {
                 loja: "Amazon",
-                url: "https://link.amazon/B0fqt4sjq"
+                url: "https://link.amazon/B0hUjoQR2"
             },
 
-            {
-                loja: "Magazine Luiza",
-                url: ""
-            }
         ]
     },
 
@@ -502,18 +476,14 @@ const presentes = [
         linksCompra: [
             {
                 loja: "Mercado Livre",
-                url: ""
+                url: "https://meli.la/2qq9spm"
             },
 
             {
                 loja: "Amazon",
-                url: ""
+                url: "https://link.amazon/B04r2N5nj"
             },
 
-            {
-                loja: "Magazine Luiza",
-                url: ""
-            }
         ]
     },
 
@@ -537,10 +507,6 @@ const presentes = [
                 url: "https://link.amazon/B05FhTkJB"
             },
 
-            {
-                loja: "Magazine Luiza",
-                url: ""
-            }
         ]
     },
 
@@ -563,10 +529,6 @@ const presentes = [
                 url: "https://link.amazon/B0eZJHTYt"
             },
 
-            {
-                loja: "Magazine Luiza",
-                url: ""
-            }
         ]
     },
 
@@ -589,10 +551,6 @@ const presentes = [
                 url: "https://link.amazon/B00CssEPW"
             },
 
-            {
-                loja: "Magazine Luiza",
-                url: ""
-            }
         ]
     },
 
@@ -616,16 +574,12 @@ const presentes = [
                 url: "https://link.amazon/B09yi5RnE"
             },
 
-            {
-                loja: "Magazine Luiza",
-                url: ""
-            }
         ]
     },
 
         {
-        id: "mesa-de-cabeceira",
-        nome: "Mesa de Cabeceira",
+        id: "travesseiro",
+        nome: "travesseiro",
         categoria: "Quarto",
         icone: "🎁",
         descricao:
@@ -634,18 +588,14 @@ const presentes = [
         linksCompra: [
             {
                 loja: "Mercado Livre",
-                url: ""
+                url: "https://meli.la/1RjahFX"
             },
 
             {
                 loja: "Amazon",
-                url: ""
+                url: "https://link.amazon/B05d7kci4"
             },
 
-            {
-                loja: "Magazine Luiza",
-                url: ""
-            }
         ]
     },
 
@@ -669,12 +619,32 @@ const presentes = [
                 url: "https://link.amazon/B0bYmXApU"
             },
 
-            {
-                loja: "Magazine Luiza",
-                url: ""
-            }
+
         ]
     },
+    
+        {
+        id: "jogo-de-toalhas",
+        nome: "Jogo de Tolhas",
+        categoria: "Organização",
+        icone: "🎁",
+        descricao:
+            "Para organizar a cozinha com praticidade.",
+
+        linksCompra: [
+            {
+                loja: "Mercado Livre",
+                url: "https://meli.la/27iQUM8"
+            },
+
+            {
+                loja: "Amazon",
+                url: "https://link.amazon/B0hJeHMen"
+            },
+
+        ]
+    },
+    
 
 
     {
@@ -720,7 +690,7 @@ const presentes = [
 
             {
                 loja: "Amazon",
-                url: "https://link.amazon/B01SeecwE"
+                url: "https://link.amazon/B05oT2irK"
             },
 
             {
